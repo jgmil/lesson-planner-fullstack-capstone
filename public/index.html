@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson Planner </title>
+    <!-- Responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <nav role="navigation">
+        <a href="#" id="home"> Lesson planner </a>
+        <span class="nav-right">
+            <form id="log-in">
+                <input type="text" name="username" id="username" required value="demo"> <br>
+                <input type="password" name="password" id="passwordInput" required value="password"><br>
+                <button id="log-in-button" type="submit">Log in</button>
+            </form>
+            <a href="#create-account" id="create-account-nav-link">Create an account</a>
+            <a href="#" id="log-out-link">Log out</a>
+            <a href="#info" id="info-link">More info</a>
+            </span>
+        <input type="hidden" id="loggedInUser" value="">
+    </nav>
+
+    <header role="banner" id="landing">
+        <div>
+        <h1>Lesson Planner</h1>
+        <h2>A clean unit based lesson planner to help you plan effieciently.</h2>
+        </div>
+        <img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!">
+    </header>
+
+    <main role="main">
+        <section class="create-account" id="create-account" role="region">
+            <form id="create-account-form">
+                <h3>Create an Account</h3>
+                <label for="new-username">Username</label><br>
+                <input type="text" name="new-username" id="new-username" required><br>
+                <label for="new-firstName">First Name</label><br>
+                <input type="text" name="new-first-name" id="new-first-name" required><br>
+                <label for="new-password">Password</label><br>
+                <input type="password" name="new-password" id="new-password" required><br>
+                <label for="confirm-password">Re-type password</label><br>
+                <input type="password" name="confirm-password" id="confirm-password" required><br>
+                <button id="create-account-button" type="submit">Create an account</button>
+            </form>
+        </section>
+
+
+        <section class="dashboard">
+            <h2>Welcome Mrs. Miller!</h2>
+            <button type="button" id="new-entry">Create a journal entry</button>
+            <button type="button" id="view-entries">View your journal</button>
+        </section>
+
+        <section role="region" class="create">
+            <h3>Create a new class</h3>
+            <form>
+                <label for="intention">Set an intention for your practice</label><br>
+                <input type="text" aria-label="" name="intention" id="intention">
+
+                <fieldset class="mood" id="mood">
+                    <legend>How are you today?</legend>
+                    <label for="good">
+                        <input type="radio" id="good" name="mood"><i title="good" class="far fa-smile"></i>
+                    </label>
+                    <label for="meh">
+                        <input type="radio" id="meh" name="mood"><i title="okay" class="far fa-meh"></i>
+                    </label>
+                    <label for="bad">
+                        <input type="radio" id="bad" name="mood"><i title="bad" class="far fa-frown"></i>
+                    </label>
+                </fieldset>
+
+                <label for="meditation-type">What type of meditation did you practice?</label><br>
+                <input id="meditation-type" type="text"><br>
+                <label for="length">How long did you meditate?</label><br>
+                <input id="length" type="text"><br>
+                <label for="feeling">How did you feel after?</label><br>
+                <input id="feeling" type="text"><br>
+                <label for="notes">Notes</label><br>
+                <input type="text" id="notes"><br>
+                <label for="reflection">Reflections</label><br>
+                <input id="reflection" type="text"><br>
+                <label for="gratitude">What are you grateful for today?</label><br>
+                <input id="gratitude" type="text"><br>
+                <button type="submit" class="class-submit">Create</button>
+            </form>
+        </section>
+
+        <section class="journal-entries" role="region">
+            <h3>My journal</h3>
+        </section>
+
+        <section role="region" class="edit-journal">
+
+        </section>
+
+
+        <section class="info" id="info" role="region">
+            <button type="button" id="about-button">About the Present Mind</button>
+            <button type="button" id="about-mindfulness-button">What is Mindfulness?</button>
+            <button type="button" id="benefits-button">Benefits</button>
+            <button type="button" id="resources-button">Resources</button>
+
+            <div id="about">
+                <p>The Present Mind is a mindfulness journal that allows you to track your mindfulness practice by helping you set intentions, track your mood and meditations, reflect on your practice and log daily gratitudes. </p>
+            </div>
+
+            <div id="mindfulness-description">
+                <p>Mindfulness is about being of aware of your thoughts, feeelings, emotions, and surroundings with a sense of curiousity, without judging or striving to change them.</p>
+                <p>According to <a href="https://www.mindful.org/what-is-mindfulness/">mindful.org</a>, "Mindfulness is the basic human ability to be fully present, aware of where we are and what we’re doing, and not overly reactive or overwhelmed by what’s going on around us."</p>
+
+            </div>
+
+            <div id="benefits">
+                <p>Mindfulness and meditation has shown to have significant benefits. According to the <a href="http://www.apa.org/monitor/2012/07-08/ce-corner.aspx">American Psychological Association</a>, mindfulness reduces stress, promotes positive emotional health, improves focus, decreases emotional reactivity and increases relationships satisfaction. Evidence also suggests that it improves physical health and immune functioning.</p>
+            </div>
+
+            <div id="resources">
+                <h4>General mindfulness resources and meditation resources:</h4>
+                <ul>
+                    <li><a href="http://www.stillmind.com.au/">Melbourne Mindfulness Centre and Stillmind Counselling</a></li>
+                    <li><a href="https://www.mindful.org/what-is-mindfulness/">What is Mindfulness? from mindful.org</a></li>
+                </ul>
+                <h4>Meditation resoures:</h4>
+                <ul>
+                    <li><a href="https://www.mindfulnesscds.com/">Guided Mindfulness Meditation with Jon Kabat-Zinn</a> </li>
+                    <li><a href="https://www.mindful.org/category/meditation/mindfulness-practice/">Mindfulness Meditation Practices</a> </li>
+                </ul>
+                <h4>Setting intentions:</h4>
+                <ul>
+                    <li> <a href="https://chopra.com/articles/how-to-set-your-intention-for-meditation">how to set your intention for meditation</a> </li>
+                    <li> <a href="https://www.elephantjournal.com/2016/06/the-proper-way-to-set-an-intention-with-meditation/">the proper way to set an intention with meditation</a></li>
+                    <li> <a href="https://www.mindful.org/meditate-with-intention-not-goals/">meditate with intention, not goals</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        Julia Miller
+        <a href="mailto:opie.julia@gmail.com"><i title="email" class="fas fa-envelope"></i></a>
+        <a href="https://github.com/jgmil"><i title="GitHub" class="fab fa-github"></i></a>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="client.js"></script>
+</body>
+
+</html>
