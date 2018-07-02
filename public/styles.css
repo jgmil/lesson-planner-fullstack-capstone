@@ -173,11 +173,6 @@ a:visited {
     display: inline-block;
 }
 
-.create {
-    max-width: 1000px;
-    margin: auto
-}
-
 .dashboard {
     width: 90%;
     margin: auto
@@ -186,7 +181,7 @@ a:visited {
 .class-title {
     margin-bottom: 15px;
     margin-top: 15px;
-    padding: 15px;
+    padding: 15px 0 15px 5px;
     border-bottom: 1px dashed #FF533D;
     border-top: 1px dashed #FF533D;
 }
@@ -195,10 +190,15 @@ a:visited {
     display: inline-block;
 }
 
+.class-title button, .unit button, .class-title select,  {
+    font-size: 14px;
+    width: 120px;
+}
+
 #unit-desc-dash {
     display: block;
-    width: 75%;
-    font-size: 12px;
+    width: calc(100% - 18px);
+    font-size: 14px;
     height: 55px;
 }
 
@@ -214,22 +214,37 @@ a:visited {
 
 .lesson-short {
     border: 1px solid #0F1626;
-    width: 18%;
+    width: 18.8%;
     display: inline-block;
     padding: 10px;
     line-height: 1.4;
     font-size: 14px;
-    margin: 5px;
+    margin: 5px 0 5px 10px;
+    height: 250px;
+    overflow: auto;
 }
 
 .lesson-short > button {
     float: right;
+    width: auto;
 }
 
+.unit {
+    border-bottom: 1px dashed #FF533D;
+}
 
+.create, .lesson-detail {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 10px;
+}
 
-
-
+.create textarea, .lesson-detail textarea {
+    vertical-align: top;
+    width: 47%;
+    font-size: 14px;
+    height: 62px
+}
 
 
 /* -------------------------------------
@@ -243,6 +258,9 @@ footer {
     padding: 10px;
 }
 
+footer a {
+    padding-left: 10px;
+}
 
 /* -------------------------------------
 place all the desktop styles above this line
@@ -251,3 +269,36 @@ Responsive styles
 place all the mobile tables styles below this line
 */
 
+@media only screen and (max-width: 900px) {
+    .lesson-short {
+        width: 31%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .landing-row > div, .landing-row > form {
+        width: 100%;
+    }
+
+    .lesson-short {
+        width: 47%;
+    }
+
+    .create textarea, .lesson-detail textarea {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .landing-row > div, .landing-row > form {
+        width: 100%;
+    }
+
+    .lesson-short {
+        width: 100%;
+    }
+
+    .create textarea, .lesson-detail textarea {
+        width: 90%;
+    }
+}
