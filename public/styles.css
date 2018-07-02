@@ -48,13 +48,23 @@
 General styles (General Module, wrapping around the modules below)
 (the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules below (h2, h3, h4, h5, h6, p, a, ul, li))
 */
+
 body {
     font-family: 'Raleway', sans-serif;
     background-color: #F5F5F5;
     color: #0F1626;
 }
 
-h1, h2, h3, h4 {
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Shadows Into Light Two', cursive;
 }
 
@@ -70,6 +80,8 @@ header {
     color: #F5F5F5;
     background-color: #0F1626;
     padding: 20px;
+    display: block;
+    width: 100%;
 }
 
 #log-in {
@@ -83,6 +95,8 @@ nav {
 
 .float-right {
     float: right;
+    display: inline-block;
+    width: auto;
 }
 
 #home {
@@ -96,7 +110,10 @@ Content styles (Main Module)
 (all the styles inside the < sections > or < aside > tags)
 */
 
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
     padding: 5px 10px;
     border: 1px solid #0F1626;
     color: #0F1626;
@@ -113,8 +130,10 @@ h2 {
     font-size: 28px;
 }
 
-h3, h4 {
+h3,
+h4 {
     font-size: 24px;
+    padding-left: 10px;
 }
 
 section {
@@ -129,7 +148,8 @@ a {
     display: inline-block;
 }
 
-input, textarea {
+input,
+textarea {
     width: 250px;
 }
 
@@ -144,7 +164,8 @@ a:visited {
     margin: auto;
 }
 
-.landing-row > div, .landing-row > form {
+.landing-row > div,
+.landing-row > form {
     width: 47%;
     display: inline-block;
     min-height: 200px;
@@ -165,11 +186,12 @@ a:visited {
     margin-bottom: 20px;
 }
 
-.user-banner>h2 {
+.user-banner > h2 {
     color: #FF533D;
 }
 
-.user-banner>h2, .user-banner>span {
+.user-banner > h2,
+.user-banner > span {
     display: inline-block;
 }
 
@@ -186,11 +208,14 @@ a:visited {
     border-top: 1px dashed #FF533D;
 }
 
-.class-title>h3 {
+.class-title > h3 {
     display: inline-block;
 }
 
-.class-title button, .unit button, .class-title select,  {
+.class-title button,
+.unit button,
+.class-title select,
+    {
     font-size: 14px;
     width: 120px;
 }
@@ -200,6 +225,7 @@ a:visited {
     width: calc(100% - 18px);
     font-size: 14px;
     height: 55px;
+    margin-bottom: 25px;
 }
 
 #unit-title-dash {
@@ -210,40 +236,56 @@ a:visited {
 
 .lesson-container {
     padding-bottom: 15px;
+    border-top: 1px dashed #FF533D;
+    padding-top: 15px;
 }
 
 .lesson-short {
     border: 1px solid #0F1626;
-    width: 18.8%;
+    width: 18.5%;
     display: inline-block;
     padding: 10px;
     line-height: 1.4;
     font-size: 14px;
-    margin: 5px 0 5px 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     height: 250px;
     overflow: auto;
 }
 
 .lesson-short > button {
     float: right;
-    width: auto;
+
+}
+
+.lesson-end {
+    text-align: center;
+}
+
+.lesson-end > button {
+    float: none;
+    vertical-align: middle;
+    margin-top: 50%;
 }
 
 .unit {
     border-bottom: 1px dashed #FF533D;
 }
 
-.create, .lesson-detail {
+.create,
+.lesson-detail {
     max-width: 1000px;
     margin: auto;
     padding: 50px 10px;
 }
 
-.create textarea, .lesson-detail textarea {
+.create textarea,
+.lesson-detail textarea {
     vertical-align: top;
     width: 47%;
     font-size: 14px;
-    height: 62px
+    height: 78px
 }
 
 
@@ -276,7 +318,8 @@ place all the mobile tables styles below this line
 }
 
 @media only screen and (max-width: 750px) {
-    .landing-row > div, .landing-row > form {
+    .landing-row > div,
+    .landing-row > form {
         width: 100%;
     }
 
@@ -284,13 +327,15 @@ place all the mobile tables styles below this line
         width: 47%;
     }
 
-    .create textarea, .lesson-detail textarea {
+    .create textarea,
+    .lesson-detail textarea {
         width: 90%;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .landing-row > div, .landing-row > form {
+    .landing-row > div,
+    .landing-row > form {
         width: 100%;
     }
 
@@ -298,7 +343,8 @@ place all the mobile tables styles below this line
         width: 100%;
     }
 
-    .create textarea, .lesson-detail textarea {
+    .create textarea,
+    .lesson-detail textarea {
         width: 90%;
     }
 }
