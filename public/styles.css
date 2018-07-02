@@ -49,9 +49,13 @@ General styles (General Module, wrapping around the modules below)
 (the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules below (h2, h3, h4, h5, h6, p, a, ul, li))
 */
 body {
-    font-family: font-family: 'Roboto', sans-serif;
-    color: #373F27;
-    background-color: #E9E7DA
+    font-family: 'Raleway', sans-serif;
+    background-color: #F5F5F5;
+    color: #0F1626;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Shadows Into Light Two', cursive;
 }
 
 
@@ -62,13 +66,29 @@ Header styles (Main Module)
 */
 
 header {
-    background: black;
-    color: #E9E7DA
+    font-size: 18px;
+    color: #F5F5F5;
+    background-color: #0F1626;
+    padding: 20px;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Alegreya Sans', sans-serif;
+#log-in {
+    display: inline-block;
+    font-size: 14px;
 }
+
+nav {
+    display: inline-block;
+}
+
+.float-right {
+    float: right;
+}
+
+#home {
+    color: #FF533D;
+}
+
 
 
 /* -------------------------------------
@@ -76,15 +96,140 @@ Content styles (Main Module)
 (all the styles inside the < sections > or < aside > tags)
 */
 
-button {
-    padding: 5px;
-    border: 1px solid #1D2731;
+button, input, textarea, select {
+    padding: 5px 10px;
+    border: 1px solid #0F1626;
+    color: #0F1626;
+    display: inline-block;
+    margin: 10px;
+    background-color: white;
 }
 
-.landing-row1 {
-    background-image: url(https://images.pexels.com/photos/159770/black-board-chalk-traces-school-159770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-    height: 100%;
+h1 {
+    font-size: 36px;
 }
+
+h2 {
+    font-size: 28px;
+}
+
+h3, h4 {
+    font-size: 24px;
+}
+
+section {
+    padding: 10px;
+    width: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #F5F5F5;
+    padding-right: 20px;
+    display: inline-block;
+}
+
+input, textarea {
+    width: 250px;
+}
+
+a:visited {
+    /*color: #FF533D;*/
+    color: #AB987A
+}
+
+
+.landing-row {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.landing-row > div, .landing-row > form {
+    width: 47%;
+    display: inline-block;
+    min-height: 200px;
+    padding: 50px;
+}
+
+#create-form-container {
+    vertical-align: top;
+}
+
+.landing-left {
+    text-align: right;
+}
+
+.user-banner {
+    background-color: #0F1626;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.user-banner>h2 {
+    color: #FF533D;
+}
+
+.user-banner>h2, .user-banner>span {
+    display: inline-block;
+}
+
+.create {
+    max-width: 1000px;
+    margin: auto
+}
+
+.dashboard {
+    width: 90%;
+    margin: auto
+}
+
+.class-title {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 15px;
+    border-bottom: 1px dashed #FF533D;
+    border-top: 1px dashed #FF533D;
+}
+
+.class-title>h3 {
+    display: inline-block;
+}
+
+#unit-desc-dash {
+    display: block;
+    width: 75%;
+    font-size: 12px;
+    height: 55px;
+}
+
+#unit-title-dash {
+    background: transparent;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 20px;
+}
+
+.lesson-container {
+    padding-bottom: 15px;
+}
+
+.lesson-short {
+    border: 1px solid #0F1626;
+    width: 18%;
+    display: inline-block;
+    padding: 10px;
+    line-height: 1.4;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.lesson-short > button {
+    float: right;
+}
+
+
+
+
+
 
 
 /* -------------------------------------
@@ -92,6 +237,11 @@ Footer styles (Main Module)
 (all the styles inside the < footer > tag)
 */
 
+footer {
+    color: #F5F5F5;
+    background-color: #0F1626;
+    padding: 10px;
+}
 
 
 /* -------------------------------------
