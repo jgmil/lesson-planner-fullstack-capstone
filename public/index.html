@@ -10,143 +10,236 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,300,300italic,400italic,800,800italic,700,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
-
 </head>
 
 <body>
-    <nav role="navigation">
+    <header role="banner" id="landing">
         <a href="#" id="home"> Lesson planner </a>
-        <span class="nav-right">
-            <form id="log-in">
-                <input type="text" name="username" id="username" required value="demo"> <br>
-                <input type="password" name="password" id="passwordInput" required value="password"><br>
-                <button id="log-in-button" type="submit">Log in</button>
-            </form>
+        <form id="log-in">
+            <input type="text" name="username" id="username" required value="demo"> <br>
+            <input type="password" name="password" id="passwordInput" required value="password"><br>
+            <button id="log-in-button" type="submit">Log in</button>
+        </form>
+        <nav role="navigation">
             <a href="#create-account" id="create-account-nav-link">Create an account</a>
             <a href="#" id="log-out-link">Log out</a>
             <a href="#info" id="info-link">More info</a>
-            </span>
+        </nav>
         <input type="hidden" id="loggedInUser" value="">
-    </nav>
-
-    <header role="banner" id="landing">
-        <div>
-        <h1>Lesson Planner</h1>
-        <h2>A clean unit based lesson planner to help you plan effieciently.</h2>
-        </div>
-        <img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!">
     </header>
 
     <main role="main">
-        <section class="create-account" id="create-account" role="region">
+       <section role="region" class="landing-row1">
+        <div>
+            <h1>Lesson Planner</h1>
+            <h2>A clean unit based lesson planner to help you plan effieciently.</h2>
+        </div>
+        <div><img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!"></div>
+        </section>
+
+        <section role="region" class="landing-row">
+            <div><img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!"></div>
+            <div>
+                <p>Lesson Planner allows you to quickly create lesson plans organized into units. Your dashboard allows immediate access to your unit plans. You can also easily view and print detailed lesson plans.</p>
+            </div>
+        </section>
+
+        <section class="landing-row" role="region">
             <form id="create-account-form">
                 <h3>Create an Account</h3>
-                <label for="new-username">Username</label><br>
-                <input type="text" name="new-username" id="new-username" required><br>
-                <label for="new-firstName">First Name</label><br>
-                <input type="text" name="new-first-name" id="new-first-name" required><br>
-                <label for="new-password">Password</label><br>
-                <input type="password" name="new-password" id="new-password" required><br>
-                <label for="confirm-password">Re-type password</label><br>
-                <input type="password" name="confirm-password" id="confirm-password" required><br>
+                <input type="text" name="new-username" id="new-username" required placeholder="Username" aria-label="Username"><br>
+                <input type="text" name="new-name" id="new-name" required placeholder="Mrs. Miller" aria-label="name-for-greeting"><br>
+                <input type="password" name="new-password" id="new-password" required placeholder="Password" aria-label="password"><br>
                 <button id="create-account-button" type="submit">Create an account</button>
             </form>
+            <div><img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!"></div>
         </section>
 
 
         <section class="dashboard">
-            <h2>Welcome Mrs. Miller!</h2>
-            <button type="button" id="new-entry">Create a journal entry</button>
-            <button type="button" id="view-entries">View your journal</button>
+            <div class="user-banner">
+                <h2>Welcome Mrs. Miller!</h2>
+                <select id="class-name" name="class-name" aria-label="class-name">
+                    <optgroup label="Select a class">
+                        <option value="class1">Class 1</option>
+                        <option value="class2">Class 2</option>
+                        <option value="class3">Class 3</option>
+                    </optgroup>
+                </select>
+                <button href="" id="create-class">New class</button>
+                <button href="" id="create-unit">New unit</button>
+                <button href="" id="create-lesson">New lesson</button>
+            </div>
+            <div class="class-title">
+               <h3>Class 1</h3>
+                <select id="unit-name" name="unit-name" aria-label="unit-name">
+                    <optgroup label="Select a unit">
+                        <option value="class1">Unit 1</option>
+                        <option value="class2">Unit 2</option>
+                        <option value="class3">Unit 3</option>
+                    </optgroup>
+                </select>
+                <button href="" id="create-unit">New unit</button>
+                <button href="" id="update-class">Update class</button>
+                <button href="" id="delete-class">Delete class</button>
+            </div>
+            <div class="unit">
+                <form>
+                    <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" value="Unit title" >
+                    <select id="class-name" name="class-name" aria-label="class-name">
+                        <optgroup label="Class">
+                            <option value="class1">Class 1</option>
+                            <option value="class2">Class 2</option>
+                            <option value="class3">Class 3</option>
+                        </optgroup>
+                    </select>
+                    <textarea name="unit-desc" aria-label="unit-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
+                    <button type="submit" id="update-unit">Update</button>
+                    <button type="submit" id="delete-unit">Delete</button>
+                </form>
+                <button id="create-lesson">New lesson</button>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+                <div class="lesson-container">
+                    <p>Lesson title</p>
+                    <p>Homework</p>
+                    <button>Details</button>
+                </div>
+            </div>
+
+
         </section>
 
         <section role="region" class="create">
             <h3>Create a new class</h3>
             <form>
-                <label for="intention">Set an intention for your practice</label><br>
-                <input type="text" aria-label="" name="intention" id="intention">
-
-                <fieldset class="mood" id="mood">
-                    <legend>How are you today?</legend>
-                    <label for="good">
-                        <input type="radio" id="good" name="mood"><i title="good" class="far fa-smile"></i>
-                    </label>
-                    <label for="meh">
-                        <input type="radio" id="meh" name="mood"><i title="okay" class="far fa-meh"></i>
-                    </label>
-                    <label for="bad">
-                        <input type="radio" id="bad" name="mood"><i title="bad" class="far fa-frown"></i>
-                    </label>
-                </fieldset>
-
-                <label for="meditation-type">What type of meditation did you practice?</label><br>
-                <input id="meditation-type" type="text"><br>
-                <label for="length">How long did you meditate?</label><br>
-                <input id="length" type="text"><br>
-                <label for="feeling">How did you feel after?</label><br>
-                <input id="feeling" type="text"><br>
-                <label for="notes">Notes</label><br>
-                <input type="text" id="notes"><br>
-                <label for="reflection">Reflections</label><br>
-                <input id="reflection" type="text"><br>
-                <label for="gratitude">What are you grateful for today?</label><br>
-                <input id="gratitude" type="text"><br>
-                <button type="submit" class="class-submit">Create</button>
+                <input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name" >
+                <input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term" >
+                <button type="submit" id="class-submit">Create</button>
             </form>
         </section>
 
-        <section class="journal-entries" role="region">
-            <h3>My journal</h3>
+        <section role="region" class="create">
+            <h3>Create a new unit</h3>
+            <form>
+                <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title" >
+                <select id="class-name" name="class-name" aria-label="class-name">
+                    <optgroup label="Class">
+                        <option value="class1">Class 1</option>
+                        <option value="class2">Class 2</option>
+                        <option value="class3">Class 3</option>
+                    </optgroup>
+                </select>
+                <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
+                <button type="submit" id="class-submit">Create</button>
+            </form>
         </section>
 
-        <section role="region" class="edit-journal">
+        <section role="region" class="create">
+            <h3>Create a new lesson</h3>
+            <form>
+                <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title" >
+                <select id="class-name" name="class-name" aria-label="class-name">
+                    <optgroup label="Select a class">
+                        <option value="class1">Class 1</option>
+                        <option value="class2">Class 2</option>
+                        <option value="class3">Class 3</option>
+                    </optgroup>
+                </select>
+                <select id="unit-name" name="unit-name" aria-label="unit-name">
+                    <optgroup label="Select a unit">
+                        <option value="class1">Unit 1</option>
+                        <option value="class2">Unit 2</option>
+                        <option value="class3">Unit 3</option>
+                    </optgroup>
+                </select>
+                <textarea name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
+                <textarea name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
+                <textarea name="lesson-desc" id="lesson-desc" placeholder="Lesson Description" aria-label="lesson description"></textarea>
+                <textarea name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
+                <textarea name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
+                <textarea name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
+                <textarea name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
+                <button type="submit" id="class-submit">Create</button>
+            </form>
+        </section>
+
+        <section class="lesson-detail" role="region">
+            <h3>Lesson Detail</h3>
+            <form>
+                <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" value="Lesson title" >
+                <select id="class-name" name="class-name" aria-label="class-name">
+                    <optgroup label="Select a class">
+                        <option value="class1">Class 1</option>
+                        <option value="class2" selected>Class 2</option>
+                        <option value="class3">Class 3</option>
+                    </optgroup>
+                </select>
+                <select id="unit-name" name="unit-name" aria-label="unit-name">
+                    <optgroup label="Select a unit">
+                        <option value="class1">Unit 1</option>
+                        <option value="class2">Unit 2</option>
+                        <option value="class3" selected>Unit 3</option>
+                    </optgroup>
+                </select>
+                <textarea name="standards" value="Standards are here, there are a few of them" aria-label="standards" id="lesson-stnds"></textarea>
+                <textarea name="learning-targets" id="learning-targets" aria-label="learning targets or objectives">I can have a learning target here. I can also put a second one.</textarea>
+                <textarea name="lesson-desc" id="lesson-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." aria-label="lesson description</textarea>
+                <textarea name="assessment" id="assessment" aria-label="assessment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                <textarea name="homework" id="homework" aria-label="homework/independent practice">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                <textarea name="notes" id="notes" aria-label="notes">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                <textarea name="reflection" id="reflections" aria-label="reflection">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                <button type="submit" id="lesson-update">Update</button>
+                <button type="submit" id="lesson-delete">Delete</button>
+            </form>
+        </section>
+
+        <section role="region" class="lesson-detail">
 
         </section>
 
-
-        <section class="info" id="info" role="region">
-            <button type="button" id="about-button">About the Present Mind</button>
-            <button type="button" id="about-mindfulness-button">What is Mindfulness?</button>
-            <button type="button" id="benefits-button">Benefits</button>
-            <button type="button" id="resources-button">Resources</button>
-
-            <div id="about">
-                <p>The Present Mind is a mindfulness journal that allows you to track your mindfulness practice by helping you set intentions, track your mood and meditations, reflect on your practice and log daily gratitudes. </p>
-            </div>
-
-            <div id="mindfulness-description">
-                <p>Mindfulness is about being of aware of your thoughts, feeelings, emotions, and surroundings with a sense of curiousity, without judging or striving to change them.</p>
-                <p>According to <a href="https://www.mindful.org/what-is-mindfulness/">mindful.org</a>, "Mindfulness is the basic human ability to be fully present, aware of where we are and what we’re doing, and not overly reactive or overwhelmed by what’s going on around us."</p>
-
-            </div>
-
-            <div id="benefits">
-                <p>Mindfulness and meditation has shown to have significant benefits. According to the <a href="http://www.apa.org/monitor/2012/07-08/ce-corner.aspx">American Psychological Association</a>, mindfulness reduces stress, promotes positive emotional health, improves focus, decreases emotional reactivity and increases relationships satisfaction. Evidence also suggests that it improves physical health and immune functioning.</p>
-            </div>
-
-            <div id="resources">
-                <h4>General mindfulness resources and meditation resources:</h4>
-                <ul>
-                    <li><a href="http://www.stillmind.com.au/">Melbourne Mindfulness Centre and Stillmind Counselling</a></li>
-                    <li><a href="https://www.mindful.org/what-is-mindfulness/">What is Mindfulness? from mindful.org</a></li>
-                </ul>
-                <h4>Meditation resoures:</h4>
-                <ul>
-                    <li><a href="https://www.mindfulnesscds.com/">Guided Mindfulness Meditation with Jon Kabat-Zinn</a> </li>
-                    <li><a href="https://www.mindful.org/category/meditation/mindfulness-practice/">Mindfulness Meditation Practices</a> </li>
-                </ul>
-                <h4>Setting intentions:</h4>
-                <ul>
-                    <li> <a href="https://chopra.com/articles/how-to-set-your-intention-for-meditation">how to set your intention for meditation</a> </li>
-                    <li> <a href="https://www.elephantjournal.com/2016/06/the-proper-way-to-set-an-intention-with-meditation/">the proper way to set an intention with meditation</a></li>
-                    <li> <a href="https://www.mindful.org/meditate-with-intention-not-goals/">meditate with intention, not goals</a></li>
-                </ul>
-            </div>
-        </section>
 
     </main>
 
@@ -158,7 +251,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="client.js"></script>
+
 </body>
 
 </html>

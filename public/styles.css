@@ -48,6 +48,11 @@
 General styles (General Module, wrapping around the modules below)
 (the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules below (h2, h3, h4, h5, h6, p, a, ul, li))
 */
+body {
+    font-family: font-family: 'Roboto', sans-serif;
+    color: #373F27;
+    background-color: #E9E7DA
+}
 
 
 
@@ -56,13 +61,30 @@ Header styles (Main Module)
 (all the styles inside the < header > or < nav > tags)
 */
 
+header {
+    background: black;
+    color: #E9E7DA
+}
 
+h1, h2, h3, h4 {
+    font-family: 'Alegreya Sans', sans-serif;
+}
 
 
 /* -------------------------------------
 Content styles (Main Module)
 (all the styles inside the < sections > or < aside > tags)
 */
+
+button {
+    padding: 5px;
+    border: 1px solid #1D2731;
+}
+
+.landing-row1 {
+    background-image: url(https://images.pexels.com/photos/159770/black-board-chalk-traces-school-159770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    height: 100%;
+}
 
 
 /* -------------------------------------
