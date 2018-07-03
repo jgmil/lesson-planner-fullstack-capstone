@@ -93,6 +93,10 @@ nav {
     display: inline-block;
 }
 
+img {
+    max-width: 100%;
+}
+
 .float-right {
     float: right;
     display: inline-block;
@@ -118,7 +122,8 @@ select {
     border: 1px solid #0F1626;
     color: #0F1626;
     display: inline-block;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color: white;
 }
 
@@ -150,7 +155,7 @@ a {
 
 input,
 textarea {
-    width: 250px;
+    width: 100%;
 }
 
 a:visited {
@@ -217,12 +222,11 @@ a:visited {
 .class-title select,
     {
     font-size: 14px;
-    width: 120px;
 }
 
 #unit-desc-dash {
     display: block;
-    width: calc(100% - 18px);
+    width: 100%;
     font-size: 14px;
     height: 55px;
     margin-bottom: 25px;
@@ -321,6 +325,7 @@ place all the mobile tables styles below this line
     .landing-row > div,
     .landing-row > form {
         width: 100%;
+        text-align: center;
     }
 
     .lesson-short {
@@ -337,6 +342,7 @@ place all the mobile tables styles below this line
     .landing-row > div,
     .landing-row > form {
         width: 100%;
+        text-align: center;
     }
 
     .lesson-short {
