@@ -23,15 +23,10 @@
         </a>
         <span class="float-right">
         <nav role="navigation">
-            <a href="#create-account" id="create-account-nav-link">Create an account</a>
-
-            <a href="#info" id="info-link">More info</a>
+            <a href="#log-in" id="log-in-nav-link">Log in</a>
+            <a href="#create-account-form" id="create-account-nav-link">Create an account</a>
+            <a href="#more-info" id="info-link">More info</a>
         </nav>
-            <form id="log-in">
-                <input type="text" name="username" id="username" required value="demo">
-                <input type="password" name="password" id="passwordInput" required value="password">
-                <button id="log-in-button" type="submit">Log in</button>
-            </form>
         </span>
         <input type="hidden" id="loggedInUser" value="">
     </header>
@@ -46,21 +41,40 @@
                 <div class="landing-right"><img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!"></div>
             </section>
 
-            <section role="region" class="landing-row">
-                <div class="landing-left"><img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!"></div>
-                <div class="landing-right">
-                    <p>Lesson Planner allows you to quickly create lesson plans organized into units. Your dashboard allows immediate access to your unit plans. You can also easily view and print detailed lesson plans.</p>
-                </div>
-            </section>
+            <div class="row2">
+                <section role="region" class="landing-row">
+                    <div class="landing-left" id="more-info">
+                        <img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!">
+                        <p>Lesson Planner allows you to quickly create lesson plans organized into units. Your dashboard allows immediate access to your unit plans. You can also easily view and print detailed lesson plans.</p>
+                    </div>
+                    <div class="landing-right">
+                        <form id="log-in">
+                            <fieldset>
+                                <legend>Log in</legend>
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" required value="demo">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="passwordInput" required value="password">
+                                <button id="log-in-button" type="submit">Log in</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </section>
+            </div>
 
             <section class="landing-row" role="region">
                 <div class="landing-left" id="create-form-container">
                     <form id="create-account-form">
-                        <h3>Create an Account</h3>
-                        <input type="text" name="new-username" id="new-username" required placeholder="Username" aria-label="Username"><br>
-                        <input type="text" name="new-name" id="new-name" required placeholder="Greeting (Mrs. Miller)" aria-label="name-for-greeting"><br>
-                        <input type="password" name="new-password" id="new-password" required placeholder="Password" aria-label="password"><br>
-                        <button id="create-account-button" type="submit">Create an account</button>
+                        <fieldset>
+                            <legend>Create an Account</legend>
+                            <label for="new-name">Name for greeting</label>
+                            <input type="text" name="new-name" id="new-name" required placeholder="Mrs. Miller" aria-label="name-for-greeting"><br>
+                            <label for="new-username">Username</label>
+                            <input type="text" name="new-username" id="new-username" required placeholder="Username" aria-label="Username"><br>
+                            <label for="new-password">Password</label>
+                            <input type="password" name="new-password" id="new-password" required placeholder="Password" aria-label="password"><br>
+                            <button id="create-account-button" type="submit">Create an account</button>
+                        </fieldset>
                     </form>
                 </div>
                 <div class="landing-right"><img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!"></div>
@@ -118,55 +132,55 @@
                     <button type="submit" id="delete-unit">Delete unit</button>
                 </form>
                 <div class="lesson-container clearfix">
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
                         <p>Homework: page 876 #10-42 evens. </p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short">
+                    <div class="lesson-short" id="lesson1">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>

@@ -138,7 +138,6 @@ h2 {
 h3,
 h4 {
     font-size: 24px;
-    padding-left: 10px;
 }
 
 section {
@@ -163,10 +162,14 @@ a:visited {
     color: #AB987A
 }
 
-
 .landing-row {
     max-width: 1200px;
     margin: auto;
+}
+
+.row2 {
+    background-color: rgba(0, 0, 0, 0.05);
+    max-width: none;
 }
 
 .landing-row > div,
@@ -175,6 +178,16 @@ a:visited {
     display: inline-block;
     min-height: 200px;
     padding: 50px;
+}
+
+legend {
+    margin-bottom: 10px;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 28px;
+}
+
+select {
+    margin-right: 10px;
 }
 
 #create-form-container {
@@ -246,12 +259,11 @@ a:visited {
 
 .lesson-short {
     border: 1px solid #0F1626;
-    width: 18.5%;
+    width: 19.6%;
     display: inline-block;
     padding: 10px;
     line-height: 1.4;
     font-size: 14px;
-    margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
     height: 250px;
@@ -280,6 +292,7 @@ a:visited {
 .create,
 .lesson-detail {
     max-width: 1000px;
+    width: 75%;
     margin: auto;
     padding: 50px 10px;
 }
