@@ -194,6 +194,10 @@ select {
     vertical-align: top;
 }
 
+.class-shortcut {
+    color: #F5F5F5;
+}
+
 .landing-left {
     text-align: right;
 }
@@ -272,7 +276,6 @@ select {
 
 .lesson-short > button {
     float: right;
-
 }
 
 .lesson-end {

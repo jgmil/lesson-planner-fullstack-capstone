@@ -85,7 +85,8 @@
         <section role="region" class="clearfix user-banner">
             <h2>Welcome Mrs. Miller!</h2>
             <span class="float-right">
-                <select id="class-name" name="class-name" aria-label="class-name">
+               <label class="class-shortcut" for="class-shortcut">Jump to:  </label>
+                <select id="class-shortcut" name="class-name" aria-label="class-name">
                     <optgroup label="Select a class">
                         <option value="class1">Class 1</option>
                         <option value="class2">Class 2</option>
@@ -103,14 +104,14 @@
             <div class="clearfix class-title">
                 <h3>Class 1</h3>
                 <span class="float-right">
-                <select id="unit-name" name="unit-name" aria-label="unit-name">
-                    <Label for="select-unit"> Choose a unit: </Label>
-                    <optgroup id="select-unit">
+                    <label for="unit-shortcut1"> Jump to: </label>
+                   <select id="unit-shortcut1" name="unit-name" aria-label="unit-name">
+                    <optgroup label="Select a unit">
                         <option value="class1">Unit 1</option>
                         <option value="class2">Unit 2</option>
                         <option value="class3">Unit 3</option>
                     </optgroup>
-                </select>
+                    </select> &nbsp;
                 <button href="" id="create-unit">Add a unit</button>
                 <button href="" id="update-class">Update class</button>
                 <button href="" id="delete-class">Delete class</button>
@@ -138,49 +139,49 @@
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson2">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson3">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson4">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson5">
                         <p>Lesson title</p>
                         <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
                         <p>Homework: page 876 #10-42 evens. </p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson6">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson7">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson8">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
                         <button>Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short" id="lesson9">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
@@ -194,7 +195,7 @@
             </div>
             <div class="unit">
                 <div>
-                    <form>
+                    <form id="unit2">
                         <input type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash" value="Unit title">
                         <span class="float-right">
                             <select id="class-name" name="class-name" aria-label="class-name">
@@ -632,9 +633,9 @@
                 <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
                 <select id="class-name" name="class-name" aria-label="class-name">
                     <optgroup label="Class">
-                        <option value="class1">Class 1</option>
-                        <option value="class2">Class 2</option>
-                        <option value="class3">Class 3</option>
+                        <option value="class1">Class 1, Term 1</option>
+                        <option value="class2">Class 2, Term 2</option>
+                        <option value="class3">Class 3, Term 3</option>
                     </optgroup>
                 </select>
                 <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
@@ -648,9 +649,9 @@
                 <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
                 <select id="class-name" name="class-name" aria-label="class-name">
                     <optgroup label="Select a class">
-                        <option value="class1">Class 1</option>
-                        <option value="class2">Class 2</option>
-                        <option value="class3">Class 3</option>
+                        <option value="class1">Class 1, Term 1</option>
+                        <option value="class2">Class 2, Term 2</option>
+                        <option value="class3">Class 3, Term 3</option>
                     </optgroup>
                 </select>
                 <select id="unit-name" name="unit-name" aria-label="unit-name">
@@ -663,7 +664,7 @@
                 <textarea name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc"></textarea>
                 <textarea name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
                 <textarea name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
-                <textarea name="lesson-desc" id="lesson-desc" placeholder="Lesson Description" aria-label="lesson description"></textarea>
+                <textarea name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
                 <textarea name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
                 <textarea name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
                 <textarea name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
@@ -678,9 +679,9 @@
                 <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" value="Lesson title">
                 <select id="class-name" name="class-name" aria-label="class-name">
                     <optgroup label="Select a class">
-                        <option value="class1">Class 1</option>
-                        <option value="class2" selected>Class 2</option>
-                        <option value="class3">Class 3</option>
+                        <option value="class1">Class 1, Term 1</option>
+                        <option value="class2" selected>Class 2, Term 2</option>
+                        <option value="class3">Class 3, Term 3</option>
                     </optgroup>
                 </select>
                 <select id="unit-name" name="unit-name" aria-label="unit-name">
@@ -693,7 +694,7 @@
                 <textarea name="lesson-desc" aria-label="lesson description" id="lesson-desc">Lesson Description: goes here</textarea>
                 <textarea name="standards" aria-label="standards" id="lesson-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
                 <textarea name="learning-targets" id="learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
-                <textarea name="lesson-desc" id="lesson-desc">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." aria-label="lesson description</textarea>
+                <textarea name="lesson-deteails" id="lesson-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
                 <textarea name="assessment" id="assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
                 <textarea name="homework" id="homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
                 <textarea name="notes" id="notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
