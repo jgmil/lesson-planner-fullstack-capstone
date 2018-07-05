@@ -83,83 +83,133 @@ const MOCK_LESSON_PLANS = {
 //functions, variables and object definitions
 
 function displayCreateClass() {
-
-    <
-    h3 > Create a new class < /h3> <
-    form >
-        <
-        input type = "text"
-    aria - label = "class-name"
-    name = "class-name"
-    id = "class-name"
-    placeholder = "Class name" >
-        <
-        input type = "text"
-    aria - label = "class"
-    name = "class-term"
-    id = "class-term"
-    placeholder = "Term" >
-        <
-        button type = "submit"
-    id = "new-class-submit" > Create < /button> <
-    button type = "button"
-    class = "cancel-button"
-    id = "new-class-cancel" > Cancel < /button> < /
-        form >
-
-
+    $(".create").html(`<fieldset>
+<legend>
+<h3>Create a new class</h3>
+</legend>
+<form>
+<input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name">
+<input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term">
+<button type="submit" id="new-class-submit">Create</button>
+<button type="button" class="cancel-button" id="new-class-cancel">Cancel</button>
+</form>
+</fieldset>`);
 }
 
+function displayCreateUnit() {
+    $(".create").html(`<fieldset>
+<legend>
+<h3>Create a new unit</h3>
+</legend>
+<form>
+<input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
+<select id="new-unit-class-name" name="class-name" aria-label="class-name">
+<optgroup label="Class">
+<option value="class1">Class 1, Term 1</option>
+<option value="class2">Class 2, Term 2</option>
+<option value="class3">Class 3, Term 3</option>
+</optgroup>
+</select>
+<textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
+<button type="submit" id="new-unit-submit">Create</button>
+<button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
+</form>
+</fieldset>`);
+}
 
-function displayLessons() {
-    $(".journal-entries").html("<h3>My journal</h3>");
-    for (let i = 0; i < entryData.entryOutput.length; i++) {
-        let d = new Date(entryData.entryOutput[i].date);
-        let displayDate = d.toDateString();
-        $(".journal-entries").append(`
-<section class="entry" role="region">
-<p>Date: ${displayDate}</p>
-<p>My intention: ${entryData.entryOutput[i].intention}</p>
-<p>My mood was: ${entryData.entryOutput[i].mood}</p>
-<p>Type of meditation: ${entryData.entryOutput[i].medType}</p>
-<p>Length of meditation: ${entryData.entryOutput[i].medLength}</p>
-<p>After meditating, I felt: ${entryData.entryOutput[i].feeling}</p>
-<p>Notes: ${entryData.entryOutput[i].notes}</p>
-<p>Reflection: ${entryData.entryOutput[i].reflection}</p>
-<p>Gratitude: ${entryData.entryOutput[i].gratitude}</p>
-<button class="update">Update</button>
-<button class="delete">Delete</button>
-<input type="hidden" id="entryId" value="${entryData.entryOutput[i]._id}">
-</section>
-`)
-    };
-};
+function displayCreateLesson() {
+    $(".create").html(`<fieldset>
+<legend>
+<h3>Create a new lesson</h3>
+</legend>
+<form>
+<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
+<select id="new-lesson-class-name" name="class-name" aria-label="class-name">
+<optgroup label="Select a class">
+<option value="class1">Class 1, Term 1</option>
+<option value="class2">Class 2, Term 2</option>
+<option value="class3">Class 3, Term 3</option>
+</optgroup>
+</select>
+<select id="unit-name" name="unit-name" aria-label="unit-name">
+<optgroup label="Select a unit">
+<option value="class1">Unit 1</option>
+<option value="class2">Unit 2</option>
+<option value="class3">Unit 3</option>
+</optgroup>
+</select>
+<input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
+<textarea name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
+<textarea name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
+<textarea name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
+<textarea name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
+<textarea name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
+<textarea name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
+<textarea name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
+<button type="submit" id="new-lesson-submit">Create</button>
+<button type="button" class="cancel-button" id="new-lesson-cancel">Cancel</button>
+</form>
+</fieldset>`);
+}
+
+//function displayLessons(lessonData) {
+//    $(".journal-entries").html("<h3>My journal</h3>");
+//    for (let i = 0; i < entryData.entryOutput.length; i++) {
+//        let d = new Date(entryData.entryOutput[i].date);
+//        let displayDate = d.toDateString();
+//        $(".journal-entries").append(`
+//<section class="entry" role="region">
+//<p>Date: ${displayDate}</p>
+//<p>My intention: ${entryData.entryOutput[i].intention}</p>
+//<p>My mood was: ${entryData.entryOutput[i].mood}</p>
+//<p>Type of meditation: ${entryData.entryOutput[i].medType}</p>
+//<p>Length of meditation: ${entryData.entryOutput[i].medLength}</p>
+//<p>After meditating, I felt: ${entryData.entryOutput[i].feeling}</p>
+//<p>Notes: ${entryData.entryOutput[i].notes}</p>
+//<p>Reflection: ${entryData.entryOutput[i].reflection}</p>
+//<p>Gratitude: ${entryData.entryOutput[i].gratitude}</p>
+//<button class="update">Update</button>
+//<button class="delete">Delete</button>
+//<input type="hidden" id="entryId" value="${entryData.entryOutput[i]._id}">
+//</section>
+//`)
+//    };
+//};
 
 function displayLessonDetail(lessons) {
-    $(".dashboard").hide();
-    $(".edit-journal").html(`<h3>edit a journal entry</h3>
-<form method="put" action="#">
-<label for="edit-intention">set an intention for your practice</label><br>
-<input type="text" name="intention" id="edit-intention" value="${entryData.intention}">
-<label for="edit-mood">How are you?</label><br>
-<input type="text" name="mood" id="edit-mood" value="${entryData.mood}">
-<label for="edit-meditation-type">what type of meditation did you practice?</label><br>
-<input id="edit-meditation-type" type="text" value="${entryData.medType}"><br>
-<label for="edit-length">how long did you meditate?</label><br>
-<input type="text" id="edit-length" value="${entryData.medLength}"><br>
-<label for="edit-feeling">how did you feel after?</label><br>
-<input id="edit-feeling" type="text" value="${entryData.feeling}"><br>
-<label for="edit-notes">notes</label><br>
-<input type="text" id="edit-notes" value="${entryData.notes}"><br>
-<label for="edit-reflection">reflections</label><br>
-<input id="edit-reflection" type="text" value="${entryData.reflection}"><br>
-<label for="edit-gratitude">what are you grateful for today?</label><br>
-<input id="edit-gratitude" type="text" value="${entryData.gratitude}"><br>
-<button type="submit" id="entry-update">update</button>
-<input type="hidden" id="entryId" value="${entryData._id}">
-</form>`);
-    $(".edit-journal").show();
-    $(".journal-entries").hide();
+    $(".lesson-detail").html(`<fieldset>
+<legend>
+<h3>Lesson Detail</h3>
+</legend>
+<form>
+<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
+<select id="class-name-les-det" name="class-name" aria-label="class-name">
+<optgroup label="Select a class">
+<option value="class1">Class 1, Term 1</option>
+<option value="class2" selected>Class 2, Term 2</option>
+<option value="class3">Class 3, Term 3</option>
+</optgroup>
+</select>
+<select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
+<optgroup label="Select a unit">
+<option value="class1">Unit 1</option>
+<option value="class2">Unit 2</option>
+<option value="class3" selected>Unit 3</option>
+</optgroup>
+</select>
+<input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
+<textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
+<textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
+<textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
+<textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+<textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+<textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+<button type="submit" id="les-det-update">Update</button>
+<button type="submit" id="les-det-delete">Delete</button>
+</form>
+</fieldset>`);
+    $(".lesson-detail").show();
 };
 
 /* this function will get data for a specific user using different endpoints: classes, units, lessons */
@@ -191,28 +241,25 @@ function getData(type) {
 
 
 function displayDashboard() {
-    //get user information to display their journal
-    //    $(".dashboard").siblings().hide();
-    //    $(".dashboard").show();
-    //    $("#log-in-link").hide();
-    //    $("#view-entries").hide();
-    //    $("#landing").hide();
-    //    $("#log-out-link").show();
-    //    $(".journal-entries").show();
-    //    $("#create-account-nav-link").hide();
-    //    $("#new-entry").show();
+    $("nav").hide();
+    $("#landing").hide();
+    $("#landing-page").hide();
+    $("footer").show();
+    $(".user-banner").show();
+    $(".dashboard").show();
+    $(".create").hide();
+    $(".lesson-detail").hide();
 };
 
 function displayLanding() {
-    //    $("#log-out-link").hide();
-    //    $("log-in-link").show();
-    //    $("#landing").show();
-    //    $(".create-account").hide();
-    //    $("#about").siblings().not("button").hide();
-    //    $(".dashboard").hide();
-    //    $(".journal").hide();
-    //    $(".journal-entries").hide();
-    //    $(".edit-journal").hide();
+    $("nav").show();
+    $("#landing").show();
+    $(".landing-page").show();
+    $("footer").show();
+    $(".user-banner").hide();
+    $(".dashboard").hide();
+    $(".create").hide();
+    $(".lesson-detail").hide();
 };
 
 //functions, variables and object definitions usage and triggers
@@ -448,39 +495,44 @@ $(document).on("submit", "#log-in", function (event) {
 //});
 //
 //
-//$(document).on("submit", ".journal-entry", function (event) {
+//$(document).on("submit", ".new-lesson", function (event) {
 //    event.preventDefault();
-//    const date = new Date();
-//    const intention = $('#intention').val();
-//    const mood = $('#mood').val();
-//    const medType = $('#meditation-type').val();
-//    const medLength = $('#length').val();
-//    const feeling = $('#feeling').val();
+//    const title = $('#lesson-title').val();
+//    const class = $('#class-name').val();
+//    const unit = $('#unit-name').val();
+//    const desc = $('#lesson-desc').val();
+//    const stnds = $('#lesson-stnds').val();
+//    const learningTargets = $('#learning-targets').val();
+//    const lessonDetails = $('#lesson-details').val();
+//    const assessment = $('#assessment').val();
+//    const homework = $('#homework').val();
 //    const notes = $('#notes').val();
 //    const reflection = $('#reflection').val();
-//    const gratitude = $('#gratitude').val();
 //    const user = $("#loggedInUser").val();
 //    const newEntryObject = {
 //        user: user,
-//        intention: intention,
-//        mood: mood,
-//        medType: medType,
-//        medLength: medLength,
-//        feeling: feeling,
+//        title: title,
+//        class: class,
+//        unit: unit,
+//        desc: desc,
+//        stnds: stnds,
+//        learningTargets: learningTargets,
+//        lessonDetails: lessonDetails,
+//        assessment: assessment,
+//        homework: homework,
 //        notes: notes,
-//        reflection: reflection,
-//        gratitude: gratitude
+//        reflection: refelction
 //    };
 //    $.ajax({
 //            type: 'POST',
-//            url: '/entry/create',
+//            url: '/lesson/create',
 //            dataType: 'json',
 //            data: JSON.stringify(newEntryObject),
 //            contentType: 'application/json'
 //        })
 //        .done(function (result) {
-//            $(".journal-entry")[0].reset();
-//            getEntries();
+//            $(".lesson-short")[0].reset();
+//            getLessons();
 //            displayDashboard();
 //        })
 //        .fail(function (jqXHR, error, errorThrown) {

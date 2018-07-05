@@ -316,90 +316,96 @@
         </section>
 
         <section role="region" class="create">
-            <h3>Create a new unit</h3>
-            <form>
-                <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
-                <select id="new-unit-class-name" name="class-name" aria-label="class-name">
-                    <optgroup label="Class">
-                        <option value="class1">Class 1, Term 1</option>
-                        <option value="class2">Class 2, Term 2</option>
-                        <option value="class3">Class 3, Term 3</option>
-                    </optgroup>
-                </select>
-                <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
-                <button type="submit" id="new-unit-submit">Create</button>
-                <button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
-            </form>
+            <fieldset>
+                <legend>
+                    <h3>Create a new unit</h3>
+                </legend>
+                <form>
+                    <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
+                    <select id="new-unit-class-name" name="class-name" aria-label="class-name">
+                        <optgroup label="Class">
+                            <option value="class1">Class 1, Term 1</option>
+                            <option value="class2">Class 2, Term 2</option>
+                            <option value="class3">Class 3, Term 3</option>
+                        </optgroup>
+                    </select>
+                    <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
+                    <button type="submit" id="new-unit-submit">Create</button>
+                    <button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
+                </form>
+            </fieldset>
         </section>
 
         <section role="region" class="create">
-            <h3>Create a new lesson</h3>
-            <form>
-                <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
-                <select id="new-lesson-class-name" name="class-name" aria-label="class-name">
-                    <optgroup label="Select a class">
-                        <option value="class1">Class 1, Term 1</option>
-                        <option value="class2">Class 2, Term 2</option>
-                        <option value="class3">Class 3, Term 3</option>
-                    </optgroup>
-                </select>
-                <select id="unit-name" name="unit-name" aria-label="unit-name">
-                    <optgroup label="Select a unit">
-                        <option value="class1">Unit 1</option>
-                        <option value="class2">Unit 2</option>
-                        <option value="class3">Unit 3</option>
-                    </optgroup>
-                </select>
-                <input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
-                <textarea name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
-                <textarea name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
-                <textarea name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
-                <textarea name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
-                <textarea name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
-                <textarea name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
-                <textarea name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
-                <button type="submit" id="new-lesson-submit">Create</button>
-                <button type="button" class="cancel-button" id="new-lesson-cancel">Cancel</button>
-            </form>
+
+            <fieldset>
+                <legend>
+                    <h3>Create a new lesson</h3>
+                </legend>
+                <form>
+                    <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
+                    <select id="new-lesson-class-name" name="class-name" aria-label="class-name">
+                        <optgroup label="Select a class">
+                            <option value="class1">Class 1, Term 1</option>
+                            <option value="class2">Class 2, Term 2</option>
+                            <option value="class3">Class 3, Term 3</option>
+                        </optgroup>
+                    </select>
+                    <select id="unit-name" name="unit-name" aria-label="unit-name">
+                        <optgroup label="Select a unit">
+                            <option value="class1">Unit 1</option>
+                            <option value="class2">Unit 2</option>
+                            <option value="class3">Unit 3</option>
+                        </optgroup>
+                    </select>
+                    <input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
+                    <textarea name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
+                    <textarea name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
+                    <textarea name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
+                    <textarea name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
+                    <textarea name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
+                    <textarea name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
+                    <textarea name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
+                    <button type="submit" id="new-lesson-submit">Create</button>
+                    <button type="button" class="cancel-button" id="new-lesson-cancel">Cancel</button>
+                </form>
+            </fieldset>
         </section>
 
         <section class="lesson-detail" role="region">
-            <h3>Lesson Detail</h3>
-            <form>
-                <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
-                <select id="class-name-les-det" name="class-name" aria-label="class-name">
-                    <optgroup label="Select a class">
-                        <option value="class1">Class 1, Term 1</option>
-                        <option value="class2" selected>Class 2, Term 2</option>
-                        <option value="class3">Class 3, Term 3</option>
-                    </optgroup>
-                </select>
-                <select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
-                    <optgroup label="Select a unit">
-                        <option value="class1">Unit 1</option>
-                        <option value="class2">Unit 2</option>
-                        <option value="class3" selected>Unit 3</option>
-                    </optgroup>
-                </select>
-                <input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
-                <textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
-                <textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
-                <textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
-                <textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                <textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                <textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                <textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                <button type="submit" id="les-det-delete">Delete</button>
-                <button type="submit" id="les-det-update">Update</button>
-
-            </form>
+            <fieldset>
+                <legend>
+                    <h3>Lesson Detail</h3>
+                </legend>
+                <form>
+                    <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
+                    <select id="class-name-les-det" name="class-name" aria-label="class-name">
+                        <optgroup label="Select a class">
+                            <option value="class1">Class 1, Term 1</option>
+                            <option value="class2" selected>Class 2, Term 2</option>
+                            <option value="class3">Class 3, Term 3</option>
+                        </optgroup>
+                    </select>
+                    <select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
+                        <optgroup label="Select a unit">
+                            <option value="class1">Unit 1</option>
+                            <option value="class2">Unit 2</option>
+                            <option value="class3" selected>Unit 3</option>
+                        </optgroup>
+                    </select>
+                    <input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
+                    <textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
+                    <textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
+                    <textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
+                    <textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                    <textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                    <textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                    <textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                    <button type="submit" id="les-det-update">Update</button>
+                    <button type="submit" id="les-det-delete">Delete</button>
+                </form>
+            </fieldset>
         </section>
-
-        <section role="region" class="lesson-detail">
-
-        </section>
-
-
     </main>
 
     <footer role="contentinfo">
