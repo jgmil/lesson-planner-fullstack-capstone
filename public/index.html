@@ -73,7 +73,9 @@
                             <input type="text" name="new-username" id="new-username" required placeholder="Username" aria-label="Username"><br>
                             <label for="new-password">Password</label>
                             <input type="password" name="new-password" id="new-password" required placeholder="Password" aria-label="password"><br>
-                            <button id="create-account-button" type="submit">Create an account</button>
+                            <label for="confirm-password">Password</label>
+                            <input type="password" name="confirm-password" id="confirm-password" required placeholder="Password" aria-label="confirm password"><br>
+                            <button type="submit">Create an account</button>
                         </fieldset>
                     </form>
                 </div>
@@ -99,539 +101,225 @@
                 <a href="#" id="log-out-link">Log out</a>
             </span>
         </section>
-
+        <!--        Class 1-->
         <section role="region" class="dashboard">
-            <div class="clearfix class-title">
-                <h3>Class 1</h3>
+            <div class="class-container clearfix">
+                <form>
+                    <input class="class-title" type="text" aria-label="class-title" name="class-title" id="class-title-dash-1" value="Class 1">
+                    <button type="button" id="update-class-1">Update class</button>
+                    <button type="button" id="delete-class-1">Delete class</button>
+                </form>
                 <span class="float-right">
-                    <label for="unit-shortcut1"> Jump to: </label>
-                   <select id="unit-shortcut1" name="unit-name" aria-label="unit-name">
-                    <optgroup label="Select a unit">
-                        <option value="class1">Unit 1</option>
-                        <option value="class2">Unit 2</option>
-                        <option value="class3">Unit 3</option>
-                    </optgroup>
+                    <label for="unit-shortcut-1"> Jump to: </label>
+                    <select id="unit-shortcut-1" name="unit-name" aria-label="unit-name">
+                        <optgroup label="Select a unit">
+                            <option value="unit1">Unit 1</option>
+                            <option value="unit2">Unit 2</option>
+                            <option value="unit3">Unit 3</option>
+                        </optgroup>
                     </select> &nbsp;
-                <button href="" id="create-unit">Add a unit</button>
-                <button href="" id="update-class">Update class</button>
-                <button href="" id="delete-class">Delete class</button>
+                    <button type="button" id="create-unit-1">Add a unit</button>
                 </span>
             </div>
+
+            <!--            Unit 1 in Class 1-->
             <div class="unit">
                 <form class="clearfix">
-                    <input type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash" value="Unit title">
-
-                    <select id="class-name" name="class-name" aria-label="class-name">
+                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-1-1" value="Unit title">
+                    <select id="class-name-1-1" name="class-name" aria-label="class-name">
                                 <optgroup label="Class">
                                     <option value="class1">Class 1</option>
                                     <option value="class2">Class 2</option>
                                     <option value="class3">Class 3</option>
                                 </optgroup>
                             </select>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
-                    <button type="submit" id="update-unit">Update unit</button>
-                    <button type="submit" id="delete-unit">Delete unit</button>
+                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-1-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
+                    <button type="submit" id="update-unit-1-1">Update unit</button>
+                    <button type="button" id="delete-unit-1-1">Delete unit</button>
                 </form>
                 <div class="lesson-container clearfix">
-                    <div class="lesson-short" id="lesson1">
+                    <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button>Details</button>
+                        <button id="lesson1-1-1">Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson2">
+                    <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button>Details</button>
+                        <button id="lesson1-1-2">Details</button>
                     </div>
-                    <div class="lesson-short" id="lesson3">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short" id="lesson4">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short" id="lesson5">
+                    <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
                         <p>Homework: page 876 #10-42 evens. </p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short" id="lesson6">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short" id="lesson7">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short" id="lesson8">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short" id="lesson9">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
+                        <button id="lesson1-1-3">Details</button>
                     </div>
                     <div class="lesson-short lesson-end">
-                        <button id="create-lesson">Add a lesson</button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="unit">
-                <div>
-                    <form id="unit2">
-                        <input type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash" value="Unit title">
-                        <span class="float-right">
-                            <select id="class-name" name="class-name" aria-label="class-name">
-                                <optgroup label="Class">
-                                    <option value="class1">Class 1</option>
-                                    <option value="class2">Class 2</option>
-                                    <option value="class3">Class 3</option>
-                                </optgroup>
-                            </select>
-                            <button type="submit" id="update-unit">Update unit</button>
-                            <button type="submit" id="delete-unit">Delete unit</button>
-                            <button id="create-lesson">Add a lesson</button>
-                        </span>
-                        <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
-                    </form>
-                </div>
-                <div class="lesson-container">
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
+                        <button type="button" id="create-lesson-1-1">Add a lesson</button>
                     </div>
                 </div>
             </div>
-
+            <!--            Class 1, Unit 2-->
             <div class="unit">
                 <form class="clearfix">
-                    <input type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash" value="Unit title">
-                    <span class="float-right">
-                            <select id="class-name" name="class-name" aria-label="class-name">
-                                <optgroup label="Class">
-                                    <option value="class1">Class 1</option>
-                                    <option value="class2">Class 2</option>
-                                    <option value="class3">Class 3</option>
-                                </optgroup>
-                            </select>
-                            <button type="submit" id="update-unit">Update unit</button>
-                            <button type="submit" id="delete-unit">Delete unit</button>
-                            <button id="create-lesson">Add a lesson</button>
-                        </span>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
-                </form>
-
-                <div class="lesson-container">
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix class-title">
-                <h3>Class 2</h3>
-                <span class="float-right">
-                    <select id="unit-name" name="unit-name" aria-label="unit-name">
-                        <optgroup label="Select a unit">
-                            <option value="class1">Unit 1</option>
-                            <option value="class2">Unit 2</option>
-                            <option value="class3">Unit 3</option>
+                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-1-2" value="Unit title">
+                    <select id="class-name-1-2" name="class-name" aria-label="class-name">
+                        <optgroup label="Class">
+                            <option value="class1">Class 1</option>
+                            <option value="class2">Class 2</option>
+                            <option value="class3">Class 3</option>
                         </optgroup>
                     </select>
-                    <button href="" id="create-unit">Add a unit</button>
-                    <button href="" id="update-class">Update class</button>
-                    <button href="" id="delete-class">Delete class</button>
-                </span>
-            </div>
-            <div class="unit">
-                <form class="clearfix">
-                    <input type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash" value="Unit title">
-                    <span class="float-right">
-                            <select id="class-name" name="class-name" aria-label="class-name">
-                                <optgroup label="Class">
-                                    <option value="class1">Class 1</option>
-                                    <option value="class2">Class 2</option>
-                                    <option value="class3">Class 3</option>
-                                </optgroup>
-                            </select>
-                            <button type="submit" id="update-unit">Update unit</button>
-                            <button type="submit" id="delete-unit">Delete unit</button>
-                            <button id="create-lesson">Add a lesson</button>
-                        </span>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
+                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-1-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
+                    <button type="button" id="update-unit-1-2">Update unit</button>
+                    <button type="button" id="delete-unit-1-2">Delete unit</button>
                 </form>
-                <div class="lesson-container">
+                <div class="lesson-container clearfix">
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button>Details</button>
+                        <button id="lesson-1-2-1">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button>Details</button>
+                        <button id="lesson-1-2-2">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
+                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
+                        <p>Homework: page 876 #10-42 evens. </p>
+                        <button id="lesson-1-2-3">Details</button>
                     </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
+                    <div class="lesson-short lesson-end">
+                        <button type="button" id="create-lesson-1-2">Add a lesson</button>
                     </div>
                 </div>
             </div>
 
-            <div class="class-title">
-                <h3>Class 3</h3>
+            <!--Class 2-->
+            <div class="class-container clearfix">
+                <form>
+                    <input class="class-title" type="text" aria-label="class-title" name="class-title" id="class-title-dash-2" value="Class 2">
+                    <button type="button" id="update-class-2">Update class</button>
+                    <button type="button" id="delete-class-2">Delete class</button>
+                </form>
                 <span class="float-right">
-                    <select id="unit-name" name="unit-name" aria-label="unit-name">
+                    <label for="unit-shortcut-2-1"> Jump to: </label>
+                    <select id="unit-shortcut-2-1" name="unit-name" aria-label="unit-name">
                         <optgroup label="Select a unit">
-                            <option value="class1">Unit 1</option>
-                            <option value="class2">Unit 2</option>
-                            <option value="class3">Unit 3</option>
+                            <option value="unit1">Unit 1</option>
+                            <option value="unit2">Unit 2</option>
+                            <option value="unit3">Unit 3</option>
+                        </optgroup>
+                    </select> &nbsp;
+                    <button type="button" id="create-unit-2">Add a unit</button>
+                </span>
+            </div>
+
+            <!--Class 2, Unit 1-->
+            <div class="unit">
+                <form class="clearfix">
+                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-2-1" value="Unit title">
+                    <select id="class-name-2-1" name="class-name" aria-label="class-name">
+                        <optgroup label="Class">
+                            <option value="class1">Class 1</option>
+                            <option value="class2">Class 2</option>
+                            <option value="class3">Class 3</option>
                         </optgroup>
                     </select>
-                    <button href="" id="create-unit">Add a unit</button>
-                    <button href="" id="update-class">Update class</button>
-                    <button href="" id="delete-class">Delete class</button>
-                </span>
-            </div>
-            <div class="unit">
-                <form class="clearfix">
-                    <input type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash" value="Unit title">
-                    <span class="float-right">
-                            <select id="class-name" name="class-name" aria-label="class-name">
-                                <optgroup label="Class">
-                                    <option value="class1">Class 1</option>
-                                    <option value="class2">Class 2</option>
-                                    <option value="class3">Class 3</option>
-                                </optgroup>
-                            </select>
-                            <button type="submit" id="update-unit">Update unit</button>
-                            <button type="submit" id="delete-unit">Delete unit</button>
-                            <button id="create-lesson">Add a lesson</button>
-                        </span>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
+                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-2-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
+                    <button type="submit" id="update-unit-2-1">Update unit</button>
+                    <button type="button" id="delete-unit-2-1">Delete unit</button>
                 </form>
-                <div class="lesson-container">
+                <div class="lesson-container clearfix">
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button>Details</button>
+                        <button id="lesson-2-1-1">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button>Details</button>
+                        <button id="lesson-2-1-2">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
+                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
+                        <p>Homework: page 876 #10-42 evens. </p>
+                        <button id="lesson-2-1-3">Details</button>
                     </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button>Details</button>
+                    <div class="lesson-short lesson-end">
+                        <button type="button" id="create-lesson-2-1">Add a lesson</button>
                     </div>
                 </div>
             </div>
-
-
+            <!--            Class 2, Unit 2-->
+            <div class="unit">
+                <form class="clearfix">
+                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-2-2" value="Unit title">
+                    <select id="class-name-2-2" name="class-name" aria-label="class-name">
+                        <optgroup label="Class">
+                            <option value="class1">Class 1</option>
+                            <option value="class2">Class 2</option>
+                            <option value="class3">Class 3</option>
+                        </optgroup>
+                    </select>
+                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-2-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
+                    <button type="button" id="update-unit-2-2">Update unit</button>
+                    <button type="button" id="delete-unit-2-2">Delete unit</button>
+                </form>
+                <div class="lesson-container clearfix">
+                    <div class="lesson-short">
+                        <p>Lesson title</p>
+                        <p>Description: lesson description goes here</p>
+                        <p>Homework</p>
+                        <button id="lesson-2-2-1">Details</button>
+                    </div>
+                    <div class="lesson-short">
+                        <p>Lesson title</p>
+                        <p>Description: lesson description goes here</p>
+                        <p>Homework</p>
+                        <button id="lesson-2-2-2">Details</button>
+                    </div>
+                    <div class="lesson-short">
+                        <p>Lesson title</p>
+                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
+                        <p>Homework: page 876 #10-42 evens. </p>
+                        <button id="lesson-2-2-3">Details</button>
+                    </div>
+                    <div class="lesson-short lesson-end">
+                        <button type="button" id="create-lesson-2-2">Add a lesson</button>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section role="region" class="create">
-            <h3>Create a new class</h3>
-            <form>
-                <input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name">
-                <input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term">
-                <button type="submit" id="class-submit">Create</button>
-            </form>
+            <fieldset>
+                <legend>
+                    <h3>Create a new class</h3>
+                </legend>
+                <form>
+                    <input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name">
+                    <input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term">
+                    <button type="submit" id="new-class-submit">Create</button>
+                    <button type="button" class="cancel-button" id="new-class-cancel">Cancel</button>
+                </form>
+            </fieldset>
         </section>
 
         <section role="region" class="create">
             <h3>Create a new unit</h3>
             <form>
                 <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
-                <select id="class-name" name="class-name" aria-label="class-name">
+                <select id="new-unit-class-name" name="class-name" aria-label="class-name">
                     <optgroup label="Class">
                         <option value="class1">Class 1, Term 1</option>
                         <option value="class2">Class 2, Term 2</option>
@@ -639,7 +327,8 @@
                     </optgroup>
                 </select>
                 <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
-                <button type="submit" id="class-submit">Create</button>
+                <button type="submit" id="new-unit-submit">Create</button>
+                <button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
             </form>
         </section>
 
@@ -647,7 +336,7 @@
             <h3>Create a new lesson</h3>
             <form>
                 <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
-                <select id="class-name" name="class-name" aria-label="class-name">
+                <select id="new-lesson-class-name" name="class-name" aria-label="class-name">
                     <optgroup label="Select a class">
                         <option value="class1">Class 1, Term 1</option>
                         <option value="class2">Class 2, Term 2</option>
@@ -661,7 +350,7 @@
                         <option value="class3">Unit 3</option>
                     </optgroup>
                 </select>
-                <textarea name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc"></textarea>
+                <input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
                 <textarea name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
                 <textarea name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
                 <textarea name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
@@ -669,38 +358,39 @@
                 <textarea name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
                 <textarea name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
                 <textarea name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
-                <button type="submit" id="class-submit">Create</button>
+                <button type="submit" id="new-lesson-submit">Create</button>
+                <button type="button" class="cancel-button" id="new-lesson-cancel">Cancel</button>
             </form>
         </section>
 
         <section class="lesson-detail" role="region">
             <h3>Lesson Detail</h3>
             <form>
-                <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" value="Lesson title">
-                <select id="class-name" name="class-name" aria-label="class-name">
+                <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
+                <select id="class-name-les-det" name="class-name" aria-label="class-name">
                     <optgroup label="Select a class">
                         <option value="class1">Class 1, Term 1</option>
                         <option value="class2" selected>Class 2, Term 2</option>
                         <option value="class3">Class 3, Term 3</option>
                     </optgroup>
                 </select>
-                <select id="unit-name" name="unit-name" aria-label="unit-name">
+                <select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
                     <optgroup label="Select a unit">
                         <option value="class1">Unit 1</option>
                         <option value="class2">Unit 2</option>
                         <option value="class3" selected>Unit 3</option>
                     </optgroup>
                 </select>
-                <textarea name="lesson-desc" aria-label="lesson description" id="lesson-desc">Lesson Description: goes here</textarea>
-                <textarea name="standards" aria-label="standards" id="lesson-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
-                <textarea name="learning-targets" id="learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
-                <textarea name="lesson-deteails" id="lesson-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
-                <textarea name="assessment" id="assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                <textarea name="homework" id="homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                <textarea name="notes" id="notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                <textarea name="reflection" id="reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                <button type="submit" id="lesson-delete">Delete</button>
-                <button type="submit" id="lesson-update">Update</button>
+                <input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
+                <textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
+                <textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
+                <textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
+                <textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                <textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                <textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                <textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                <button type="submit" id="les-det-delete">Delete</button>
+                <button type="submit" id="les-det-update">Update</button>
 
             </form>
         </section>
@@ -723,7 +413,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-
+    <script src="client.js"></script>
 </body>
 
 </html>

@@ -64,7 +64,9 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+.class-title,
+.unit-title-dash {
     font-family: 'Shadows Into Light Two', cursive;
 }
 
@@ -136,7 +138,8 @@ h2 {
 }
 
 h3,
-h4 {
+h4,
+.class-title {
     font-size: 24px;
 }
 
@@ -222,7 +225,7 @@ select {
     margin: auto
 }
 
-.class-title {
+.class-container {
     margin-bottom: 15px;
     margin-top: 15px;
     padding: 15px 0 15px 5px;
@@ -230,8 +233,10 @@ select {
     border-top: 1px dashed #FF533D;
 }
 
-.class-title > h3 {
+.class-container > form {
     display: inline-block;
+    width: 50%;
+
 }
 
 .class-title button,
@@ -239,6 +244,11 @@ select {
 .class-title select,
     {
     font-size: 14px;
+}
+
+.class-title,
+.unit-title-dash {
+    background: transparent;
 }
 
 #unit-desc-dash {
@@ -249,9 +259,7 @@ select {
     margin-bottom: 25px;
 }
 
-#unit-title-dash {
-    background: transparent;
-    font-family: 'Shadows Into Light Two', cursive;
+.unit-title-dash {
     font-size: 20px;
 }
 
@@ -303,9 +311,16 @@ select {
 .create textarea,
 .lesson-detail textarea {
     vertical-align: top;
-    width: 47%;
+    width: 49.5%;
     font-size: 14px;
     height: 78px
+}
+
+.cancel-button {
+    font-size: 12px;
+    float: right;
+    margin-right: 5px;
+    border: none;
 }
 
 
