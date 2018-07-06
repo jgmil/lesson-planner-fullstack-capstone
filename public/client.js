@@ -82,19 +82,7 @@ const MOCK_LESSON_PLANS = {
 
 //functions, variables and object definitions
 
-function displayCreateClass() {
-    $(".create").html(`<fieldset>
-<legend>
-<h3>Create a new class</h3>
-</legend>
-<form>
-<input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name">
-<input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term">
-<button type="submit" id="new-class-submit">Create</button>
-<button type="button" class="cancel-button" id="new-class-cancel">Cancel</button>
-</form>
-</fieldset>`);
-}
+
 
 function displayCreateUnit() {
     $(".create").html(`<fieldset>
@@ -214,30 +202,30 @@ function displayLessonDetail(lessons) {
 
 /* this function will get data for a specific user using different endpoints: classes, units, lessons */
 
-function getData(type) {
-    let user_id = $("#loggedInUser").val();
-    let result = $.ajax({
-            url: `/{$type}/` + user_id,
-            dataType: "json",
-            type: "GET"
-        })
-        /* if the call is successful (status 200 OK) show results */
-        .done(function (result) {
-            if (result.entryOutput.length > 0) {
-                displayDashboard(result);
-            } else {
-                alert `No ${type} found, please create one.`
-            };
-            displayDashboard();
-        })
-
-        /* if the call is NOT successful show errors */
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-}
+//function getData(type) {
+//    let user_id = $("#loggedInUser").val();
+//    let result = $.ajax({
+//            url: `/{$type}/` + user_id,
+//            dataType: "json",
+//            type: "GET"
+//        })
+//        /* if the call is successful (status 200 OK) show results */
+//        .done(function (result) {
+//            if (result.entryOutput.length > 0) {
+//                displayDashboard(result);
+//            } else {
+//                alert `No ${type} found, please create one.`
+//            };
+//            displayDashboard();
+//        })
+//
+//        /* if the call is NOT successful show errors */
+//        .fail(function (jqXHR, error, errorThrown) {
+//            console.log(jqXHR);
+//            console.log(error);
+//            console.log(errorThrown);
+//        });
+//}
 
 
 function displayDashboard() {
@@ -263,9 +251,9 @@ function displayLanding() {
 };
 
 //functions, variables and object definitions usage and triggers
-//$(document).ready(function () {
-//    displayLanding();
-//});
+$(document).ready(function () {
+    displayLanding();
+});
 
 $(document).on("submit", "#create-account-form", function (event) {
     console.log("form submitted");
@@ -281,33 +269,33 @@ $(document).on("submit", "#create-account-form", function (event) {
     };
     console.log(newUserObject);
     const confirmPw = $('#confirm-password').val();
-    if (pw !== confirmPw) {
-        alert('Passwords must match!');
-    } else {
-        const newUserObject = {
-            username: uname,
-            name: name,
-            password: pw
-        };
-        $.ajax({
-                type: 'POST',
-                url: '/users/create',
-                dataType: 'json',
-                data: JSON.stringify(newUserObject),
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                $("#loggedInUser").val(result.username);
-                getEntries();
-                displayDashboard();
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-                alert("User already exists.");
-            });
-    }
+    //    if (pw !== confirmPw) {
+    //        alert('Passwords must match!');
+    //    } else {
+    //        const newUserObject = {
+    //            username: uname,
+    //            name: name,
+    //            password: pw
+    //        };
+    //        $.ajax({
+    //                type: 'POST',
+    //                url: '/users/create',
+    //                dataType: 'json',
+    //                data: JSON.stringify(newUserObject),
+    //                contentType: 'application/json'
+    //            })
+    //            .done(function (result) {
+    //                $("#loggedInUser").val(result.username);
+    //                getEntries();
+    //                displayDashboard();
+    //            })
+    //            .fail(function (jqXHR, error, errorThrown) {
+    //                console.log(jqXHR);
+    //                console.log(error);
+    //                console.log(errorThrown);
+    //                alert("User already exists.");
+    //            });
+    //    }
 });
 
 $(document).on("submit", "#log-in", function (event) {
@@ -326,221 +314,218 @@ $(document).on("submit", "#log-in", function (event) {
             password: pw
         };
         console.log(unamePwObject);
-        $.ajax({
-                type: "POST",
-                url: "/users/signin",
-                dataType: 'json',
-                data: JSON.stringify(unamePwObject),
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                displayDashboard();
-                userLoggedIn = true;
-                $("#log-in-link").hide();
-                $("#loggedInUser").val(result.username);
-                getEntries();
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-                alert('Invalid username and password combination. Pleae check your username and password and try again.');
-            });
+        //        $.ajax({
+        //                type: "POST",
+        //                url: "/users/signin",
+        //                dataType: 'json',
+        //                data: JSON.stringify(unamePwObject),
+        //                contentType: 'application/json'
+        //            })
+        //            .done(function (result) {
+        //                displayDashboard();
+        //                userLoggedIn = true;
+        //                $("#log-in-link").hide();
+        //                $("#loggedInUser").val(result.username);
+        //                getEntries();
+        //            })
+        //            .fail(function (jqXHR, error, errorThrown) {
+        //                console.log(jqXHR);
+        //                console.log(error);
+        //                console.log(errorThrown);
+        //                alert('Invalid username and password combination. Please check your username and password and try again.');
+        //            });
+        //    }
+        displayDashboard();
     }
-    displayDashboard();
 });
 
 
-//$(document).on('click', '#new-entry', function (event) {
-//    event.preventDefault();
-//    $(".journal").siblings().hide();
-//    $(".journal").show();
-//    $("#view-entries").show();
-//    $("#new-entry").hide();
-//});
-//
-////this is getting the specific journal entry so that it can be displayed to the user
-//$(document).on('click', '.update', function (event) {
-//    event.preventDefault();
-//    let entry_id = $(this).siblings("input[type='hidden']").val();
-//    let result = $.ajax({
-//            url: "/entry/" + entry_id,
-//            dataType: "json",
-//            type: "GET"
-//        })
-//        /* if the call is successful (status 200 OK) show results */
-//        .done(function (result) {
-//            if (result.length === 0) {
-//                alert("Couldn't find entry. Please try again.");
-//            } else {
-//                displayEditEntry(result);
-//            };
-//        })
-//        /* if the call is NOT successful show errors */
-//        .fail(function (jqXHR, error, errorThrown) {
-//            console.log(jqXHR);
-//            console.log(error);
-//            console.log(errorThrown);
-//        });
-//});
-////this is the form submission to update an entry
-//$(document).on('submit', '.edit-journal form', function (event) {
-//    event.preventDefault();
-//    let entry_id = $(this).find("#entryId").val();
-//    const date = new Date();
-//    const intention = $('#edit-intention').val();
-//    const mood = $('#edit-mood').val();
-//    const medType = $('#edit-meditation-type').val();
-//    const medLength = $('#edit-length').val();
-//    const feeling = $('#edit-feeling').val();
-//    const notes = $('#edit-notes').val();
-//    const reflection = $('#edit-reflection').val();
-//    const gratitude = $('#edit-gratitude').val();
-//    const user = $("#loggedInUser").val();
-//
-//    const entryObject = {
-//        user: user,
-//        date: date,
-//        intention: intention,
-//        mood: mood,
-//        medType: medType,
-//        medLength: medLength,
-//        feeling: feeling,
-//        notes: notes,
-//        reflection: reflection,
-//        gratitude: gratitude
-//    };
-//    $.ajax({
-//            type: 'PUT',
-//            url: '/entry/' + entry_id,
-//            dataType: 'json',
-//            data: JSON.stringify(entryObject),
-//            contentType: 'application/json'
-//        })
-//        .done(function (result) {
-//            $(".journal-entry")[0].reset();
-//            getEntries();
-//            displayDashboard();
-//        })
-//        .fail(function (jqXHR, error, errorThrown) {
-//            console.log(jqXHR);
-//            console.log(error);
-//            console.log(errorThrown);
-//        });
-//});
-//
-//$(document).on('click', '.delete', function (event) {
-//    event.preventDefault();
-//    let entry_id = $(this).siblings("input[type='hidden']").val();
-//    if (confirm("Are you sure you want to permanently delete this entry?") === true) {
-//        $.ajax({
-//                type: 'DELETE',
-//                url: '/entry/' + entry_id,
-//                dataType: 'json',
-//                contentType: 'application/json'
-//            })
-//            .done(function (result) {
-//                $(".journal-entries").html("<h3>My journal</h3>");
-//                getEntries();
-//                displayDashboard();
-//            })
-//            .fail(function (jqXHR, error, errorThrown) {
-//                console.log(jqXHR);
-//                console.log(error);
-//                console.log(errorThrown);
-//            });
-//    };
-//});
-//
-//$(document).on('click', '#log-out-link', function (event) {
-//    event.preventDefault();
-//    location.reload();
-//});
-//
-//$(document).on("submit", "#log-in", function (event) {
-//    event.preventDefault();
-//    const inputUname = $('#username').val();
-//    const inputPw = $('#passwordInput').val();
-//    // check for spaces, empty, undefined
-//    if ((!inputUname) || (inputUname.length < 1) || (inputUname.indexOf(' ') > 0)) {
-//        alert('Invalid username');
-//    } else if ((!inputPw) || (inputPw.length < 1) || (inputPw.indexOf(' ') > 0)) {
-//        alert('Invalid password');
-//    } else {
-//        const unamePwObject = {
-//            username: inputUname,
-//            password: inputPw
-//        };
-//        $.ajax({
-//                type: "POST",
-//                url: "/users/signin",
-//                dataType: 'json',
-//                data: JSON.stringify(unamePwObject),
-//                contentType: 'application/json'
-//            })
-//            .done(function (result) {
-//                displayDashboard();
-//                userLoggedIn = true;
-//                $("#log-in-link").hide();
-//                $("#loggedInUser").val(result.id);
-//                getLessons();
-//            })
-//            .fail(function (jqXHR, error, errorThrown) {
-//                console.log(jqXHR);
-//                console.log(error);
-//                console.log(errorThrown);
-//                alert('Invalid username and password combination. Pleae check your username and password and try again.');
-//            });
-//    };
-//});
-//
-//
-//$(document).on("submit", ".new-lesson", function (event) {
-//    event.preventDefault();
-//    const title = $('#lesson-title').val();
-//    const class = $('#class-name').val();
-//    const unit = $('#unit-name').val();
-//    const desc = $('#lesson-desc').val();
-//    const stnds = $('#lesson-stnds').val();
-//    const learningTargets = $('#learning-targets').val();
-//    const lessonDetails = $('#lesson-details').val();
-//    const assessment = $('#assessment').val();
-//    const homework = $('#homework').val();
-//    const notes = $('#notes').val();
-//    const reflection = $('#reflection').val();
-//    const user = $("#loggedInUser").val();
-//    const newEntryObject = {
-//        user: user,
-//        title: title,
-//        class: class,
-//        unit: unit,
-//        desc: desc,
-//        stnds: stnds,
-//        learningTargets: learningTargets,
-//        lessonDetails: lessonDetails,
-//        assessment: assessment,
-//        homework: homework,
-//        notes: notes,
-//        reflection: refelction
-//    };
-//    $.ajax({
-//            type: 'POST',
-//            url: '/lesson/create',
-//            dataType: 'json',
-//            data: JSON.stringify(newEntryObject),
-//            contentType: 'application/json'
-//        })
-//        .done(function (result) {
-//            $(".lesson-short")[0].reset();
-//            getLessons();
-//            displayDashboard();
-//        })
-//        .fail(function (jqXHR, error, errorThrown) {
-//            console.log(jqXHR);
-//            console.log(error);
-//            console.log(errorThrown);
-//        });
-//});
+$(document).on('click', '.update', function (event) {
+    event.preventDefault();
+    console.log("update hit");
+    //    let entry_id = $(this).siblings("input[type='hidden']").val();
+    //    let result = $.ajax({
+    //            url: "/entry/" + entry_id,
+    //            dataType: "json",
+    //            type: "GET"
+    //        })
+    //        /* if the call is successful (status 200 OK) show results */
+    //        .done(function (result) {
+    //            if (result.length === 0) {
+    //                alert("Couldn't find entry. Please try again.");
+    //            } else {
+    //                displayDashboard(result);
+    //            };
+    //        })
+    //        /* if the call is NOT successful show errors */
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+});
+
+
+$(document).on('click', '.delete', function (event) {
+    event.preventDefault();
+    console.log("delete hit");
+    //    let entry_id = $(this).siblings("input[type='hidden']").val();
+    //    if (confirm("Are you sure you want to permanently delete this entry?") === true) {
+    //        $.ajax({
+    //                type: 'DELETE',
+    //                url: '/entry/' + entry_id,
+    //                dataType: 'json',
+    //                contentType: 'application/json'
+    //            })
+    //            .done(function (result) {
+    //                $(".journal-entries").html("<h3>My journal</h3>");
+    //                getEntries();
+    //                displayDashboard();
+    //            })
+    //            .fail(function (jqXHR, error, errorThrown) {
+    //                console.log(jqXHR);
+    //                console.log(error);
+    //                console.log(errorThrown);
+    //            });
+    //    };
+});
+
+$(document).on('click', '#log-out-link', function (event) {
+    event.preventDefault();
+    location.reload();
+});
+
+$(document).on("submit", "#new-class", function (event) {
+    event.preventDefault();
+    console.log("new class submit");
+    const className = $("#class-name").val();
+    const term = $("#class-term").val();
+    const user = $("#loggedInUser").val();
+    const newClassObject = {
+        user: user,
+        class: className,
+        term: term,
+    };
+    console.log(newClassObject);
+    //    $.ajax({
+    //            type: 'POST',
+    //            url: '/unit/create',
+    //            dataType: 'json',
+    //            data: JSON.stringify(newUnitObject),
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            displayDashboard();
+    //        })
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+});
+
+$(document).on("submit", "#new-unit", function (event) {
+    event.preventDefault();
+    console.log("new lesson submit");
+    const title = $("#unit-title").val();
+    const className = $('#class-name').val();
+    const desc = $('#unit-desc').val();
+    const user = $("#loggedInUser").val();
+    const newUnitObject = {
+        user: user,
+        title: title,
+        class: className,
+        desc: desc,
+    };
+    console.log(newUnitObject);
+    //    $.ajax({
+    //            type: 'POST',
+    //            url: '/unit/create',
+    //            dataType: 'json',
+    //            data: JSON.stringify(newUnitObject),
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            displayDashboard();
+    //        })
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+});
+
+$(document).on("submit", "#new-lesson", function (event) {
+    event.preventDefault();
+    console.log("new lesson submit");
+    const title = $("#lesson-title").val();
+    const className = $('#class-name').val();
+    const unit = $('#unit-name').val();
+    const desc = $('#lesson-desc').val();
+    const stnds = $('#lesson-stnds').val();
+    const learningTargets = $('#learning-targets').val();
+    const lessonDetails = $('#lesson-details').val();
+    const assessment = $('#assessment').val();
+    const homework = $('#homework').val();
+    const notes = $('#notes').val();
+    const reflection = $('#reflection').val();
+    const user = $("#loggedInUser").val();
+    const newLessonObject = {
+        user: user,
+        title: title,
+        class: className,
+        unit: unit,
+        desc: desc,
+        stnds: stnds,
+        learningTargets: learningTargets,
+        lessonDetails: lessonDetails,
+        assessment: assessment,
+        homework: homework,
+        notes: notes,
+        reflection: reflection
+    };
+    console.log(newLessonObject);
+    //    $.ajax({
+    //            type: 'POST',
+    //            url: '/lesson/create',
+    //            dataType: 'json',
+    //            data: JSON.stringify(newLessonObject),
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            $(".lesson-short")[0].reset();
+    //            displayDashboard();
+    //        })
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+});
+
+$(document).on("click", ".cancel-button", function (event) {
+    if (confirm("Are you sure you want to cancel? Your work will not be saved.") === true) {
+        displayDashboard();
+    }
+});
+
+$(document).on("click", ".create-class", function (event) {
+        $(".create").html(`<fieldset>
+<legend>
+<h3>Create a new class</h3>
+</legend>
+<form>
+<input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name">
+<input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term">
+<button type="submit" id="new-class-submit">Create</button>
+<button type="button" class="cancel-button" id="new-class-cancel">Cancel</button>
+</form>
+</fieldset>`);
+    $("create").show();
+});
+
+
+
 //
 //$(document).on("click", "#home", function (event) {
 //    if (userLoggedIn == true) {
