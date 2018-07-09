@@ -25,23 +25,23 @@ const MOCK_USER_DATA = {
 };
 
 const MOCK_CLASSES = {
-    "classes": [
+    "subjects": [
         {
             "id": 22222,
             "user_id": 029385098,
-            "className": "Transfiguration",
+            "subjectName": "Transfiguration",
             "term": "Fall 2012"
         },
         {
             "id": 234234,
             "user_id": 20389745,
-            "className": "Transfiguration 2",
+            "subjectName": "Transfiguration 2",
             "term": "Fall 2012"
         },
         {
             "id": 234234,
             "user_id": 2039478,
-            "className": "Care of Magical Creatures",
+            "subjectName": "Care of Magical Creatures",
             "term": "Fall 2012"
         },
     ]
@@ -52,7 +52,7 @@ const MOCK_UNITS = {
     "units": [
         {
             "id": 587690,
-            "class_id": 234234,
+            "subject_id": 234234,
             "user_id": 2039478,
             "unitTitle": "Unicorns",
             "unitDesc": "Learn how to care for and not scare away unicorns."
@@ -65,7 +65,7 @@ const MOCK_LESSONS = {
         {
             "id": 093845,
             "unit_id": 587690,
-            "class_id": 234234,
+            "subject_id": 234234,
             "user_id": 2039478,
             "lessonTitle": "Feeding",
             "lessonDesc": "Unicorns have a very unique diet.",
@@ -233,7 +233,7 @@ $(document).on("submit", "#create-account-form", function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                $("#loggedInUser").val(result.username);
+                $("#loggedInUser").val(result.id);
                 //                getLessons();
                 displayDashboard();
             })
@@ -275,7 +275,7 @@ $(document).on("submit", "#log-in", function (event) {
                 window.scrollTo(0, 0);
                 userLoggedIn = true;
                 $("#log-in-link").hide();
-                $("#loggedInUser").val(result.username);
+                $("#loggedInUser").val(result.id);
                 //                        getEntries();
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -354,16 +354,14 @@ $(document).on("click", ".to-dashboard", function (event) {
 });
 
 
-$(document).on("submit", "#new-class", function (event) {
+$(document).on("submit", "#new-subject", function (event) {
     event.preventDefault();
-    console.log("new class submit");
-    const className = $("#class-name").val();
-    const term = $("#class-term").val();
-    const user = $("#loggedInUser").val();
-    const newClassObject = {
-        user: user,
-        class: className,
-        term: term,
+    console.log("new subject submit");
+    const subjectName = $("#subject-name").val();
+    const user_id = $("#loggedInUser").val();
+    const newSubjectObject = {
+        user_id: user_id,
+        subjectName: subjectName,
     };
     console.log(newClassObject);
     //    $.ajax({
@@ -391,7 +389,7 @@ $(document).on("submit", "#new-unit", function (event) {
     const desc = $('#unit-desc').val();
     const user = $("#loggedInUser").val();
     const newUnitObject = {
-        user: user,
+        user_id: user_id,
         title: title,
         class: className,
         desc: desc,
@@ -465,16 +463,15 @@ $(document).on("submit", "#new-lesson", function (event) {
 
 
 
-$(document).on("click", ".create-class-nav", function (event) {
+$(document).on("click", ".create-subject-nav", function (event) {
     $(".create").html(`<fieldset>
 <legend>
-<h3>Create a new class</h3>
+<h3>Create a new subject</h3>
 </legend>
 <form>
-<input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name">
-<input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term">
-<button type="submit" id="new-class-submit">Create</button>
-<button type="button" class="cancel-button" id="new-class-cancel">Cancel</button>
+<input type="text" aria-label="subject-name" name="subject-name" id="subject-name" value="Subject name">
+<button type="submit" id="new-subject-submit">Create</button>
+<button type="button" class="cancel-button" id="new-subject-cancel">Cancel</button>
 </form>
 </fieldset>`);
     $(".create").show();
@@ -487,11 +484,11 @@ $(document).on("click", ".create-unit-nav", function (event) {
 </legend>
 <form id="new-unit">
 <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
-<select id="new-unit-class-name" name="class-name" aria-label="class-name">
+<select id="new-unit-subject-name" name="subject-name" aria-label="subject-name">
 <optgroup label="Class">
-<option value="class1">Class 1, Term 1</option>
-<option value="class2">Class 2, Term 2</option>
-<option value="class3">Class 3, Term 3</option>
+<option value="subject1">Class 1, Term 1</option>
+<option value="subject2">Class 2, Term 2</option>
+<option value="subject3">Class 3, Term 3</option>
 </optgroup>
 </select>
 <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
@@ -509,11 +506,11 @@ $(document).on("click", ".create-lesson-nav", function (event) {
 </legend>
 <form action="" id="new-lesson">
 <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
-<select id="new-lesson-class-name" name="class-name" aria-label="class-name">
-<optgroup label="Select a class">
-<option value="class1">Class 1, Term 1</option>
-<option value="class2">Class 2, Term 2</option>
-<option value="class3">Class 3, Term 3</option>
+<select id="new-lesson-subject-name" name="subject-name" aria-label="subject-name">
+<optgroup label="Select a subject">
+<option value="subject1">Class 1, Term 1</option>
+<option value="subject2">Class 2, Term 2</option>
+<option value="subject3">Class 3, Term 3</option>
 </optgroup>
 </select>
 <select id="unit-name" name="unit-name" aria-label="unit-name">

@@ -179,12 +179,12 @@ app.post('/users/signin', function (req, res) {
 // -------------CLASS ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
 // creating a new entry
-app.post('/entry/create', (req, res) => {
+app.post('/class/create', (req, res) => {
     let {
         className
     } = req.body;
 
-    Entry.create({
+    Classes.create({
         className
     }, (err, item) => {
         if (err) {
@@ -200,18 +200,18 @@ app.post('/entry/create', (req, res) => {
 });
 
 // PUT --------------------------------------
-app.put('/entry/:id', function (req, res) {
+app.put('/subject/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['intention', 'mood', 'medType', 'medLength', 'feeling', 'notes', 'reflection', 'gratitude'];
+    let updateableFields = ['subjectName'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
         }
     });
-    Entry
+    Subject
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate
-        }).exec().then(function (achievement) {
+        }).exec().then(function (subject) {
             return res.status(204).end();
         }).catch(function (err) {
             return res.status(500).json({
@@ -221,9 +221,9 @@ app.put('/entry/:id', function (req, res) {
 });
 
 // GET ------------------------------------
-// accessing all of a user's entries
-app.get('/entries/:user', function (req, res) {
-    Entry
+// accessing all of a user's classes
+app.get('/subjects/:user', function (req, res) {
+    Subject
         .find()
         .sort('date')
         .then(function (entries) {
@@ -246,8 +246,8 @@ app.get('/entries/:user', function (req, res) {
 });
 
 // accessing a single entry by id
-app.get('/entry/:id', function (req, res) {
-    Entry
+app.get('/subject/:id', function (req, res) {
+    Subject
         .findById(req.params.id).exec().then(function (entry) {
             return res.json(entry);
         })
