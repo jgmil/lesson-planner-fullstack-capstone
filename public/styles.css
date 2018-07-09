@@ -129,6 +129,10 @@ select {
     background-color: white;
 }
 
+button {
+    cursor: pointer
+}
+
 h1 {
     font-size: 36px;
 }
@@ -160,11 +164,6 @@ textarea {
     width: 100%;
 }
 
-a:visited {
-    /*color: #FF533D;*/
-    color: #AB987A
-}
-
 .landing-row {
     max-width: 1200px;
     margin: auto;
@@ -193,7 +192,7 @@ select {
     margin-right: 10px;
 }
 
-#create-form-container {
+#create-account-container {
     vertical-align: top;
 }
 
@@ -201,28 +200,23 @@ select {
     color: #F5F5F5;
 }
 
+.unit-shortcut {
+    color: #0F1626
+}
+
 .landing-left {
     text-align: right;
-}
-
-.user-banner {
-    background-color: #0F1626;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.user-banner > h2 {
-    color: #FF533D;
-}
-
-.user-banner > h2,
-.user-banner > span {
-    display: inline-block;
 }
 
 .dashboard {
     width: 90%;
     margin: auto
+}
+
+.dashboard-nav p,
+.float-right p {
+    display: inline-block;
+    margin-right: 5px
 }
 
 .class-container {

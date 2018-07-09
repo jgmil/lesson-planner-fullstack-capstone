@@ -13,7 +13,7 @@
         "moment": "^2.18.1",
         "mongodb": "^2.2.9",
         "mongoose": "^4.5.10",
-        "nodemon": "^1.17.4",
+        "nodemon": "^1.17.5",
         "npm": "^6.0.1",
         "passport": "^0.3.2",
         "passport-http": "^0.3.0",

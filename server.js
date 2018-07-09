@@ -59,7 +59,7 @@ app.post('/users/create', (req, res) => {
     //take the input from the payload
     let username = req.body.username;
     let password = req.body.password;
-    let firstName = req.body.firstName;
+    let name = req.body.name;
     //exclude spaces from the username and password
     username = username.trim();
     password = password.trim();
@@ -99,7 +99,7 @@ app.post('/users/create', (req, res) => {
                         User.create({
                             username,
                             password: hash,
-                            firstName,
+                            name,
                         }, (err, item) => {
                             //if adding to the database fails...
                             if (err) {
@@ -176,7 +176,213 @@ app.post('/users/signin', function (req, res) {
 });
 
 
-// -------------JOURNAL ENDPOINTS------------------------------------------------
+// -------------CLASS ENDPOINTS------------------------------------------------
+// POST -----------------------------------------
+// creating a new entry
+app.post('/entry/create', (req, res) => {
+    let {
+        className
+    } = req.body;
+
+    Entry.create({
+        className
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            console.log(`${className} added.`);
+            return res.json(item);
+        }
+    });
+});
+
+// PUT --------------------------------------
+app.put('/entry/:id', function (req, res) {
+    let toUpdate = {};
+    let updateableFields = ['intention', 'mood', 'medType', 'medLength', 'feeling', 'notes', 'reflection', 'gratitude'];
+    updateableFields.forEach(function (field) {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+    Entry
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate
+        }).exec().then(function (achievement) {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
+// GET ------------------------------------
+// accessing all of a user's entries
+app.get('/entries/:user', function (req, res) {
+    Entry
+        .find()
+        .sort('date')
+        .then(function (entries) {
+            let entryOutput = [];
+            entries.map(function (entry) {
+                if (entry.user == req.params.user) {
+                    entryOutput.push(entry);
+                }
+            });
+            res.json({
+                entryOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+// accessing a single entry by id
+app.get('/entry/:id', function (req, res) {
+    Entry
+        .findById(req.params.id).exec().then(function (entry) {
+            return res.json(entry);
+        })
+        .catch(function (entry) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
+// DELETE ----------------------------------------
+// deleting an entry by id
+app.delete('/entry/:id', function (req, res) {
+    Entry.findByIdAndRemove(req.params.id).exec().then(function (entry) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
+// -------------UNIT ENDPOINTS------------------------------------------------
+// POST -----------------------------------------
+// creating a new entry
+app.post('/entry/create', (req, res) => {
+    let date = req.body.date;
+    let intention = req.body.intention;
+    let mood = req.body.mood;
+    let medType = req.body.medType;
+    let medLength = req.body.medLength;
+    let user = req.body.user;
+    let feeling = req.body.feeling;
+    let notes = req.body.notes;
+    let reflection = req.body.reflection;
+    let gratitude = req.body.gratitude;
+
+    Entry.create({
+        user,
+        date,
+        intention,
+        mood,
+        medType,
+        medLength,
+        feeling,
+        notes,
+        reflection,
+        gratitude
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            console.log(`Entry for \`${date}\` added.`);
+            return res.json(item);
+        }
+    });
+});
+
+// PUT --------------------------------------
+app.put('/entry/:id', function (req, res) {
+    let toUpdate = {};
+    let updateableFields = ['intention', 'mood', 'medType', 'medLength', 'feeling', 'notes', 'reflection', 'gratitude'];
+    updateableFields.forEach(function (field) {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+    Entry
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate
+        }).exec().then(function (achievement) {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
+// GET ------------------------------------
+// accessing all of a user's entries
+app.get('/entries/:user', function (req, res) {
+    Entry
+        .find()
+        .sort('date')
+        .then(function (entries) {
+            let entryOutput = [];
+            entries.map(function (entry) {
+                if (entry.user == req.params.user) {
+                    entryOutput.push(entry);
+                }
+            });
+            res.json({
+                entryOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+
+// accessing a single entry by id
+app.get('/entry/:id', function (req, res) {
+    Entry
+        .findById(req.params.id).exec().then(function (entry) {
+            return res.json(entry);
+        })
+        .catch(function (entry) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
+// DELETE ----------------------------------------
+// deleting an entry by id
+app.delete('/entry/:id', function (req, res) {
+    Entry.findByIdAndRemove(req.params.id).exec().then(function (entry) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
+// -------------LESSON ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
 // creating a new entry
 app.post('/entry/create', (req, res) => {
@@ -294,6 +500,8 @@ app.use('*', (req, res) => {
         message: 'Not Found'
     });
 });
+
+
 
 exports.app = app;
 exports.runServer = runServer;

@@ -20,12 +20,25 @@
     <header class="clearfix" role="banner" id="landing">
         <a href="#" id="home">
             <h2>Lesson planner</h2>
+            <h3 class="user-banner">Welcome, Mrs. Miller!</h3>
         </a>
         <span class="float-right">
         <nav role="navigation">
+            <div class="landing-nav">
             <a href="#log-in" id="log-in-nav-link">Log in</a>
             <a href="#create-account-form" id="create-account-nav-link">Create an account</a>
             <a href="#more-info" id="info-link">More info</a>
+            </div>
+            <div class="dashboard-nav">
+                <button class="create-class-nav">Add a class</button>
+                <button class="create-unit-nav">Add a unit</button>
+                <button class="create-lesson-nav">Add a lesson</button>
+                <button id="log-out-link">Log out</button><br>
+                <p>Jump to: </p>
+                <a href="#class-title-dash-1">Class 1</a>
+                <a href="#class-title-dash-2">Class 2</a>
+                <a href="#class-title-dash-3">Class 3</a>
+            </div>
         </nav>
         </span>
         <input type="hidden" id="loggedInUser" value="">
@@ -52,7 +65,7 @@
                             <fieldset>
                                 <legend>Log in</legend>
                                 <label for="username">Username</label>
-                                <input type="text" name="username" id="username" required value="demo">
+                                <input type="text" name="username" id="username" required value="username">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" id="passwordInput" required value="password">
                                 <button id="log-in-button" type="submit">Log in</button>
@@ -61,20 +74,19 @@
                     </div>
                 </section>
             </div>
-
             <section class="landing-row" role="region">
-                <div class="landing-left" id="create-form-container">
+                <div class="landing-left" id="create-account-container">
                     <form id="create-account-form">
                         <fieldset>
                             <legend>Create an Account</legend>
                             <label for="new-name">Name for greeting</label>
-                            <input type="text" name="new-name" id="new-name" required placeholder="Mrs. Miller" aria-label="name-for-greeting"><br>
+                            <input type="text" name="new-name" id="new-name" required value="Mrs. Miller" aria-label="name-for-greeting"><br>
                             <label for="new-username">Username</label>
-                            <input type="text" name="new-username" id="new-username" required placeholder="Username" aria-label="Username"><br>
+                            <input type="text" name="new-username" id="new-username" required value="username" aria-label="Username"><br>
                             <label for="new-password">Password</label>
-                            <input type="password" name="new-password" id="new-password" required placeholder="Password" aria-label="password"><br>
+                            <input type="password" name="new-password" id="new-password" required value="password" aria-label="password"><br>
                             <label for="confirm-password">Password</label>
-                            <input type="password" name="confirm-password" id="confirm-password" required placeholder="Password" aria-label="confirm password"><br>
+                            <input type="password" name="confirm-password" id="confirm-password" required value="password" aria-label="confirm password"><br>
                             <button type="submit">Create an account</button>
                         </fieldset>
                     </form>
@@ -83,29 +95,9 @@
             </section>
         </div>
 
-
-        <section role="region" class="clearfix user-banner">
-            <a href="#" id="home">
-                <h2>Lesson planner</h2>
-            </a>
-            <h3>Welcome Mrs. Miller!</h3>
-            <span class="float-right">
-               <label class="class-shortcut" for="class-shortcut">Jump to:  </label>
-                <select id="class-shortcut" name="class-name" aria-label="class-name">
-                    <optgroup label="Select a class">
-                        <option value="class1">Class 1</option>
-                        <option value="class2">Class 2</option>
-                        <option value="class3">Class 3</option>
-                    </optgroup>
-                </select>
-                <a href="" class="create-class">Add a class</a>
-                <a href="" class="create-unit">Add a unit</a>
-                <a href="" class="create-lesson">Add a lesson</a>
-                <a href="#" id="log-out-link">Log out</a>
-            </span>
-        </section>
         <!--        Class 1-->
         <section role="region" class="dashboard">
+            <div class="create"></div>
             <div class="class-container clearfix">
                 <form>
                     <input class="class-title" type="text" aria-label="class-title" name="class-title" id="class-title-dash-1" value="Class 1">
@@ -113,15 +105,13 @@
                     <button class="delete" type="button" id="delete-class-1">Delete class</button>
                 </form>
                 <span class="float-right">
-                    <label for="unit-shortcut-1"> Jump to: </label>
-                    <select id="unit-shortcut-1" name="unit-name" aria-label="unit-name">
-                        <optgroup label="Select a unit">
-                            <option value="unit1">Unit 1</option>
-                            <option value="unit2">Unit 2</option>
-                            <option value="unit3">Unit 3</option>
-                        </optgroup>
-                    </select> &nbsp;
-                    <button type="button" class="create-unit">Add a unit</button>
+                    <p>Jump to: </p>
+                    <a class="unit-shortcut" href="#unit-title-dash-1-1">Unit 1</a>
+                    <a class="unit-shortcut" href="#unit-title-dash-1-2">Unit 2</a>
+                    <a class="unit-shortcut" href="#unit-title-dash-1-3">Unit 3</a>
+                    <button type="button" id="create-unit-1">Add a unit</button>
+                    <input type="hidden" class="class_id" value="">
+                    <div class="unit-create-cont"></div>
                 </span>
             </div>
 
@@ -139,29 +129,33 @@
                     <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-1-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
                     <button type="submit" class="update" id="update-unit-1-1">Update unit</button>
                     <button type="button" id="delete-unit-1-1" class="delete">Delete unit</button>
+                    <input type="hidden" class="unit_id" value="">
                 </form>
+                <div class="create-unit-cont"></div>
                 <div class="lesson-container clearfix">
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson1-1-1">Details</button>
+                        <button class="detail" id="lesson1-1-1">Details</button>
+                        <input type="hidden" class="lesson_id" value="">
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson1-1-2">Details</button>
+                        <button class="detail" id="lesson1-1-2">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
                         <p>Homework: page 876 #10-42 evens. </p>
-                        <button id="lesson1-1-3">Details</button>
+                        <button class="detail" id="lesson1-1-3">Details</button>
                     </div>
                     <div class="lesson-short lesson-end">
                         <button type="button" class="create-lesson">Add a lesson</button>
                     </div>
+                    <section class="lesson-create-cont"></section>
                 </div>
             </div>
             <!--            Class 1, Unit 2-->
@@ -184,19 +178,19 @@
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-1-2-1">Details</button>
+                        <button class="detail" id="lesson-1-2-1">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-1-2-2">Details</button>
+                        <button class="detail" id="lesson-1-2-2">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
                         <p>Homework: page 876 #10-42 evens. </p>
-                        <button id="lesson-1-2-3">Details</button>
+                        <button class="detail" id="lesson-1-2-3">Details</button>
                     </div>
                     <div class="lesson-short lesson-end">
                         <button type="button" class="create-lesson">Add a lesson</button>
@@ -244,19 +238,19 @@
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-2-1-1">Details</button>
+                        <button class="detail" id="lesson-2-1-1">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-2-1-2">Details</button>
+                        <button class="detail" id="lesson-2-1-2">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
                         <p>Homework: page 876 #10-42 evens. </p>
-                        <button id="lesson-2-1-3">Details</button>
+                        <button class="detail" id="lesson-2-1-3">Details</button>
                     </div>
                     <div class="lesson-short lesson-end">
                         <button type="button" class="create-lesson">Add a lesson</button>
@@ -283,108 +277,37 @@
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-2-2-1">Details</button>
+                        <button class="detail" id="lesson-2-2-1">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-2-2-2">Details</button>
+                        <button class="detail" id="lesson-2-2-2">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-2-2-3">Details</button>
+                        <button class="detail" id="lesson-2-2-3">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: lesson description goes here</p>
                         <p>Homework</p>
-                        <button id="lesson-2-2-4">Details</button>
+                        <button class="detail" id="lesson-2-2-4">Details</button>
                     </div>
                     <div class="lesson-short">
                         <p>Lesson title</p>
                         <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
                         <p>Homework: page 876 #10-42 evens. </p>
-                        <button id="lesson-2-2-3">Details</button>
+                        <button class="detail" id="lesson-2-2-3">Details</button>
                     </div>
                     <div class="lesson-short lesson-end">
                         <button type="button" class="create-lesson">Add a lesson</button>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section role="region" class="create">
-            <fieldset>
-                <legend>
-                    <h3>Create a new class</h3>
-                </legend>
-                <form id="new-class">
-                    <input type="text" aria-label="class-name" name="class-name" id="class-name" placeholder="Class name">
-                    <input type="text" aria-label="class" name="class-term" id="class-term" placeholder="Term">
-                    <button type="submit" id="new-class-submit">Create</button>
-                    <button type="button" class="cancel-button" id="new-class-cancel">Cancel</button>
-                </form>
-            </fieldset>
-        </section>
-
-        <section role="region" class="create">
-            <fieldset>
-                <legend>
-                    <h3>Create a new unit</h3>
-                </legend>
-                <form id="new-unit">
-                    <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
-                    <select id="new-unit-class-name" name="class-name" aria-label="class-name">
-                        <optgroup label="Class">
-                            <option value="class1">Class 1, Term 1</option>
-                            <option value="class2">Class 2, Term 2</option>
-                            <option value="class3">Class 3, Term 3</option>
-                        </optgroup>
-                    </select>
-                    <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
-                    <button type="submit" id="new-unit-submit">Create</button>
-                    <button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
-                </form>
-            </fieldset>
-        </section>
-
-        <section role="region" class="create">
-            <fieldset>
-                <legend>
-                    <h3>Create a new lesson</h3>
-                </legend>
-                <form action="" id="new-lesson">
-                    <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
-                    <select id="new-lesson-class-name" name="class-name" aria-label="class-name">
-                        <optgroup label="Select a class">
-                            <option value="class1">Class 1, Term 1</option>
-                            <option value="class2">Class 2, Term 2</option>
-                            <option value="class3">Class 3, Term 3</option>
-                        </optgroup>
-                    </select>
-                    <select id="unit-name" name="unit-name" aria-label="unit-name">
-                        <optgroup label="Select a unit">
-                            <option value="unit1">Unit 1</option>
-                            <option value="unit2">Unit 2</option>
-                            <option value="unit3">Unit 3</option>
-                        </optgroup>
-                    </select>
-                    <input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
-                    <textarea form="lesson-title" name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
-                    <textarea form="lesson-title" name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
-                    <textarea form="lesson-title" name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
-                    <textarea form="lesson-title" name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
-                    <textarea form="lesson-title" name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
-                    <textarea form="lesson-title" name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
-                    <textarea form="lesson-title" name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
-                    <button type="submit" id="new-lesson-submit">Create</button>
-
-                </form>
-            </fieldset>
-            <button type="button" class="cancel-button" id="new-lesson-cancel">Cancel</button>
         </section>
 
         <section class="lesson-detail" role="region">
@@ -418,6 +341,7 @@
                     <textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
                     <button type="submit" id="les-det-update">Update</button>
                     <button type="submit" id="les-det-delete" class="delete">Delete</button>
+                    <button class="to-dashboard">Back to dashboard</button>
                 </form>
             </fieldset>
         </section>

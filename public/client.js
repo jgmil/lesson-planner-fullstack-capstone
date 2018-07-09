@@ -60,8 +60,8 @@ const MOCK_UNITS = {
     ]
 };
 
-const MOCK_LESSON_PLANS = {
-    "lessonPlans": [
+const MOCK_LESSONS = {
+    "lessons": [
         {
             "id": 093845,
             "unit_id": 587690,
@@ -84,61 +84,7 @@ const MOCK_LESSON_PLANS = {
 
 
 
-function displayCreateUnit() {
-    $(".create").html(`<fieldset>
-<legend>
-<h3>Create a new unit</h3>
-</legend>
-<form>
-<input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
-<select id="new-unit-class-name" name="class-name" aria-label="class-name">
-<optgroup label="Class">
-<option value="class1">Class 1, Term 1</option>
-<option value="class2">Class 2, Term 2</option>
-<option value="class3">Class 3, Term 3</option>
-</optgroup>
-</select>
-<textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
-<button type="submit" id="new-unit-submit">Create</button>
-<button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
-</form>
-</fieldset>`);
-}
 
-function displayCreateLesson() {
-    $(".create").html(`<fieldset>
-<legend>
-<h3>Create a new lesson</h3>
-</legend>
-<form>
-<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
-<select id="new-lesson-class-name" name="class-name" aria-label="class-name">
-<optgroup label="Select a class">
-<option value="class1">Class 1, Term 1</option>
-<option value="class2">Class 2, Term 2</option>
-<option value="class3">Class 3, Term 3</option>
-</optgroup>
-</select>
-<select id="unit-name" name="unit-name" aria-label="unit-name">
-<optgroup label="Select a unit">
-<option value="class1">Unit 1</option>
-<option value="class2">Unit 2</option>
-<option value="class3">Unit 3</option>
-</optgroup>
-</select>
-<input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
-<textarea name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
-<textarea name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
-<textarea name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
-<textarea name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
-<textarea name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
-<textarea name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
-<textarea name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
-<button type="submit" id="new-lesson-submit">Create</button>
-<button type="button" class="cancel-button" id="new-lesson-cancel">Cancel</button>
-</form>
-</fieldset>`);
-}
 
 //function displayLessons(lessonData) {
 //    $(".journal-entries").html("<h3>My journal</h3>");
@@ -164,41 +110,42 @@ function displayCreateLesson() {
 //    };
 //};
 
-function displayLessonDetail(lessons) {
-    $(".lesson-detail").html(`<fieldset>
-<legend>
-<h3>Lesson Detail</h3>
-</legend>
-<form>
-<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
-<select id="class-name-les-det" name="class-name" aria-label="class-name">
-<optgroup label="Select a class">
-<option value="class1">Class 1, Term 1</option>
-<option value="class2" selected>Class 2, Term 2</option>
-<option value="class3">Class 3, Term 3</option>
-</optgroup>
-</select>
-<select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
-<optgroup label="Select a unit">
-<option value="class1">Unit 1</option>
-<option value="class2">Unit 2</option>
-<option value="class3" selected>Unit 3</option>
-</optgroup>
-</select>
-<input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
-<textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
-<textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
-<textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
-<textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-<textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-<textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-<button type="submit" id="les-det-update">Update</button>
-<button type="submit" id="les-det-delete">Delete</button>
-</form>
-</fieldset>`);
-    $(".lesson-detail").show();
-};
+//function displayLessonDetail(lessons) {
+//    $(".lesson-detail").html(`<fieldset>
+//<legend>
+//<h3>Lesson Detail</h3>
+//</legend>
+//<form>
+//<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
+//<select id="class-name-les-det" name="class-name" aria-label="class-name">
+//<optgroup label="Select a class">
+//<option value="class1">Class 1, Term 1</option>
+//<option value="class2" selected>Class 2, Term 2</option>
+//<option value="class3">Class 3, Term 3</option>
+//</optgroup>
+//</select>
+//<select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
+//<optgroup label="Select a unit">
+//<option value="class1">Unit 1</option>
+//<option value="class2">Unit 2</option>
+//<option value="class3" selected>Unit 3</option>
+//</optgroup>
+//</select>
+//<input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
+//<textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
+//<textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
+//<textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
+//<textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+//<textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+//<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+//<textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+//<button type="submit" id="les-det-update">Update</button>
+//<button type="submit" id="les-det-delete">Delete</button>
+//</form>
+//</fieldset>`);
+//    $(".lesson-detail").show();
+//
+//};
 
 /* this function will get data for a specific user using different endpoints: classes, units, lessons */
 
@@ -229,8 +176,8 @@ function displayLessonDetail(lessons) {
 
 
 function displayDashboard() {
-    $("nav").hide();
-    $("#landing").hide();
+    $(".dashboard-nav").show();
+    $(".landing-nav").hide();
     $("#landing-page").hide();
     $("footer").show();
     $(".user-banner").show();
@@ -240,7 +187,8 @@ function displayDashboard() {
 };
 
 function displayLanding() {
-    $("nav").show();
+    $(".landing-nav").show();
+    $(".dashboard-nav").hide();
     $("#landing").show();
     $(".landing-page").show();
     $("footer").show();
@@ -269,33 +217,33 @@ $(document).on("submit", "#create-account-form", function (event) {
     };
     console.log(newUserObject);
     const confirmPw = $('#confirm-password').val();
-    //    if (pw !== confirmPw) {
-    //        alert('Passwords must match!');
-    //    } else {
-    //        const newUserObject = {
-    //            username: uname,
-    //            name: name,
-    //            password: pw
-    //        };
-    //        $.ajax({
-    //                type: 'POST',
-    //                url: '/users/create',
-    //                dataType: 'json',
-    //                data: JSON.stringify(newUserObject),
-    //                contentType: 'application/json'
-    //            })
-    //            .done(function (result) {
-    //                $("#loggedInUser").val(result.username);
-    //                getEntries();
-    //                displayDashboard();
-    //            })
-    //            .fail(function (jqXHR, error, errorThrown) {
-    //                console.log(jqXHR);
-    //                console.log(error);
-    //                console.log(errorThrown);
-    //                alert("User already exists.");
-    //            });
-    //    }
+    if (pw !== confirmPw) {
+        alert('Passwords must match!');
+    } else {
+        const newUserObject = {
+            username: uname,
+            name: name,
+            password: pw
+        };
+        $.ajax({
+                type: 'POST',
+                url: '/users/create',
+                dataType: 'json',
+                data: JSON.stringify(newUserObject),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                $("#loggedInUser").val(result.username);
+                //                getLessons();
+                displayDashboard();
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                alert("User already exists.");
+            });
+    }
 });
 
 $(document).on("submit", "#log-in", function (event) {
@@ -314,28 +262,28 @@ $(document).on("submit", "#log-in", function (event) {
             password: pw
         };
         console.log(unamePwObject);
-        //        $.ajax({
-        //                type: "POST",
-        //                url: "/users/signin",
-        //                dataType: 'json',
-        //                data: JSON.stringify(unamePwObject),
-        //                contentType: 'application/json'
-        //            })
-        //            .done(function (result) {
-        //                displayDashboard();
-        //                userLoggedIn = true;
-        //                $("#log-in-link").hide();
-        //                $("#loggedInUser").val(result.username);
-        //                getEntries();
-        //            })
-        //            .fail(function (jqXHR, error, errorThrown) {
-        //                console.log(jqXHR);
-        //                console.log(error);
-        //                console.log(errorThrown);
-        //                alert('Invalid username and password combination. Please check your username and password and try again.');
-        //            });
-        //    }
-        displayDashboard();
+        $.ajax({
+                type: "POST",
+                url: "/users/signin",
+                dataType: 'json',
+                data: JSON.stringify(unamePwObject),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                displayDashboard();
+                window.scrollTo(0, 0);
+                userLoggedIn = true;
+                $("#log-in-link").hide();
+                $("#loggedInUser").val(result.username);
+                //                        getEntries();
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                alert('Invalid username and password combination. Please check your username and password and try again.');
+            });
     }
 });
 
@@ -390,10 +338,21 @@ $(document).on('click', '.delete', function (event) {
     //    };
 });
 
-$(document).on('click', '#log-out-link', function (event) {
+$(document).on("click", ".detail", function (event) {
     event.preventDefault();
-    location.reload();
+    $(".dashboard").hide();
+    $(".lesson-detail").show();
 });
+
+$(document).on("click", ".create-unit-1", function (event) {
+    event.preventDefault();
+});
+
+$(document).on("click", ".to-dashboard", function (event) {
+    event.preventDefault();
+    displayDashboard();
+});
+
 
 $(document).on("submit", "#new-class", function (event) {
     event.preventDefault();
@@ -426,7 +385,7 @@ $(document).on("submit", "#new-class", function (event) {
 
 $(document).on("submit", "#new-unit", function (event) {
     event.preventDefault();
-    console.log("new lesson submit");
+    console.log("new unit submit");
     const title = $("#unit-title").val();
     const className = $('#class-name').val();
     const desc = $('#unit-desc').val();
@@ -460,6 +419,7 @@ $(document).on("submit", "#new-lesson", function (event) {
     console.log("new lesson submit");
     const title = $("#lesson-title").val();
     const className = $('#class-name').val();
+    //need to get the class and unit id's somehow
     const unit = $('#unit-name').val();
     const desc = $('#lesson-desc').val();
     const stnds = $('#lesson-stnds').val();
@@ -503,14 +463,10 @@ $(document).on("submit", "#new-lesson", function (event) {
     //        });
 });
 
-$(document).on("click", ".cancel-button", function (event) {
-    if (confirm("Are you sure you want to cancel? Your work will not be saved.") === true) {
-        displayDashboard();
-    }
-});
 
-$(document).on("click", ".create-class", function (event) {
-        $(".create").html(`<fieldset>
+
+$(document).on("click", ".create-class-nav", function (event) {
+    $(".create").html(`<fieldset>
 <legend>
 <h3>Create a new class</h3>
 </legend>
@@ -521,10 +477,80 @@ $(document).on("click", ".create-class", function (event) {
 <button type="button" class="cancel-button" id="new-class-cancel">Cancel</button>
 </form>
 </fieldset>`);
-    $("create").show();
+    $(".create").show();
+});
+
+$(document).on("click", ".create-unit-nav", function (event) {
+    $(".create").html(`<fieldset>
+<legend>
+<h3>Create a new unit</h3>
+</legend>
+<form id="new-unit">
+<input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
+<select id="new-unit-class-name" name="class-name" aria-label="class-name">
+<optgroup label="Class">
+<option value="class1">Class 1, Term 1</option>
+<option value="class2">Class 2, Term 2</option>
+<option value="class3">Class 3, Term 3</option>
+</optgroup>
+</select>
+<textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
+<button type="submit" id="new-unit-submit">Create</button>
+<button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
+</form>
+</fieldset>`);
+    $(".create").show();
+});
+
+$(document).on("click", ".create-lesson-nav", function (event) {
+    $(".create").html(`<fieldset>
+<legend>
+<h3>Create a new lesson</h3>
+</legend>
+<form action="" id="new-lesson">
+<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
+<select id="new-lesson-class-name" name="class-name" aria-label="class-name">
+<optgroup label="Select a class">
+<option value="class1">Class 1, Term 1</option>
+<option value="class2">Class 2, Term 2</option>
+<option value="class3">Class 3, Term 3</option>
+</optgroup>
+</select>
+<select id="unit-name" name="unit-name" aria-label="unit-name">
+<optgroup label="Select a unit">
+<option value="unit1">Unit 1</option>
+<option value="unit2">Unit 2</option>
+<option value="unit3">Unit 3</option>
+</optgroup>
+</select>
+<input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
+<textarea form="lesson-title" name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
+<textarea form="lesson-title" name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
+<textarea form="lesson-title" name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
+<textarea form="lesson-title" name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
+<textarea form="lesson-title" name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
+<textarea form="lesson-title" name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
+<textarea form="lesson-title" name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
+<button type="submit" id="new-lesson-submit">Create</button>
+
+</form>
+</fieldset>
+<button type="button" class="cancel-button" id="new-lesson-cancel">Cancel</button>`);
+    $(".create").show();
 });
 
 
+$(document).on("click", ".cancel-button", function (event) {
+    if (confirm("Are you sure you want to cancel? Your work will not be saved.") === true) {
+        displayDashboard();
+    }
+});
+
+
+$(document).on('click', '#log-out-link', function (event) {
+    event.preventDefault();
+    location.reload();
+});
 
 //
 //$(document).on("click", "#home", function (event) {
