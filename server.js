@@ -1,5 +1,7 @@
+const Lesson = require('./models/lesson');
+const Unit = require('./models/unit');
+const Subject = require('./models/subject');
 const User = require('./models/user');
-const Entry = require('./models/entry');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -176,16 +178,19 @@ app.post('/users/signin', function (req, res) {
 });
 
 
-// -------------CLASS ENDPOINTS------------------------------------------------
+// -------------SUBJECT ENDPOINTS------------------------------------
 // POST -----------------------------------------
-// creating a new entry
-app.post('/class/create', (req, res) => {
-    let {
-        className
+// creating a new subject
+app.post('/subject/create', (req, res, next) => {
+    const {
+        subjectName,
+        user_id
     } = req.body;
+    console.log(req.body);
 
-    Classes.create({
-        className
+    Subject.create({
+        subjectName,
+        user_id
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -193,7 +198,7 @@ app.post('/class/create', (req, res) => {
             });
         }
         if (item) {
-            console.log(`${className} added.`);
+            console.log(`${subjectName} added.`);
             return res.json(item);
         }
     });
@@ -221,20 +226,20 @@ app.put('/subject/:id', function (req, res) {
 });
 
 // GET ------------------------------------
-// accessing all of a user's classes
+// accessing all of a user's subjects
 app.get('/subjects/:user', function (req, res) {
     Subject
         .find()
-        .sort('date')
+        .sort('subjectName')
         .then(function (entries) {
-            let entryOutput = [];
-            entries.map(function (entry) {
-                if (entry.user == req.params.user) {
-                    entryOutput.push(entry);
+            let subjectOutput = [];
+            subjects.map(function (subject) {
+                if (subject.user == req.params.user) {
+                    subjectOutput.push(entry);
                 }
             });
             res.json({
-                entryOutput
+                subjectOutput
             });
         })
         .catch(function (err) {
@@ -245,24 +250,10 @@ app.get('/subjects/:user', function (req, res) {
         });
 });
 
-// accessing a single entry by id
-app.get('/subject/:id', function (req, res) {
-    Subject
-        .findById(req.params.id).exec().then(function (entry) {
-            return res.json(entry);
-        })
-        .catch(function (entry) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        });
-});
-
 // DELETE ----------------------------------------
-// deleting an entry by id
-app.delete('/entry/:id', function (req, res) {
-    Entry.findByIdAndRemove(req.params.id).exec().then(function (entry) {
+// deleting a subject by id
+app.delete('/subject/:id', function (req, res) {
+    Subject.findByIdAndRemove(req.params.id).exec().then(function (entry) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({

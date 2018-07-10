@@ -5,15 +5,15 @@ const mongoose = require('mongoose');
 
 const lessonSchema = new mongoose.Schema({
     user_id: {
-        type: number,
+        type: String,
         required: true
     },
     class_id: {
-        type: number,
+        type: String,
         required: true
     },
     unit_id: {
-        type: number,
+        type: String,
         required: true
     },
     title: {

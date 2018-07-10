@@ -3,9 +3,9 @@
 const mongoose = require('mongoose');
 // const bcrypt = require('bcryptjs');
 
-const subject = new mongoose.Schema({
+const subjectSchema = new mongoose.Schema({
     user_id: {
-        type: Number,
+        type: String,
         required: true
     },
     subjectName: {
@@ -14,7 +14,7 @@ const subject = new mongoose.Schema({
     }
 });
 
-subject.methods.serialize = function () {
+subjectSchema.methods.serialize = function () {
     return {
         id: this._id,
         user_id: this.user_id,
@@ -22,6 +22,6 @@ subject.methods.serialize = function () {
     };
 };
 
-const subject = mongoose.model('subject', subjectSchema);
+const Subject = mongoose.model('subject', subjectSchema);
 
 module.exports = Subject;

@@ -119,9 +119,9 @@ const MOCK_LESSONS = {
 //<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
 //<select id="class-name-les-det" name="class-name" aria-label="class-name">
 //<optgroup label="Select a class">
-//<option value="class1">Class 1, Term 1</option>
-//<option value="class2" selected>Class 2, Term 2</option>
-//<option value="class3">Class 3, Term 3</option>
+//<option value="class1">Subject 1, Term 1</option>
+//<option value="class2" selected>Subject 2, Term 2</option>
+//<option value="class3">Subject 3, Term 3</option>
 //</optgroup>
 //</select>
 //<select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
@@ -226,13 +226,15 @@ $(document).on("submit", "#create-account-form", function (event) {
             password: pw
         };
         $.ajax({
-                type: 'POST',
-                url: '/users/create',
-                dataType: 'json',
-                data: JSON.stringify(newUserObject),
-                contentType: 'application/json'
-            })
-            .done(function (result) {
+            type: 'POST',
+            url: '/users/create',
+            dataType: 'json',
+            data: JSON.stringify(newUserObject),
+            contentType: 'application/json'
+        })
+        ``
+        .done(function (result) {
+                console.log(result);
                 $("#loggedInUser").val(result.id);
                 //                getLessons();
                 displayDashboard();
@@ -270,12 +272,12 @@ $(document).on("submit", "#log-in", function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                console.log(result);
+                console.log(result._id);
                 displayDashboard();
                 window.scrollTo(0, 0);
                 userLoggedIn = true;
                 $("#log-in-link").hide();
-                $("#loggedInUser").val(result.id);
+                $("#loggedInUser").val(result._id);
                 //                        getEntries();
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -363,22 +365,23 @@ $(document).on("submit", "#new-subject", function (event) {
         user_id: user_id,
         subjectName: subjectName,
     };
-    console.log(newClassObject);
-    //    $.ajax({
-    //            type: 'POST',
-    //            url: '/unit/create',
-    //            dataType: 'json',
-    //            data: JSON.stringify(newUnitObject),
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            displayDashboard();
-    //        })
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
+    console.log(newSubjectObject);
+    $.ajax({
+            type: 'POST',
+            url: '/subject/create',
+            dataType: 'json',
+            data: JSON.stringify(newSubjectObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log("subject created");
+            displayDashboard();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 });
 
 $(document).on("submit", "#new-unit", function (event) {
@@ -468,9 +471,9 @@ $(document).on("click", ".create-subject-nav", function (event) {
 <legend>
 <h3>Create a new subject</h3>
 </legend>
-<form>
+<form id="new-subject">
 <input type="text" aria-label="subject-name" name="subject-name" id="subject-name" value="Subject name">
-<button type="submit" id="new-subject-submit">Create</button>
+<button type="submit">Create</button>
 <button type="button" class="cancel-button" id="new-subject-cancel">Cancel</button>
 </form>
 </fieldset>`);
@@ -485,10 +488,10 @@ $(document).on("click", ".create-unit-nav", function (event) {
 <form id="new-unit">
 <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
 <select id="new-unit-subject-name" name="subject-name" aria-label="subject-name">
-<optgroup label="Class">
-<option value="subject1">Class 1, Term 1</option>
-<option value="subject2">Class 2, Term 2</option>
-<option value="subject3">Class 3, Term 3</option>
+<optgroup label="Subject">
+<option value="subject1">Subject 1, Term 1</option>
+<option value="subject2">Subject 2, Term 2</option>
+<option value="subject3">Subject 3, Term 3</option>
 </optgroup>
 </select>
 <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
@@ -508,9 +511,9 @@ $(document).on("click", ".create-lesson-nav", function (event) {
 <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-title" placeholder="Lesson title">
 <select id="new-lesson-subject-name" name="subject-name" aria-label="subject-name">
 <optgroup label="Select a subject">
-<option value="subject1">Class 1, Term 1</option>
-<option value="subject2">Class 2, Term 2</option>
-<option value="subject3">Class 3, Term 3</option>
+<option value="subject1">Subject 1, Term 1</option>
+<option value="subject2">Subject 2, Term 2</option>
+<option value="subject3">Subject 3, Term 3</option>
 </optgroup>
 </select>
 <select id="unit-name" name="unit-name" aria-label="unit-name">
