@@ -227,14 +227,14 @@ app.put('/subject/:id', function (req, res) {
 
 // GET ------------------------------------
 // accessing all of a user's subjects
-app.get('/subjects/:user', function (req, res) {
+app.get('/subjects/:user_id', function (req, res) {
     Subject
         .find()
         .sort('subjectName')
         .then(function (subjects) {
             let subjectOutput = [];
             subjects.map(function (subject) {
-                if (subject.user == req.params.user) {
+                if (subject.user_id == req.params.user_id) {
                     subjectOutput.push(subject);
                 }
             });
@@ -251,7 +251,7 @@ app.get('/subjects/:user', function (req, res) {
 });
 
 // accessing a single subject by id
-app.get('/Subject/:id', function (req, res) {
+app.get('/subject/:id', function (req, res) {
     Subject
         .findById(req.params.id).exec().then(function (subject) {
             return res.json(subject);
@@ -330,7 +330,7 @@ app.put('/unit/:id', function (req, res) {
 
 // GET ------------------------------------
 // accessing all of a user's units
-app.get('/unit/:user', function (req, res) {
+app.get('/units/:user_id', function (req, res) {
     Unit
         .find()
         .sort('title')
@@ -354,7 +354,7 @@ app.get('/unit/:user', function (req, res) {
 });
 
 // accessing a single unit by id
-app.get('/Unit/:id', function (req, res) {
+app.get('/unit/:id', function (req, res) {
     Unit
         .findById(req.params.id).exec().then(function (unit) {
             return res.json(unit);
@@ -448,14 +448,14 @@ app.put('/lesson/:id', function (req, res) {
 
 // GET ------------------------------------
 // accessing all of a user's lessons
-app.get('/lessons/:user', function (req, res) {
+app.get('/lessons/:user_id', function (req, res) {
     Lesson
         .find()
-        .sort('date')
+        .sort('title')
         .then(function (lessons) {
             let lessonOutput = [];
             lessons.map(function (lesson) {
-                if (lesson.user == req.params.user) {
+                if (lesson.user_id == req.params.user_id) {
                     lessonOutput.push(lesson);
                 }
             });
