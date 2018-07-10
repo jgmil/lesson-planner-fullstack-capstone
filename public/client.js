@@ -82,11 +82,14 @@ const MOCK_LESSONS = {
 
 //functions, variables and object definitions
 
+function displayDashboard(user_id) {
+
+}
 
 
 
 
-//function displayLessons(lessonData) {
+//
 //    $(".journal-entries").html("<h3>My journal</h3>");
 //    for (let i = 0; i < entryData.entryOutput.length; i++) {
 //        let d = new Date(entryData.entryOutput[i].date);
@@ -185,6 +188,25 @@ function displayDashboard() {
     $(".create").hide();
     $(".lesson-detail").hide();
 };
+
+function generateSubject(subject) {
+    $(".dashboard").append(`<div class="subject-container clearfix">
+<form>
+<input class="subject-title" type="text" aria-label="subject-title" name="subject-title" id="subject-title-dash-1" value="${subject.title}">
+<button class="update" type="button" id="update-subject-1">Update subject</button>
+<button class="delete" type="button" id="delete-subject-1">Delete subject</button>
+</form>
+<span class="float-right">
+<p>Jump to: </p>
+<a class="unit-shortcut" href="#unit-title-dash-1-1">Unit 1</a>
+<a class="unit-shortcut" href="#unit-title-dash-1-2">Unit 2</a>
+<a class="unit-shortcut" href="#unit-title-dash-1-3">Unit 3</a>
+<button type="button" id="create-unit-1">Add a unit</button>
+<input type="hidden" class="subject_id" value="${subject._id}">
+<div class="unit-create-cont"></div>
+</span>
+</div>`);
+}
 
 function displayLanding() {
     $(".landing-nav").show();
@@ -374,7 +396,7 @@ $(document).on("submit", "#new-subject", function (event) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log("subject created");
+            console.log(result);
             displayDashboard();
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -394,7 +416,7 @@ $(document).on("submit", "#new-unit", function (event) {
     const newUnitObject = {
         user_id: user_id,
         title: title,
-        class: className,
+        class_id: className,
         desc: desc,
     };
     console.log(newUnitObject);
@@ -419,9 +441,9 @@ $(document).on("submit", "#new-lesson", function (event) {
     event.preventDefault();
     console.log("new lesson submit");
     const title = $("#lesson-title").val();
-    const className = $('#class-name').val();
+    const subject_id = "";
     //need to get the class and unit id's somehow
-    const unit = $('#unit-name').val();
+    const unit_id = "";
     const desc = $('#lesson-desc').val();
     const stnds = $('#lesson-stnds').val();
     const learningTargets = $('#learning-targets').val();
@@ -430,12 +452,12 @@ $(document).on("submit", "#new-lesson", function (event) {
     const homework = $('#homework').val();
     const notes = $('#notes').val();
     const reflection = $('#reflection').val();
-    const user = $("#loggedInUser").val();
+    const user_id = $("#loggedInUser").val();
     const newLessonObject = {
-        user: user,
+        user_id: user_id,
         title: title,
-        class: className,
-        unit: unit,
+        subject_id: subject_id,
+        unit_id: unit_id,
         desc: desc,
         stnds: stnds,
         learningTargets: learningTargets,
@@ -446,22 +468,22 @@ $(document).on("submit", "#new-lesson", function (event) {
         reflection: reflection
     };
     console.log(newLessonObject);
-    //    $.ajax({
-    //            type: 'POST',
-    //            url: '/lesson/create',
-    //            dataType: 'json',
-    //            data: JSON.stringify(newLessonObject),
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            $(".lesson-short")[0].reset();
-    //            displayDashboard();
-    //        })
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
+    $.ajax({
+            type: 'POST',
+            url: '/lesson/create',
+            dataType: 'json',
+            data: JSON.stringify(newLessonObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            $(".lesson-short")[0].reset();
+            displayDashboard();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 });
 
 
@@ -530,7 +552,7 @@ $(document).on("click", ".create-lesson-nav", function (event) {
 <textarea form="lesson-title" name="assessment" id="assessment" placeholder="Assessment" aria-label="assessment"></textarea>
 <textarea form="lesson-title" name="homework" id="homework" placeholder="Homework/Independent Practice" aria-label="homework/independent practice"></textarea>
 <textarea form="lesson-title" name="notes" id="notes" placeholder="Notes" aria-label="notes"></textarea>
-<textarea form="lesson-title" name="reflection" id="reflections" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
+<textarea form="lesson-title" name="reflection" id="reflection" placeholder="Reflection: What went well? What needs improvement?" aria-label="reflection"></textarea>
 <button type="submit" id="new-lesson-submit">Create</button>
 
 </form>

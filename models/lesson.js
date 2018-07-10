@@ -21,7 +21,7 @@ const lessonSchema = new mongoose.Schema({
         required: false
     },
     stnds: {
-        type: Date,
+        type: String,
         required: false
     },
     learningTargets: {

@@ -181,7 +181,7 @@ app.post('/users/signin', function (req, res) {
 // -------------SUBJECT ENDPOINTS------------------------------------
 // POST -----------------------------------------
 // creating a new subject
-app.post('/subject/create', (req, res, next) => {
+app.post('/subject/create', (req, res) => {
     const {
         subjectName,
         user_id
@@ -231,11 +231,11 @@ app.get('/subjects/:user', function (req, res) {
     Subject
         .find()
         .sort('subjectName')
-        .then(function (entries) {
+        .then(function (subjects) {
             let subjectOutput = [];
             subjects.map(function (subject) {
                 if (subject.user == req.params.user) {
-                    subjectOutput.push(entry);
+                    subjectOutput.push(subject);
                 }
             });
             res.json({
@@ -250,10 +250,24 @@ app.get('/subjects/:user', function (req, res) {
         });
 });
 
+// accessing a single subject by id
+app.get('/Subject/:id', function (req, res) {
+    Subject
+        .findById(req.params.id).exec().then(function (subject) {
+            return res.json(subject);
+        })
+        .catch(function (subject) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
 // DELETE ----------------------------------------
 // deleting a subject by id
 app.delete('/subject/:id', function (req, res) {
-    Subject.findByIdAndRemove(req.params.id).exec().then(function (entry) {
+    Subject.findByIdAndRemove(req.params.id).exec().then(function (subject) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
@@ -263,31 +277,23 @@ app.delete('/subject/:id', function (req, res) {
 });
 
 // -------------UNIT ENDPOINTS------------------------------------------------
-// POST -----------------------------------------
-// creating a new entry
-app.post('/entry/create', (req, res) => {
-    let date = req.body.date;
-    let intention = req.body.intention;
-    let mood = req.body.mood;
-    let medType = req.body.medType;
-    let medLength = req.body.medLength;
-    let user = req.body.user;
-    let feeling = req.body.feeling;
-    let notes = req.body.notes;
-    let reflection = req.body.reflection;
-    let gratitude = req.body.gratitude;
+//POST-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+//creating a new unit
+app.post('/unit/create', (req, res) => {
 
-    Entry.create({
-        user,
-        date,
-        intention,
-        mood,
-        medType,
-        medLength,
-        feeling,
-        notes,
-        reflection,
-        gratitude
+    const {
+        title,
+        user_id,
+        class_id,
+        desc
+    } = req.body;
+    console.log(req.body);
+
+    Unit.create({
+        title,
+        user_id,
+        class_id,
+        desc
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -295,25 +301,25 @@ app.post('/entry/create', (req, res) => {
             });
         }
         if (item) {
-            console.log(`Entry for \`${date}\` added.`);
+            console.log(`${title} added.`);
             return res.json(item);
         }
     });
 });
 
 // PUT --------------------------------------
-app.put('/entry/:id', function (req, res) {
+app.put('/unit/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['intention', 'mood', 'medType', 'medLength', 'feeling', 'notes', 'reflection', 'gratitude'];
+    let updateableFields = ['title', 'desc', 'class_id'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
         }
     });
-    Entry
+    Unit
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate
-        }).exec().then(function (achievement) {
+        }).exec().then(function (unit) {
             return res.status(204).end();
         }).catch(function (err) {
             return res.status(500).json({
@@ -323,20 +329,20 @@ app.put('/entry/:id', function (req, res) {
 });
 
 // GET ------------------------------------
-// accessing all of a user's entries
-app.get('/entries/:user', function (req, res) {
-    Entry
+// accessing all of a user's units
+app.get('/unit/:user', function (req, res) {
+    Unit
         .find()
-        .sort('date')
-        .then(function (entries) {
-            let entryOutput = [];
-            entries.map(function (entry) {
-                if (entry.user == req.params.user) {
-                    entryOutput.push(entry);
+        .sort('title')
+        .then(function (units) {
+            let unitOutput = [];
+            units.map(function (unit) {
+                if (unit.user_id == req.params.user_id) {
+                    unitOutput.push(unit);
                 }
             });
             res.json({
-                entryOutput
+                unitOutput
             });
         })
         .catch(function (err) {
@@ -347,13 +353,13 @@ app.get('/entries/:user', function (req, res) {
         });
 });
 
-// accessing a single entry by id
-app.get('/entry/:id', function (req, res) {
-    Entry
-        .findById(req.params.id).exec().then(function (entry) {
-            return res.json(entry);
+// accessing a single unit by id
+app.get('/Unit/:id', function (req, res) {
+    Unit
+        .findById(req.params.id).exec().then(function (unit) {
+            return res.json(unit);
         })
-        .catch(function (entry) {
+        .catch(function (unit) {
             console.error(err);
             res.status(500).json({
                 message: 'Internal Server Error'
@@ -362,9 +368,9 @@ app.get('/entry/:id', function (req, res) {
 });
 
 // DELETE ----------------------------------------
-// deleting an entry by id
-app.delete('/entry/:id', function (req, res) {
-    Entry.findByIdAndRemove(req.params.id).exec().then(function (entry) {
+// deleting a unit by id
+app.delete('/unit/:id', function (req, res) {
+    Unit.findByIdAndRemove(req.params.id).exec().then(function (unit) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
@@ -375,30 +381,37 @@ app.delete('/entry/:id', function (req, res) {
 
 // -------------LESSON ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
-// creating a new entry
-app.post('/entry/create', (req, res) => {
-    let date = req.body.date;
-    let intention = req.body.intention;
-    let mood = req.body.mood;
-    let medType = req.body.medType;
-    let medLength = req.body.medLength;
-    let user = req.body.user;
-    let feeling = req.body.feeling;
-    let notes = req.body.notes;
-    let reflection = req.body.reflection;
-    let gratitude = req.body.gratitude;
-
-    Entry.create({
-        user,
-        date,
-        intention,
-        mood,
-        medType,
-        medLength,
-        feeling,
+// creating a new lesson
+app.post('/lesson/create', (req, res) => {
+    const {
+        user_id,
+        title,
+        subject_id,
+        unit_id,
+        desc,
+        stnds,
+        learningTargets,
+        lessonDetails,
+        assessment,
+        homework,
         notes,
-        reflection,
-        gratitude
+        reflection
+    } = req.body;
+    console.log(req.body);
+
+    Lesson.create({
+        user_id,
+        title,
+        subject_id,
+        unit_id,
+        desc,
+        stnds,
+        learningTargets,
+        lessonDetails,
+        assessment,
+        homework,
+        notes,
+        reflection
     }, (err, item) => {
         if (err) {
             return res.status(500).json({
@@ -406,25 +419,25 @@ app.post('/entry/create', (req, res) => {
             });
         }
         if (item) {
-            console.log(`Entry for \`${date}\` added.`);
+            console.log(`Lesson \`${title}\` added.`);
             return res.json(item);
         }
     });
 });
 
 // PUT --------------------------------------
-app.put('/entry/:id', function (req, res) {
+app.put('/lesson/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['intention', 'mood', 'medType', 'medLength', 'feeling', 'notes', 'reflection', 'gratitude'];
+    let updateableFields = ['title', 'desc', 'stnds', 'learningTargets', 'lessonDetails', 'assessment', 'homework', 'notes', 'reflection'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
         }
     });
-    Entry
+    Lesson
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate
-        }).exec().then(function (achievement) {
+        }).exec().then(function (lesson) {
             return res.status(204).end();
         }).catch(function (err) {
             return res.status(500).json({
@@ -434,20 +447,20 @@ app.put('/entry/:id', function (req, res) {
 });
 
 // GET ------------------------------------
-// accessing all of a user's entries
-app.get('/entries/:user', function (req, res) {
-    Entry
+// accessing all of a user's lessons
+app.get('/lessons/:user', function (req, res) {
+    Lesson
         .find()
         .sort('date')
-        .then(function (entries) {
-            let entryOutput = [];
-            entries.map(function (entry) {
-                if (entry.user == req.params.user) {
-                    entryOutput.push(entry);
+        .then(function (lessons) {
+            let lessonOutput = [];
+            lessons.map(function (lesson) {
+                if (lesson.user == req.params.user) {
+                    lessonOutput.push(lesson);
                 }
             });
             res.json({
-                entryOutput
+                lessonOutput
             });
         })
         .catch(function (err) {
@@ -458,13 +471,13 @@ app.get('/entries/:user', function (req, res) {
         });
 });
 
-// accessing a single entry by id
-app.get('/entry/:id', function (req, res) {
-    Entry
-        .findById(req.params.id).exec().then(function (entry) {
-            return res.json(entry);
+// accessing a single lesson by id
+app.get('/lesson/:id', function (req, res) {
+    Lesson
+        .findById(req.params.id).exec().then(function (lesson) {
+            return res.json(lesson);
         })
-        .catch(function (entry) {
+        .catch(function (lesson) {
             console.error(err);
             res.status(500).json({
                 message: 'Internal Server Error'
@@ -473,9 +486,9 @@ app.get('/entry/:id', function (req, res) {
 });
 
 // DELETE ----------------------------------------
-// deleting an entry by id
-app.delete('/entry/:id', function (req, res) {
-    Entry.findByIdAndRemove(req.params.id).exec().then(function (entry) {
+// deleting a lesson by id
+app.delete('/lesson/:id', function (req, res) {
+    Lesson.findByIdAndRemove(req.params.id).exec().then(function (lesson) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
