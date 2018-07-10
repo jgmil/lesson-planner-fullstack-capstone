@@ -382,13 +382,14 @@ app.delete('/unit/:id', function (req, res) {
 // -------------LESSON ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
 // creating a new lesson
+
 app.post('/lesson/create', (req, res) => {
+
     const {
         user_id,
         title,
         subject_id,
         unit_id,
-        desc,
         stnds,
         learningTargets,
         lessonDetails,
@@ -404,7 +405,6 @@ app.post('/lesson/create', (req, res) => {
         title,
         subject_id,
         unit_id,
-        desc,
         stnds,
         learningTargets,
         lessonDetails,

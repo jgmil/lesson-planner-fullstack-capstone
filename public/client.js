@@ -412,7 +412,7 @@ $(document).on("submit", "#new-unit", function (event) {
     const title = $("#unit-title").val();
     const className = $('#class-name').val();
     const desc = $('#unit-desc').val();
-    const user = $("#loggedInUser").val();
+    const user_id = $("#loggedInUser").val();
     const newUnitObject = {
         user_id: user_id,
         title: title,
@@ -420,31 +420,30 @@ $(document).on("submit", "#new-unit", function (event) {
         desc: desc,
     };
     console.log(newUnitObject);
-    //    $.ajax({
-    //            type: 'POST',
-    //            url: '/unit/create',
-    //            dataType: 'json',
-    //            data: JSON.stringify(newUnitObject),
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            displayDashboard();
-    //        })
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        });
+    $.ajax({
+            type: 'POST',
+            url: '/unit/create',
+            dataType: 'json',
+            data: JSON.stringify(newUnitObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            displayDashboard();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 });
 
 $(document).on("submit", "#new-lesson", function (event) {
     event.preventDefault();
     console.log("new lesson submit");
     const title = $("#lesson-title").val();
-    const subject_id = "";
+    const subject_id = "subject_id";
     //need to get the class and unit id's somehow
-    const unit_id = "";
-    const desc = $('#lesson-desc').val();
+    const unit_id = "unit_id";
     const stnds = $('#lesson-stnds').val();
     const learningTargets = $('#learning-targets').val();
     const lessonDetails = $('#lesson-details').val();
@@ -458,7 +457,6 @@ $(document).on("submit", "#new-lesson", function (event) {
         title: title,
         subject_id: subject_id,
         unit_id: unit_id,
-        desc: desc,
         stnds: stnds,
         learningTargets: learningTargets,
         lessonDetails: lessonDetails,
@@ -545,7 +543,6 @@ $(document).on("click", ".create-lesson-nav", function (event) {
 <option value="unit3">Unit 3</option>
 </optgroup>
 </select>
-<input type="text" name="lesson-desc" placeholder="Description" aria-label="lesson description" id="lesson-desc">
 <textarea form="lesson-title" name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
 <textarea form="lesson-title" name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
 <textarea form="lesson-title" name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>

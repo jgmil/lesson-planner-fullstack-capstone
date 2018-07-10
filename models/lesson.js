@@ -1,24 +1,23 @@
 "use strict";
 
 const mongoose = require('mongoose');
-// const bcrypt = require('bcryptjs');
 
 const lessonSchema = new mongoose.Schema({
     user_id: {
         type: String,
         required: true
     },
-    class_id: {
+    title: {
+        type: String,
+        required: false
+    },
+    subject_id: {
         type: String,
         required: true
     },
     unit_id: {
         type: String,
         required: true
-    },
-    title: {
-        type: String,
-        required: false
     },
     stnds: {
         type: String,
