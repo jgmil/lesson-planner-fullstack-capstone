@@ -1,91 +1,7 @@
 let user = "";
 let userLoggedIn = false;
 
-const MOCK_USER_DATA = {
-    "users": [
-        {
-            "id": 029385098,
-            "displayName": "Professor Dumbledore",
-            "username": "demo",
-            "password": "password"
-        },
-        {
-            "id": 2039478,
-            "displayName": "Hagrid",
-            "username": "demo2",
-            "password": "password"
-        },
-        {
-            "id": 20389745,
-            "displayName": "Professor McGonagall",
-            "username": "demo3",
-            "password": "password"
-        }
-    ]
-};
-
-const MOCK_CLASSES = {
-    "subjects": [
-        {
-            "id": 22222,
-            "user_id": 029385098,
-            "subjectName": "Transfiguration",
-            "term": "Fall 2012"
-        },
-        {
-            "id": 234234,
-            "user_id": 20389745,
-            "subjectName": "Transfiguration 2",
-            "term": "Fall 2012"
-        },
-        {
-            "id": 234234,
-            "user_id": 2039478,
-            "subjectName": "Care of Magical Creatures",
-            "term": "Fall 2012"
-        },
-    ]
-
-};
-
-const MOCK_UNITS = {
-    "units": [
-        {
-            "id": 587690,
-            "subject_id": 234234,
-            "user_id": 2039478,
-            "unitTitle": "Unicorns",
-            "unitDesc": "Learn how to care for and not scare away unicorns."
-        }
-    ]
-};
-
-const MOCK_LESSONS = {
-    "lessons": [
-        {
-            "id": 093845,
-            "unit_id": 587690,
-            "subject_id": 234234,
-            "user_id": 2039478,
-            "lessonTitle": "Feeding",
-            "lessonDesc": "Unicorns have a very unique diet.",
-            "standards": "H.7.1.",
-            "learningTargets": "Students will be able to feed a unicorn appropriate food.",
-            "lessonDetails": "",
-            "assessment": "Practice feeding a unicorn from the Forbidden Forest.",
-            "homework": "Study Chapter 17.",
-            "notes": "did not go well, most students scared the unicorns away",
-            "reflection": "moved into feeding too quickly, unicorns and students need time to acclimate to each other"
-        },
-    ]
-};
-
 //functions, variables and object definitions
-
-function displayDashboard(user_id) {
-
-}
-
 
 
 
@@ -150,32 +66,89 @@ function displayDashboard(user_id) {
 //
 //};
 
-/* this function will get data for a specific user using different endpoints: classes, units, lessons */
+/* this function will get data for a specific user using different endpoints: subjects, units, lessons */
 
-//function getData(type) {
-//    let user_id = $("#loggedInUser").val();
-//    let result = $.ajax({
-//            url: `/{$type}/` + user_id,
-//            dataType: "json",
-//            type: "GET"
-//        })
-//        /* if the call is successful (status 200 OK) show results */
-//        .done(function (result) {
-//            if (result.entryOutput.length > 0) {
-//                displayDashboard(result);
-//            } else {
-//                alert `No ${type} found, please create one.`
-//            };
-//            displayDashboard();
-//        })
-//
-//        /* if the call is NOT successful show errors */
-//        .fail(function (jqXHR, error, errorThrown) {
-//            console.log(jqXHR);
-//            console.log(error);
-//            console.log(errorThrown);
-//        });
-//}
+function getSubjects() {
+    let user_id = $("#loggedInUser").val();
+    let result = $.ajax({
+            url: `/subjects/` + user_id,
+            dataType: "json",
+            type: "GET"
+        })
+        /* if the call is successful (status 200 OK) show results */
+        .done(function (result) {
+            if (result.subjectOutput.length > 0) {
+                console.log(result);
+                generateSubject(result);
+            } else {
+                alert `No subjects found, please create one.`
+            };
+            return (result);
+        })
+
+        /* if the call is NOT successful show errors */
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+};
+
+function getUnits(subjectId) {
+    let user_id = $("#loggedInUser").val();
+    let result = $.ajax({
+            url: `/units/` + user_id,
+            dataType: "json",
+            type: "GET"
+        })
+        /* if the call is successful (status 200 OK) show results */
+        .done(function (result) {
+            const results = result.unitOutput;
+            if (results.length > 0) {
+                console.log(result);
+                unitShortcuts(subjectId, result);
+                //need to map over the generate functions
+            } else {
+                alert `No units found, please create one.`
+            };
+            return (results);
+        })
+
+        /* if the call is NOT successful show errors */
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+};
+
+function getLessons() {
+    const user_id = $("#loggedInUser").val();
+    console.log(`user_id: $ {user_id}`);
+    const result = $.ajax({
+            url: `/lessons/` + user_id,
+            dataType: "json",
+            type: "GET"
+        })
+        /* if the call is successful (status 200 OK) show results */
+        .done(function (result) {
+            console.log(result);
+            if (result.lessonOutput.length > 0) {
+                console.log(result);
+                result.lessonOutput.map(lesson => generateLessonShort(lesson));
+            } else {
+                alert `No lesson found, please create one.`
+            };
+            return (result);
+        })
+
+        /* if the call is NOT successful show errors */
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+};
 
 
 function displayDashboard() {
@@ -189,24 +162,118 @@ function displayDashboard() {
     $(".lesson-detail").hide();
 };
 
-function generateSubject(subject) {
-    $(".dashboard").append(`<div class="subject-container clearfix">
-<form>
-<input class="subject-title" type="text" aria-label="subject-title" name="subject-title" id="subject-title-dash-1" value="${subject.title}">
-<button class="update" type="button" id="update-subject-1">Update subject</button>
-<button class="delete" type="button" id="delete-subject-1">Delete subject</button>
+function generateSubject(subjects) {
+    //create an empty variable to store one LI for each one the results
+    var buildTheHtmlOutput = "";
+
+    $.each(subjects.subjectOutput, function (subjectsKey, subjectsValue) {
+        //create and populate one div for each of the results
+        buildTheHtmlOutput += `<div class="subject-container clearfix">`;
+        buildTheHtmlOutput += `<form>`;
+        buildTheHtmlOutput += `<input class="subject-title" type="text" aria-label="subject-title" name="subject-title" id="subject-title-dash-1" value="${subjectsValue.subjectName}">`;
+        buildTheHtmlOutput += `<button class="update" type="button" id="update-subject-1">Update subject</button>`;
+        buildTheHtmlOutput += `<button class="delete" type="button" id="delete-subject-1">Delete subject</button>`;
+        buildTheHtmlOutput += `</form>`;
+        buildTheHtmlOutput += `<span class="float-right">`;
+        buildTheHtmlOutput += `<p>Jump to: </p>`;
+        buildTheHtmlOutput += `<span id="shortcuts-${subjectsValue._id}">`;
+        buildTheHtmlOutput += `<a class="unit-shortcut" href="#unit-${subjectsValue._id}">Unit Name</a>`;
+        buildTheHtmlOutput += `</span>`;
+        buildTheHtmlOutput += `<button type="button" id="create-unit-1">Add a unit</button>`;
+        buildTheHtmlOutput += `<input type="hidden" class="subject_id" value="${subjectsValue._id}">`;
+        buildTheHtmlOutput += `<div class="unit-create-cont"></div>`;
+        buildTheHtmlOutput += `</span>`;
+        buildTheHtmlOutput += `</div>`;
+        buildTheHtmlOutput += `<div class="unit-container" id="units-${subjectsValue._id}"></div>`;
+        getUnits(subjectsValue._id);
+    });
+
+    //use the HTML output to show it in the index.html
+    $(".dashboard").html(buildTheHtmlOutput);
+};
+
+function unitShortcuts(subjectsId, unitData) {
+    //create an empty variable to store one LI for each one the results
+    console.log(subjectsId);
+    console.log(unitData);
+    var buildTheHtmlOutput = "";
+
+    $.each(unitData.unitOutput, function (unitDataKey, unitDataValue) {
+        //create and populate one div for each of the results
+        buildTheHtmlOutput += `<a class="unit-shortcut" href="#unit-${unitDataValue._id}">${unitDataValue.title}</a>`;
+
+    });
+
+    //use the HTML output to show it in the index.html
+    $(`#shortcuts-${subjectsId}`).html(buildTheHtmlOutput);
+};
+
+function generateUnit(unit) {
+    $(".unit - container").append(
+        `<div class="unit">
+<form class="clearfix">
+<input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-${unit._id}" value="${unit.title}">
+<select id="subject-name-1-1" name="subject-name" aria-label="subject-name">
+<p>Subject: ${unit.subject_id}</p>
+</select>
+<textarea name="unit-desc" aria-label="unit-description" id="unit-desc-${unit._id}">${unit.desc}</textarea>
+<button type="submit" class="update" id="update-unit-${unit._id}">Update unit</button>
+<button type="button" id="delete-unit-${unit._id}" class="delete">Delete unit</button>
+<input type="hidden" class="unit_id" value="${unit._id}">
 </form>
-<span class="float-right">
-<p>Jump to: </p>
-<a class="unit-shortcut" href="#unit-title-dash-1-1">Unit 1</a>
-<a class="unit-shortcut" href="#unit-title-dash-1-2">Unit 2</a>
-<a class="unit-shortcut" href="#unit-title-dash-1-3">Unit 3</a>
-<button type="button" id="create-unit-1">Add a unit</button>
-<input type="hidden" class="subject_id" value="${subject._id}">
-<div class="unit-create-cont"></div>
-</span>
-</div>`);
+<div class="create-unit-cont"></div>
+<div class="lesson-container clearfix" id="lessons-${unit._id}">
+</div>
+</div>`
+    );
 }
+
+function generateLessonShort(lesson) {
+    $(".lesson-container").append(`<div class="lesson-short">
+<p>Lesson title</p>
+<p>Description: lesson description goes here</p>
+<p>Homework</p>
+<button class="detail" id="lesson-${lesson._id}">Details</button>
+<input type="hidden" class="lesson_id" value="">
+</div>`);
+    console.log("generateLessonShort ran");
+};
+
+function genereateLessonDetail(lesson) {
+    $(".lesson-detail").html(`<fieldset>
+<legend>
+<h3>Lesson Detail</h3>
+</legend>
+<form>
+<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="${lesson.title}">
+<select id="subject-name-les-det" name="subject-name" aria-label="subject-name">
+<optgroup label="Subject">
+<option value="subject1">Class 1, Term 1</option>
+<option value="subject2" selected>Class 2, Term 2</option>
+<option value="subject3">Class 3, Term 3</option>
+</optgroup>
+</select>
+<select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
+<optgroup label="Unit">
+<option value="subject1">Unit 1</option>
+<option value="subject2">Unit 2</option>
+<option value="subject3" selected>Unit 3</option>
+</optgroup>
+</select>
+<textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: ${lesson.stnds} </textarea>
+<textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives: ${lesson.learningTargets}</textarea>
+<textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: ${lesson.desc}" </textarea>
+<textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: ${lesson.assessment}</textarea>
+<textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: ${lesson.homework}</textarea>
+<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: ${lesson.notes}</textarea>
+<textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: ${lesson.reflection}</textarea>
+<input type="hidden" id="lesson-det-id value="${lesson._id}">
+<button type="button" class="update" id="les-det-update">Update</button>
+<button type="button" class="delete" id="les-det-delete" class="delete">Delete</button>
+<button class="to-dashboard">Back to dashboard</button>
+</form>
+</fieldset>`);
+};
 
 function displayLanding() {
     $(".landing-nav").show();
@@ -257,7 +324,7 @@ $(document).on("submit", "#create-account-form", function (event) {
         ``
         .done(function (result) {
                 console.log(result);
-                $("#loggedInUser").val(result.id);
+                $("#loggedInUser").val(result._id);
                 //                getLessons();
                 displayDashboard();
             })
@@ -300,7 +367,10 @@ $(document).on("submit", "#log-in", function (event) {
                 userLoggedIn = true;
                 $("#log-in-link").hide();
                 $("#loggedInUser").val(result._id);
-                //                        getEntries();
+                getSubjects();
+                getUnits();
+                getLessons();
+
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
@@ -365,6 +435,7 @@ $(document).on('click', '.delete', function (event) {
 $(document).on("click", ".detail", function (event) {
     event.preventDefault();
     $(".dashboard").hide();
+    const lesson_id = $(this).siblings("input[type='hidden']").val();
     $(".lesson-detail").show();
 });
 
