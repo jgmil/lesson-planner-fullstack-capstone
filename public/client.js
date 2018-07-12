@@ -4,70 +4,6 @@ let userLoggedIn = false;
 //functions, variables and object definitions
 
 
-
-//
-//    $(".journal-entries").html("<h3>My journal</h3>");
-//    for (let i = 0; i < entryData.entryOutput.length; i++) {
-//        let d = new Date(entryData.entryOutput[i].date);
-//        let displayDate = d.toDateString();
-//        $(".journal-entries").append(`
-//<section class="entry" role="region">
-//<p>Date: ${displayDate}</p>
-//<p>My intention: ${entryData.entryOutput[i].intention}</p>
-//<p>My mood was: ${entryData.entryOutput[i].mood}</p>
-//<p>Type of meditation: ${entryData.entryOutput[i].medType}</p>
-//<p>Length of meditation: ${entryData.entryOutput[i].medLength}</p>
-//<p>After meditating, I felt: ${entryData.entryOutput[i].feeling}</p>
-//<p>Notes: ${entryData.entryOutput[i].notes}</p>
-//<p>Reflection: ${entryData.entryOutput[i].reflection}</p>
-//<p>Gratitude: ${entryData.entryOutput[i].gratitude}</p>
-//<button class="update">Update</button>
-//<button class="delete">Delete</button>
-//<input type="hidden" id="entryId" value="${entryData.entryOutput[i]._id}">
-//</section>
-//`)
-//    };
-//};
-
-//function displayLessonDetail(lessons) {
-//    $(".lesson-detail").html(`<fieldset>
-//<legend>
-//<h3>Lesson Detail</h3>
-//</legend>
-//<form>
-//<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
-//<select id="class-name-les-det" name="class-name" aria-label="class-name">
-//<optgroup label="Select a class">
-//<option value="class1">Subject 1, Term 1</option>
-//<option value="class2" selected>Subject 2, Term 2</option>
-//<option value="class3">Subject 3, Term 3</option>
-//</optgroup>
-//</select>
-//<select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
-//<optgroup label="Select a unit">
-//<option value="class1">Unit 1</option>
-//<option value="class2">Unit 2</option>
-//<option value="class3" selected>Unit 3</option>
-//</optgroup>
-//</select>
-//<input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
-//<textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
-//<textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
-//<textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
-//<textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-//<textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-//<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-//<textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-//<button type="submit" id="les-det-update">Update</button>
-//<button type="submit" id="les-det-delete">Delete</button>
-//</form>
-//</fieldset>`);
-//    $(".lesson-detail").show();
-//
-//};
-
-/* this function will get data for a specific user using different endpoints: subjects, units, lessons */
-
 function getSubjects() {
     let user_id = $("#loggedInUser").val();
     let result = $.ajax({
@@ -80,6 +16,8 @@ function getSubjects() {
             if (result.subjectOutput.length > 0) {
                 console.log(result);
                 generateSubject(result);
+                subjectShortcuts(result);
+                subjectOptGroups(result);
             } else {
                 alert `No subjects found, please create one.`
             };
@@ -96,6 +34,7 @@ function getSubjects() {
 
 function getUnits(subjectId) {
     let user_id = $("#loggedInUser").val();
+    console.log(user_id);
     let result = $.ajax({
             url: `/units/` + user_id,
             dataType: "json",
@@ -103,15 +42,16 @@ function getUnits(subjectId) {
         })
         /* if the call is successful (status 200 OK) show results */
         .done(function (result) {
-            const results = result.unitOutput;
-            if (results.length > 0) {
+            if (result.unitOutput.length > 0) {
                 console.log(result);
                 unitShortcuts(subjectId, result);
+                generateUnit(result);
                 //need to map over the generate functions
             } else {
                 alert `No units found, please create one.`
+                console.log(result);
             };
-            return (results);
+            return (result);
         })
 
         /* if the call is NOT successful show errors */
@@ -124,7 +64,7 @@ function getUnits(subjectId) {
 
 function getLessons() {
     const user_id = $("#loggedInUser").val();
-    console.log(`user_id: $ {user_id}`);
+    console.log(`user_id: ${user_id}`);
     const result = $.ajax({
             url: `/lessons/` + user_id,
             dataType: "json",
@@ -162,35 +102,79 @@ function displayDashboard() {
     $(".lesson-detail").hide();
 };
 
+function subjectOptGroups(subjects) {
+    //use this space to populate subject dropdown menus
+    var buildTheHtmlOutput = "";
+
+    buildTheHtmlOutput += `<optgroup label="Subject">`;
+
+    $.each(subjects.subjectOutput, function (subjectsKey, subjectsValue) {
+        //create and populate one option for each of the results
+        buildTheHtmlOutput += `<option value="${subjectsValue._id}">${subjectsValue.subjectName}</option>`;
+    });
+    buildTheHtmlOutput += `</optgroup>`;
+    //use the HTML output to show it in the index.html
+    $(".subject-select").html(buildTheHtmlOutput);
+}
+
+function unitOptGroups(units) {
+    //use this to populate unit dropdown menus
+}
+
+function subjectShortcuts(subjects) {
+    console.log("subject shortcuts");
+}
+
 function generateSubject(subjects) {
     //create an empty variable to store one LI for each one the results
     var buildTheHtmlOutput = "";
 
     $.each(subjects.subjectOutput, function (subjectsKey, subjectsValue) {
         //create and populate one div for each of the results
-        buildTheHtmlOutput += `<div class="subject-container clearfix">`;
-        buildTheHtmlOutput += `<form>`;
-        buildTheHtmlOutput += `<input class="subject-title" type="text" aria-label="subject-title" name="subject-title" id="subject-title-dash-1" value="${subjectsValue.subjectName}">`;
-        buildTheHtmlOutput += `<button class="update" type="button" id="update-subject-1">Update subject</button>`;
-        buildTheHtmlOutput += `<button class="delete" type="button" id="delete-subject-1">Delete subject</button>`;
+        buildTheHtmlOutput += `<div id="subject-${subjectsValue._id}" class="subject-container clearfix">`;
+        buildTheHtmlOutput += `<form class="inline-form" id="${subjectsValue._id}">`;
+        buildTheHtmlOutput += `<input class="subject-title" type="text" aria-label="subject-title" name="subject-title" value="${subjectsValue.subjectName}">`;
+        buildTheHtmlOutput += `<button class="update" type="button">Update subject</button>`;
+        buildTheHtmlOutput += `</form>`;
+        buildTheHtmlOutput += `<form class="delete-form inline-form clearfix">`
+        buildTheHtmlOutput += `<input type="hidden" class="deleteSubject" value="${subjectsValue._id}">`;
+        buildTheHtmlOutput += `<button class="delete-subject" type="submit">Delete subject</button>`;
         buildTheHtmlOutput += `</form>`;
         buildTheHtmlOutput += `<span class="float-right">`;
         buildTheHtmlOutput += `<p>Jump to: </p>`;
         buildTheHtmlOutput += `<span id="shortcuts-${subjectsValue._id}">`;
         buildTheHtmlOutput += `<a class="unit-shortcut" href="#unit-${subjectsValue._id}">Unit Name</a>`;
         buildTheHtmlOutput += `</span>`;
-        buildTheHtmlOutput += `<button type="button" id="create-unit-1">Add a unit</button>`;
+        buildTheHtmlOutput += `<button type="button">Add a unit</button>`;
         buildTheHtmlOutput += `<input type="hidden" class="subject_id" value="${subjectsValue._id}">`;
         buildTheHtmlOutput += `<div class="unit-create-cont"></div>`;
         buildTheHtmlOutput += `</span>`;
         buildTheHtmlOutput += `</div>`;
         buildTheHtmlOutput += `<div class="unit-container" id="units-${subjectsValue._id}"></div>`;
-        getUnits(subjectsValue._id);
+        getUnits(subjects.subjectOutput._id);
     });
 
     //use the HTML output to show it in the index.html
     $(".dashboard").html(buildTheHtmlOutput);
+
+
 };
+
+function subjectShortcuts(subjectData) {
+    //create an empty variable to store one <a> for each one the results
+    console.log(subjectData);
+    var buildTheHtmlOutput = "";
+
+    $.each(subjectData.subjectOutput, function (subjectDataKey, subjectDataValue) {
+        //create and populate one div for each of the results
+        buildTheHtmlOutput += `<a class="subject-shortcut" href="#subject-${subjectDataValue._id}">${subjectDataValue.subjectName}</a>`;
+
+    });
+
+    //use the HTML output to show it in the index.html
+    $(`#subject-shortcuts`).html(buildTheHtmlOutput);
+};
+
 
 function unitShortcuts(subjectsId, unitData) {
     //create an empty variable to store one LI for each one the results
@@ -368,7 +352,6 @@ $(document).on("submit", "#log-in", function (event) {
                 $("#log-in-link").hide();
                 $("#loggedInUser").val(result._id);
                 getSubjects();
-                getUnits();
                 getLessons();
 
             })
@@ -558,7 +541,7 @@ $(document).on("submit", "#new-lesson", function (event) {
 
 
 $(document).on("click", ".create-subject-nav", function (event) {
-    $(".create").html(`<fieldset>
+    $(".create").html(`<fields  et>
 <legend>
 <h3>Create a new subject</h3>
 </legend>
@@ -578,22 +561,21 @@ $(document).on("click", ".create-unit-nav", function (event) {
 </legend>
 <form id="new-unit">
 <input type="text" aria-label="unit-title" name="unit-title" id="unit-title" placeholder="Unit title">
-<select id="new-unit-subject-name" name="subject-name" aria-label="subject-name">
-<optgroup label="Subject">
-<option value="subject1">Subject 1, Term 1</option>
-<option value="subject2">Subject 2, Term 2</option>
-<option value="subject3">Subject 3, Term 3</option>
-</optgroup>
+<select class="subject-select" name="subject-name" aria-label="subject-name">
+
 </select>
 <textarea name="unit-desc" placeholder="Description" aria-label="unit-description"></textarea>
 <button type="submit" id="new-unit-submit">Create</button>
 <button type="button" class="cancel-button" id="new-unit-cancel">Cancel</button>
 </form>
 </fieldset>`);
+    getSubjects();
     $(".create").show();
 });
 
 $(document).on("click", ".create-lesson-nav", function (event) {
+    const subjectResults = getSubjects();
+    console.log(subjectResults);
     $(".create").html(`<fieldset>
 <legend>
 <h3>Create a new lesson</h3>

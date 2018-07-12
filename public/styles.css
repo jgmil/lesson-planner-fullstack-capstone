@@ -227,11 +227,13 @@ select {
     border-top: 1px dashed #FF533D;
 }
 
+/*
 .subject-container > form {
     display: inline-block;
     width: 50%;
 
 }
+*/
 
 .subject-title button,
 .unit button,
@@ -243,6 +245,10 @@ select {
 .subject-title,
 .unit-title-dash {
     background: transparent;
+}
+
+.inline-form {
+    display: inline;
 }
 
 #unit-desc-dash {

@@ -15,10 +15,6 @@ const unitSchema = new mongoose.Schema({
     title: {
         type: String,
         required: false
-    },
-    desc: {
-        type: String,
-        required: false
     }
 });
 
@@ -28,10 +24,9 @@ unitSchema.methods.serialize = function () {
         user_id: this.user_id,
         class_id: this.class_id,
         title: this.title,
-        desc: this.desc
     };
 };
 
-const Unit = mongoose.model('Unit', unitSchema);
+const Unit = mongoose.model('unit', unitSchema);
 
 module.exports = Unit;
