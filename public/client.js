@@ -142,9 +142,10 @@ function generateSubject(subjects) {
     $.each(subjects.subjectOutput, function (subjectsKey, subjectsValue) {
         //create and populate one div for each of the results
         buildTheHtmlOutput += `<div id="subject-${subjectsValue._id}" class="subject-container clearfix">`;
-        buildTheHtmlOutput += `<form class="inline-form" id="${subjectsValue._id}">`;
+        buildTheHtmlOutput += `<form class="inline-form update-subject" id="${subjectsValue._id}">`;
         buildTheHtmlOutput += `<input class="subject-title" type="text" aria-label="subject-title" name="subject-title" value="${subjectsValue.subjectName}">`;
-        buildTheHtmlOutput += `<button class="update" type="button">Update subject</button>`;
+        buildTheHtmlOutput += `<input type="hidden" name="subject-id" value="${subjectsValue._id}">`;
+        buildTheHtmlOutput += `<input name="update-subject-button" type="submit" value="Update subject">`;
         buildTheHtmlOutput += `</form>`;
         buildTheHtmlOutput += `<form class="delete-form inline-form clearfix">`
         buildTheHtmlOutput += `<input type="hidden" class="deleteSubject" value="${subjectsValue._id}">`;
@@ -202,9 +203,9 @@ function generateUnit(units) {
         //create and populate one div for each of the results
         var buildTheHtmlOutput = "";
         buildTheHtmlOutput += `<div class="unit">`;
-        buildTheHtmlOutput += `<form class="clearfix" id="unit-${unitsValue._id}">`;
+        buildTheHtmlOutput += `<form class="clearfix update-unit" id="unit-${unitsValue._id}">`;
         buildTheHtmlOutput += `<input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" value="${unitsValue.title}">`;
-        buildTheHtmlOutput += `<button type="submit" class="update">Update unit</button>`;
+        buildTheHtmlOutput += `<input type="submit" class="update-unit-button" value="Update unit">`;
         buildTheHtmlOutput += `<div id="lesson-container-${unitsValue._id}" class="clearfix"></div>`;
         $(`#units-${unitsValue.class_id}`).append(buildTheHtmlOutput);
     });
@@ -219,13 +220,13 @@ function generateLessonShort(lessons) {
         console.log("generateLessonShort");
         var buildTheHtmlOutput = "";
         //create and populate one div for each of the results
-        buildTheHtmlOutput += `<div class="lesson-short">`;
-        buildTheHtmlOutput += `<form class="clearfix" id="lesson-${lessonsValue._id}">`;
+        buildTheHtmlOutput += `<div class="lesson-short clearfix">`;
         buildTheHtmlOutput += `<p>${lessonsValue.title}</p>`;
-        buildTheHtmlOutput += `<p>${lessonsValue.desc}</p>`;
+        buildTheHtmlOutput += `<p>${lessonsValue.learningTargets}</p>`;
         buildTheHtmlOutput += `<p>${lessonsValue.homework}</p>`;
-        buildTheHtmlOutput += `<button type="submit" class="update">Update lesson</button>`;
-        buildTheHtmlOutput += `<button class="details">Details</button>`;
+        buildTheHtmlOutput += `<form class="clearfix" id="lesson-short-form">`;
+        buildTheHtmlOutput += `<input type="hidden" name="lesson-id" value='${lessonsValue._id}'>`;
+        buildTheHtmlOutput += `<input type="submit" value="Details" class="detail float-right">`;
         buildTheHtmlOutput += `</form>`;
         buildTheHtmlOutput += `</div>`;
         $(`#lesson-container-${lessonsValue.unit_id}`).append(buildTheHtmlOutput);
@@ -239,40 +240,47 @@ function generateLessonShort(lessons) {
 
 };
 
-function genereateLessonDetail(lesson) {
-    $(".lesson-detail").html(`<fieldset>
+function genereateLessonDetail(lessonId) {
+    event.preventDefault();
+    let result = $.ajax({
+            url: "/lesson/" + lessonId,
+            dataType: "json",
+            type: "GET"
+        })
+        /* if the call is successful (status 200 OK) show results */
+        .done(function (result) {
+            if (result.length === 0) {
+                alert("Couldn't find entry. Please try again.");
+            } else {
+                console.log(result);
+                $(".lesson-detail").html(`<fieldset>
 <legend>
 <h3>Lesson Detail</h3>
 </legend>
 <form>
-<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="${lesson.title}">
-<select id="subject-name-les-det" name="subject-name" aria-label="subject-name">
-<optgroup label="Subject">
-<option value="subject1">Class 1, Term 1</option>
-<option value="subject2" selected>Class 2, Term 2</option>
-<option value="subject3">Class 3, Term 3</option>
-</optgroup>
-</select>
-<select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
-<optgroup label="Unit">
-<option value="subject1">Unit 1</option>
-<option value="subject2">Unit 2</option>
-<option value="subject3" selected>Unit 3</option>
-</optgroup>
-</select>
-<textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: ${lesson.stnds} </textarea>
-<textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives: ${lesson.learningTargets}</textarea>
-<textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: ${lesson.desc}" </textarea>
-<textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: ${lesson.assessment}</textarea>
-<textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: ${lesson.homework}</textarea>
-<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: ${lesson.notes}</textarea>
-<textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: ${lesson.reflection}</textarea>
-<input type="hidden" id="lesson-det-id value="${lesson._id}">
-<button type="button" class="update" id="les-det-update">Update</button>
+<input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="${result.title}">
+<textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: ${result.stnds} </textarea>
+<textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives: ${result.learningTargets}</textarea>
+<textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: ${result.lessonDetails} </textarea>
+<textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: ${result.assessment}</textarea>
+<textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: ${result.homework}</textarea>
+<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: ${result.notes}</textarea>
+<textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: ${result.reflection}</textarea>
+<input type="hidden" id="lesson-det-id value="${result._id}">
+<button type="button" class="update-lesson">Update</button>
 <button type="button" class="delete" id="les-det-delete" class="delete">Delete</button>
 <button class="to-dashboard">Back to dashboard</button>
 </form>
 </fieldset>`);
+            };
+        })
+        /* if the call is NOT successful show errors */
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+
 };
 
 function displayLanding() {
@@ -377,8 +385,89 @@ $(document).on("submit", "#log-in", function (event) {
     }
 });
 
+$(document).on('click', '.update-subject-button', function (event) {
+    event.preventDefault();
+    console.log("update subject hit");
+    //    let subject_id = $(this).siblings("input[type='hidden']").val();
+    //    let result = $.ajax({
+    //            url: "/subject/" + subject_id,
+    //            dataType: "json",
+    //            type: "GET"
+    //        })
+    //        /* if the call is successful (status 200 OK) show results */
+    //        .done(function (result) {
+    //            if (result.length === 0) {
+    //                alert("Couldn't find entry. Please try again.");
+    //            } else {
+    //                displayDashboard(result);
+    //            };
+    //        })
+    //        /* if the call is NOT successful show errors */
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+});
 
-$(document).on('click', '.update', function (event) {
+$(document).on("submit", ".update-subject", function (event) {
+    event.preventDefault();
+    console.log("update subject submit");
+    const subjectName = $(this).siblings(".subject-title").val();
+    console.log(subjectName);
+    let subject_id = $(this).siblings("input[type='hidden']").val();
+    console.log(subject_id);
+    const updateSubjectObject = {
+        subjectName: subjectName,
+    };
+    console.log(updateSubjectObject);
+    $.ajax({
+            type: 'PUT',
+            url: '/subject/' + subject_id,
+            dataType: 'json',
+            data: JSON.stringify(updateSubjectObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+            console.log("subject updated");
+            getSubjects();
+            displayDashboard();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+
+$(document).on('click', '.update-unit', function (event) {
+    event.preventDefault();
+    console.log("update hit");
+    //    let entry_id = $(this).siblings("input[type='hidden']").val();
+    //    let result = $.ajax({
+    //            url: "/entry/" + entry_id,
+    //            dataType: "json",
+    //            type: "GET"
+    //        })
+    //        /* if the call is successful (status 200 OK) show results */
+    //        .done(function (result) {
+    //            if (result.length === 0) {
+    //                alert("Couldn't find entry. Please try again.");
+    //            } else {
+    //                displayDashboard(result);
+    //            };
+    //        })
+    //        /* if the call is NOT successful show errors */
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        });
+});
+
+$(document).on('click', '.update-lesson', function (event) {
     event.preventDefault();
     console.log("update hit");
     //    let entry_id = $(this).siblings("input[type='hidden']").val();
@@ -431,7 +520,10 @@ $(document).on('click', '.delete', function (event) {
 $(document).on("click", ".detail", function (event) {
     event.preventDefault();
     $(".dashboard").hide();
+    $(".subject-shortcuts").hide();
     const lesson_id = $(this).siblings("input[type='hidden']").val();
+    console.log(lesson_id);
+    genereateLessonDetail(lesson_id);
     $(".lesson-detail").show();
 });
 
@@ -473,6 +565,8 @@ $(document).on("submit", "#new-subject", function (event) {
             console.log(errorThrown);
         });
 });
+
+
 
 $(document).on("submit", "#new-unit", function (event) {
     event.preventDefault();
@@ -550,7 +644,27 @@ $(document).on("submit", "#new-lesson", function (event) {
         });
 });
 
-
+//$(document).on("submit", "#lesson-short-form", function (event) {
+//    event.preventDefault();
+//    console.log("lesson details");
+//    const lesson_id = $(".lesson-id").val();
+//    console.log(lesson_id);
+//    $.ajax({
+//            type: 'GET',
+//            url: `/lesson/:${lesson_id}`,
+//            dataType: 'json',
+//            data: JSON.stringify(lessonObject),
+//            contentType: 'application/json'
+//        })
+//        .done(function (result) {
+//            displayDashboard();
+//        })
+//        .fail(function (jqXHR, error, errorThrown) {
+//            console.log(jqXHR);
+//            console.log(error);
+//            console.log(errorThrown);
+//        });
+//});
 
 $(document).on("click", ".create-subject-nav", function (event) {
     $(".create").html(`<fields  et>
