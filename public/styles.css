@@ -93,6 +93,7 @@ header {
 
 nav {
     display: inline-block;
+    text-align: right;
 }
 
 img {
