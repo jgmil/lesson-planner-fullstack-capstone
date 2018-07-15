@@ -153,7 +153,7 @@ function generateSubject(subjects) {
         buildTheHtmlOutput += `</form>`;
         buildTheHtmlOutput += `<span class="float-right">`;
         buildTheHtmlOutput += `<p>Jump to: </p>`;
-        buildTheHtmlOutput += `<span id="shortcuts-${subjectsValue._id}">`;
+        buildTheHtmlOutput += `<span class="unit-shortcuts" id="shortcuts-${subjectsValue._id}">`;
         buildTheHtmlOutput += `</span>`;
         buildTheHtmlOutput += `<div class="unit-create-cont"></div>`;
         buildTheHtmlOutput += `</span>`;
@@ -187,7 +187,7 @@ function unitShortcuts(unitData) {
     //create an empty variable to store one LI for each one the results
     console.log("unitShortcuts");
     console.log(unitData);
-    $(`#shortcuts-${unitData.unitOutput.subject_id}`).html("");
+    $(`.unit-shortcuts`).html("");
     var buildTheHtmlOutput = "";
 
     $.each(unitData.unitOutput, function (unitDataKey, unitDataValue) {
@@ -198,23 +198,24 @@ function unitShortcuts(unitData) {
 };
 
 function generateUnit(units) {
-
+    $(`.unit-container`).html("");
     $.each(units.unitOutput, function (unitsKey, unitsValue) {
         //create and populate one div for each of the results
         var buildTheHtmlOutput = "";
         buildTheHtmlOutput += `<div class="unit">`;
         buildTheHtmlOutput += `<form class="clearfix update-unit" id="unit-${unitsValue._id}">`;
         buildTheHtmlOutput += `<input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" value="${unitsValue.title}">`;
-        buildTheHtmlOutput += `<input type="submit" class="update-unit-button" value="Update unit">`;
+        buildTheHtmlOutput += `<input class="unit-id-dash" type="hidden" name="unit-id" value="${unitsValue._id}">`;
+        buildTheHtmlOutput += `<input type="submit" name="update-unit-submit" value="Update unit">`;
         buildTheHtmlOutput += `<div id="lesson-container-${unitsValue._id}" class="clearfix"></div>`;
         $(`#units-${unitsValue.class_id}`).append(buildTheHtmlOutput);
     });
 
     //use the HTML output to show it in the index.html
-
 }
 
 function generateLessonShort(lessons) {
+    $(lessons.lessonOutput.unit_id).html("");
 
     $.each(lessons.lessonOutput, function (lessonsKey, lessonsValue) {
         console.log("generateLessonShort");
@@ -226,7 +227,7 @@ function generateLessonShort(lessons) {
         buildTheHtmlOutput += `<p>${lessonsValue.homework}</p>`;
         buildTheHtmlOutput += `<form class="clearfix" id="lesson-short-form">`;
         buildTheHtmlOutput += `<input type="hidden" name="lesson-id" value='${lessonsValue._id}'>`;
-        buildTheHtmlOutput += `<input type="submit" value="Details" class="detail float-right">`;
+        buildTheHtmlOutput += `<input type="submit" value="Details" class="detail float-right"/>`;
         buildTheHtmlOutput += `</form>`;
         buildTheHtmlOutput += `</div>`;
         $(`#lesson-container-${lessonsValue.unit_id}`).append(buildTheHtmlOutput);
@@ -413,9 +414,9 @@ $(document).on('click', '.update-subject-button', function (event) {
 $(document).on("submit", ".update-subject", function (event) {
     event.preventDefault();
     console.log("update subject submit");
-    const subjectName = $(this).siblings(".subject-title").val();
+    const subjectName = $(this).children(".subject-title").val();
     console.log(subjectName);
-    let subject_id = $(this).siblings("input[type='hidden']").val();
+    let subject_id = $(this).children("input[type='hidden']").val();
     console.log(subject_id);
     const updateSubjectObject = {
         subjectName: subjectName,
@@ -442,7 +443,7 @@ $(document).on("submit", ".update-subject", function (event) {
 });
 
 
-$(document).on('click', '.update-unit', function (event) {
+$(document).on('click', '.update-unit-submit', function (event) {
     event.preventDefault();
     console.log("update hit");
     //    let entry_id = $(this).siblings("input[type='hidden']").val();
@@ -465,6 +466,35 @@ $(document).on('click', '.update-unit', function (event) {
     //            console.log(error);
     //            console.log(errorThrown);
     //        });
+});
+
+$(document).on("submit", ".update-unit", function (event) {
+    event.preventDefault();
+    console.log("update unit submit");
+    const title = $(this).children(".unit-title-dash").val();
+    let unit_id = $(this).children("input[type='hidden']").val();
+    const updateUnitObject = {
+        title: title,
+    };
+    console.log(unit_id);
+    console.log(updateUnitObject);
+    $.ajax({
+            type: 'PUT',
+            url: '/unit/' + unit_id,
+            dataType: 'json',
+            data: JSON.stringify(updateUnitObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log("unit updated");
+            getUnits();
+            displayDashboard();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 });
 
 $(document).on('click', '.update-lesson', function (event) {
@@ -673,7 +703,7 @@ $(document).on("click", ".create-subject-nav", function (event) {
 </legend>
 <form id="new-subject">
 <input type="text" aria-label="subject-name" name="subject-name" id="subject-name" value="Subject name">
-<button type="submit">Create</button>
+<button type = "submit">Create</button>
 <button type="button" class="cancel-button" id="new-subject-cancel">Cancel</button>
 </form>
 </fieldset>`);
