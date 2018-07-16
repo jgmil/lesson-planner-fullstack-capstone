@@ -30,7 +30,7 @@
                 <a href="#more-info" id="info-link">More info</a>
             </div>
             <div class="dashboard-nav">
-                <button class="create-subject-nav">Add a class</button>
+                <button class="create-subject-nav">Add a subject</button>
                 <button class="create-unit-nav">Add a unit</button>
                 <button class="create-lesson-nav">Add a lesson</button>
                 <button id="log-out-link">Log out</button><br>
@@ -56,7 +56,7 @@
                 <section role="region" class="landing-row">
                     <div class="landing-left" id="more-info">
                         <img src="http://via.placeholder.com/300?text=Placeholder.com+rocks!">
-                        <p>Lesson Planner allows you to quickly create lesson plans organized into units. Your dashboard allows immediate access to your unit plans. You can also easily view and print detailed lesson plans.</p>
+                        <p>Lesson Planner allows you to quickly create lesson plans organized into units. Your dashboard allows immediate access to your unit plans. You can easily view and print detailed lesson plans.</p>
                     </div>
                     <div class="landing-right">
                         <form id="log-in">
@@ -94,257 +94,45 @@
         </div>
 
         <section class="create"></section>
-        <section role="region" class="dashboard">
 
-
-            <!--        Subject 1-->
-            <div class="subject-container clearfix">
-                <form>
-                    <input class="subject-title" type="text" aria-label="subject-title" name="subject-title" id="subject-title-dash-1" value="Class 1">
-                    <button class="update" type="button" id="update-subject-1">Update subject</button>
-                    <button class="delete" type="button" id="delete-subject-1">Delete subject</button>
-                </form>
-                <span class="float-right">
-                    <p>Jump to: </p>
-                    <a class="unit-shortcut" href="#unit-title-dash-1-1">Unit 1</a>
-                    <a class="unit-shortcut" href="#unit-title-dash-1-2">Unit 2</a>
-                    <a class="unit-shortcut" href="#unit-title-dash-1-3">Unit 3</a>
-                    <button type="button" id="create-unit-1">Add a unit</button>
-                    <input type="hidden" class="subject_id" value="">
-                    <div class="unit-create-cont"></div>
-                </span>
-            </div>
-
-            <!--            Unit 1 in Class 1-->
-
-            <div class="unit">
-                <form class="clearfix">
-                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-1-1" value="Unit title">
-                    <select id="subject-name-1-1" name="subject-name" aria-label="subject-name">
-                                <optgroup label="Class">
-                                    <option value="subject1">Class 1</option>
-                                    <option value="subject2">Class 2</option>
-                                    <option value="subject3">Class 3</option>
-                                </optgroup>
-                            </select>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-1-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
-                    <button type="submit" class="update" id="update-unit-1-1">Update unit</button>
-                    <button type="button" id="delete-unit-1-1" class="delete">Delete unit</button>
-                    <input type="hidden" class="unit_id" value="">
-                </form>
-                <div class="create-unit-cont"></div>
-                <div class="lesson-container clearfix">
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson1-1-1">Details</button>
-                        <input type="hidden" class="lesson_id" value="">
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson1-1-2">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
-                        <p>Homework: page 876 #10-42 evens. </p>
-                        <button class="detail" id="lesson1-1-3">Details</button>
-                    </div>
-                    <div class="lesson-short lesson-end">
-                        <button type="button" class="create-lesson">Add a lesson</button>
-                    </div>
-                    <section class="lesson-create-cont"></section>
-                </div>
-            </div>
-            <!--            Class 1, Unit 2-->
-            <div class="unit">
-                <form class="clearfix">
-                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-1-2" value="Unit title">
-                    <select id="subject-name-1-2" name="subject-name" aria-label="subject-name">
-                        <optgroup label="Class">
-                            <option value="subject1">Class 1</option>
-                            <option value="subject2">Class 2</option>
-                            <option value="subject3">Class 3</option>
-                        </optgroup>
-                    </select>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-1-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
-                    <button class="update" type="button" id="update-unit-1-2">Update unit</button>
-                    <button class="delete" type="button" id="delete-unit-1-2">Delete unit</button>
-                </form>
-                <div class="lesson-container clearfix">
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-1-2-1">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-1-2-2">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
-                        <p>Homework: page 876 #10-42 evens. </p>
-                        <button class="detail" id="lesson-1-2-3">Details</button>
-                    </div>
-                    <div class="lesson-short lesson-end">
-                        <button type="button" class="create-lesson">Add a lesson</button>
-                    </div>
-                </div>
-            </div>
-
-            <!--Class 2-->
-            <div class="subject-container clearfix">
-                <form>
-                    <input class="subject-title" type="text" aria-label="subject-title" name="subject-title" id="subject-title-dash-2" value="Class 2">
-                    <button class="update" type="button" id="update-subject-2">Update subject</button>
-                    <button class="delete" type="button" id="delete-subject-2">Delete subject</button>
-                </form>
-                <span class="float-right">
-                    <label for="unit-shortcut-2-1"> Jump to: </label>
-                    <select id="unit-shortcut-2-1" name="unit-name" aria-label="unit-name">
-                        <optgroup label="Select a unit">
-                            <option value="unit1">Unit 1</option>
-                            <option value="unit2">Unit 2</option>
-                            <option value="unit3">Unit 3</option>
-                        </optgroup>
-                    </select> &nbsp;
-                    <button type="button" class="create-unit">Add a unit</button>
-                </span>
-            </div>
-
-            <!--Class 2, Unit 1-->
-            <div class="unit">
-                <form class="clearfix">
-                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-2-1" value="Unit title">
-                    <select id="subject-name-2-1" name="subject-name" aria-label="subject-name">
-                        <optgroup label="Class">
-                            <option value="subject1">Class 1</option>
-                            <option value="subject2">Class 2</option>
-                            <option value="subject3">Class 3</option>
-                        </optgroup>
-                    </select>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-2-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
-                    <button class="update" type="submit" id="update-unit-2-1">Update unit</button>
-                    <button class="delete" type="button" id="delete-unit-2-1">Delete unit</button>
-                </form>
-                <div class="lesson-container clearfix">
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-2-1-1">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-2-1-2">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
-                        <p>Homework: page 876 #10-42 evens. </p>
-                        <button class="detail" id="lesson-2-1-3">Details</button>
-                    </div>
-                    <div class="lesson-short lesson-end">
-                        <button type="button" class="create-lesson">Add a lesson</button>
-                    </div>
-                </div>
-            </div>
-            <!--            Class 2, Unit 2-->
-            <div class="unit">
-                <form class="clearfix">
-                    <input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" id="unit-title-dash-2-2" value="Unit title">
-                    <select id="subject-name-2-2" name="subject-name" aria-label="subject-name">
-                        <optgroup label="Class">
-                            <option value="subject1">Class 1</option>
-                            <option value="subject2">Class 2</option>
-                            <option value="subject3">Class 3</option>
-                        </optgroup>
-                    </select>
-                    <textarea name="unit-desc" aria-label="unit-description" id="unit-desc-dash-2-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</textarea>
-                    <button type="button" id="update-unit-2-2">Update unit</button>
-                    <button class="delete" type="button" id="delete-unit-2-2">Delete unit</button>
-                </form>
-                <div class="lesson-container clearfix">
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-2-2-1">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-2-2-2">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-2-2-3">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: lesson description goes here</p>
-                        <p>Homework</p>
-                        <button class="detail" id="lesson-2-2-4">Details</button>
-                    </div>
-                    <div class="lesson-short">
-                        <p>Lesson title</p>
-                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
-                        <p>Homework: page 876 #10-42 evens. </p>
-                        <button class="detail" id="lesson-2-2-3">Details</button>
-                    </div>
-                    <div class="lesson-short lesson-end">
-                        <button type="button" class="create-lesson">Add a lesson</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section role="region" class="dashboard"></section>
 
         <section class="lesson-detail" role="region">
-            <fieldset>
-                <legend>
-                    <h3>Lesson Detail</h3>
-                </legend>
-                <form>
-                    <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
-                    <select id="subject-name-les-det" name="subject-name" aria-label="subject-name">
+<!--
+<fieldset>
+    <legend>
+        <h3>Lesson Detail</h3>
+    </legend>
+    <form>
+        <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="Lesson title">
+        <select id="subject-name-les-det" name="subject-name" aria-label="subject-name">
                         <optgroup label="Select a subject">
                             <option value="subject1">Class 1, Term 1</option>
                             <option value="subject2" selected>Class 2, Term 2</option>
                             <option value="subject3">Class 3, Term 3</option>
                         </optgroup>
                     </select>
-                    <select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
+        <select id="unit-name-les-det" name="unit-name" aria-label="unit-name">
                         <optgroup label="Select a unit">
                             <option value="subject1">Unit 1</option>
                             <option value="subject2">Unit 2</option>
                             <option value="subject3" selected>Unit 3</option>
                         </optgroup>
                     </select>
-                    <input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
-                    <textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
-                    <textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
-                    <textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
-                    <textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                    <textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                    <textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                    <textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                    <button type="submit" id="les-det-update">Update</button>
-                    <button type="submit" id="les-det-delete" class="delete">Delete</button>
-                    <button class="to-dashboard">Back to dashboard</button>
-                </form>
-            </fieldset>
+        <input type="text" name="lesson-desc" aria-label="lesson description" id="lesson-det-desc" value="Lesson Description: goes here">
+        <textarea name="standards" aria-label="standards" id="lesson-det-stnds">Standards: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </textarea>
+        <textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">Learning Targets/Objectives:I can have a learning target here. I can also put a second one.</textarea>
+        <textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </textarea>
+        <textarea name="assessment" id="les-det-assessment" aria-label="assessment">Assessment: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+        <textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">Homework: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+        <textarea name="notes" id="les-det-notes" aria-label="notes">Notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+        <textarea name="reflection" id="les-det-reflections" aria-label="reflection">Reflection: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+        <button type="submit" id="les-det-update">Update</button>
+        <button type="submit" id="les-det-delete" class="delete">Delete</button>
+        <button class="to-dashboard">Back to dashboard</button>
+    </form>
+</fieldset>
+-->
         </section>
     </main>
 

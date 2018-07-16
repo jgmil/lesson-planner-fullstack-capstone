@@ -19,6 +19,10 @@ const lessonSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    date: {
+        type: Date,
+        required: false
+    },
     stnds: {
         type: String,
         required: false

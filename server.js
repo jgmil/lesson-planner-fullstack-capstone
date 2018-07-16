@@ -390,6 +390,7 @@ app.post('/lesson/create', (req, res) => {
         title,
         subject_id,
         unit_id,
+        date,
         stnds,
         learningTargets,
         lessonDetails,
@@ -405,6 +406,7 @@ app.post('/lesson/create', (req, res) => {
         title,
         subject_id,
         unit_id,
+        date,
         stnds,
         learningTargets,
         lessonDetails,
@@ -428,7 +430,7 @@ app.post('/lesson/create', (req, res) => {
 // PUT --------------------------------------
 app.put('/lesson/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['title', 'desc', 'stnds', 'learningTargets', 'lessonDetails', 'assessment', 'homework', 'notes', 'reflection'];
+    let updateableFields = ['title', 'desc', 'date', 'stnds', 'learningTargets', 'lessonDetails', 'assessment', 'homework', 'notes', 'reflection'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
@@ -451,7 +453,7 @@ app.put('/lesson/:id', function (req, res) {
 app.get('/lessons/:user_id', function (req, res) {
     Lesson
         .find()
-        .sort('title')
+        .sort('date')
         .then(function (lessons) {
             let lessonOutput = [];
             lessons.map(function (lesson) {

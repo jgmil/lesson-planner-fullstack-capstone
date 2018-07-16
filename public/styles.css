@@ -65,7 +65,7 @@ h1,
 h2,
 h3,
 h4,
-.-title,
+.subject-title,
 .unit-title-dash {
     font-family: 'Shadows Into Light Two', cursive;
 }
@@ -120,7 +120,9 @@ Content styles (Main Module)
 button,
 input,
 textarea,
-select {
+select,
+input[type="date"],
+.to-dashboard {
     padding: 5px 10px;
     border: 1px solid #0F1626;
     color: #0F1626;
@@ -130,7 +132,8 @@ select {
     background-color: white;
 }
 
-button {
+button,
+input[type="submit"] {
     cursor: pointer
 }
 
@@ -163,6 +166,11 @@ a {
 input,
 textarea {
     width: 100%;
+}
+
+input[type="submit"],
+input[type="date"] {
+    width: auto;
 }
 
 .landing-row {
@@ -239,7 +247,8 @@ select {
 .subject-title button,
 .unit button,
 .subject-title select,
-    {
+input[type="submit"],
+.to-dashboard {
     font-size: 14px;
 }
 
@@ -310,18 +319,23 @@ select {
 }
 
 .create textarea,
-.lesson-detail textarea {
+.lesson-detail textarea,
+.lesson-detail label {
     vertical-align: top;
     width: 49.5%;
     font-size: 14px;
     height: 78px
 }
 
-.cancel-button {
+.cancel-button,
+.to-dashboard {
     font-size: 12px;
-    float: right;
     margin-right: 5px;
     border: none;
+}
+
+.cancel-button {
+    float: right;
 }
 
 
@@ -334,6 +348,7 @@ footer {
     color: #F5F5F5;
     background-color: #0F1626;
     padding: 10px;
+    margin-top: 75px;
 }
 
 footer a {
