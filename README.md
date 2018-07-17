@@ -3,17 +3,7 @@
 This Lesson Planner allows users to plan units and lessons using a simple interface.
 
 ## Screenshots
-![Landing page screen shot](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/tpm-landing.png?raw=true)
 
-![Account setup screen shot](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/tpm-create-account.png?raw=true)
-
-![User homepage screen shot](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/tpm-dashboard.png?raw=true)
-
-![Journal entry screen shot](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/tpm-journal-entry.png?raw=true)
-
-![Update entry screen shot](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/tpm-dashboard.png?raw=true)
-
-![More info screen shot](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/tpm-info.png?raw=true)
 
 ## Use Case
 The Lesson Planner is for educators interested in creating cohesive unit and lesson plans. The Lesson Planner allows teachers to create subjects, units, and detailed lessons.
@@ -22,7 +12,7 @@ The Lesson Planner is for educators interested in creating cohesive unit and les
 
 ### User Flow Diagram
 
-![User Flow Diagram Handwritten draft](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/IMG_20180425_165402.jpg?raw=true)
+![User Flow Diagram Handwritten draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/user-flow.jpg?raw=true)
 
 ### User Stories
 
@@ -30,13 +20,13 @@ The Lesson Planner is for educators interested in creating cohesive unit and les
 
 * As an initial visitor, I want to land on the web page and see what it is about so I can decide whether I want to create an account.
 
-![Wireframe design draft](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/IMG_20180425_163423.jpg?raw=true)
-
-![Wireframe design draft](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/IMG_20180425_163427.jpg?raw=true)
+![Wireframe design draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/landing-page.png?raw=true)
 
 #### As a logged in user:
 
 * As a user, I should be able to view my classes, units and lesson plans.
+
+https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/user-dashboard.png?raw=true
 
 * As a user, I should be able to create a new class, unit and lesson plan.
 
@@ -45,8 +35,15 @@ The Lesson Planner is for educators interested in creating cohesive unit and les
 * As a user, I should be able to print my lesson plans.
 
 * As a logged in user, I should be able to log out.
-![Wireframe design handwritten draft](https://github.com/jgmil/mindfulness-journal-node-capstone/blob/master/public/img/IMG_20180425_163445.jpg?raw=true)
+![Wireframe design handwritten draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/user-dashboard.png?raw=true)
 
+![Wireframe design handwritten draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/create-subject.png?raw=true)
+
+![Wireframe design handwritten draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/create-unit.png?raw=true)
+
+![Wireframe design handwritten draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/create-lesson.png?raw=true)
+
+![Wireframe design handwritten draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/lesson-details.png?raw=true)
 
 ## Working Prototype
 Find a working prototype with Node at https://jgmil-lesson-planner.herokuapp.com/.
@@ -85,22 +82,24 @@ API endpoints for the back end include:
 * POST to '/users/create' for creating a new user
 * POST to '/users/login' to log in an existing user
 
-* GET to '/class/:user' to access all of a user's existing plans
+* GET to '/subjects/:user' to access all of a user's existing subjects
+* GET to '/units/:user' to access all of a user's existing units
+* GET to '/lessons/:user' to access all of a user's existing lessons
 
-* POST to '/class/create' to add a new class
-* PUT to '/class/:id' to update an existing class
-* GET to '/class/:id' to access a single class by ID
-* DELETE to '/class/:id' to delete a single class by ID
+* POST to '/subject/create' to add a new class
+* PUT to '/subject/:id' to update an existing class
+* GET to '/subject/:id' to access a single class by ID
+* DELETE to '/subject/:id' to delete a single class by ID
 
-* POST to 'class/unit/create' to add a new unit
-* PUT to 'class/unit/:id' to update an existing unit
-* GET to 'class/unit/:id' to access a single unit by ID
-* DELETE to 'class/unit/:id' to delete a single unit by ID
+* POST to 'unit/create' to add a new unit
+* PUT to 'unit/:id' to update an existing unit
+* GET to 'unit/:id' to access a single unit by ID
+* DELETE to 'unit/:id' to delete a single unit by ID
 
-* POST to 'class/unit/lesson/create' to add a new unit
-* PUT to 'class/unit/lesson/:id' to update an existing unit
-* GET to 'class/unit/lesson/:id' to access a single unit by ID
-* DELETE to 'class/unit/lesson/:id' to delete a single unit by ID
+* POST to 'lesson/create' to add a new unit
+* PUT to 'lesson/:id' to update an existing unit
+* GET to 'lesson/:id' to access a single unit by ID
+* DELETE to 'lesson/:id' to delete a single unit by ID
 
 ## Development Roadmap
 Planned additional features and improvements will allow users to:
