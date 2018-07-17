@@ -134,7 +134,8 @@ input[type="date"],
 
 button,
 input[type="submit"] {
-    cursor: pointer
+    cursor: pointer;
+    margin-right: 3px;
 }
 
 h1 {

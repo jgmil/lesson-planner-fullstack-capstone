@@ -189,9 +189,10 @@ function unitShortcuts(unitData) {
     //create an empty variable to store one LI for each one the results
     console.log("unitShortcuts");
     console.log(unitData);
-    $(`.unit-shortcuts`).html("");
-    var buildTheHtmlOutput = "";
+    $(".unit-shortcuts").html("");
+
     $.each(unitData.unitOutput, function (unitDataKey, unitDataValue) {
+        var buildTheHtmlOutput = "";
         //create and populate one div for each of the results
         buildTheHtmlOutput += `<a class="unit-shortcut" href="#unit-${unitDataValue._id}">${unitDataValue.title}</a>`;
         $(`#shortcuts-${unitDataValue.class_id}`).append(buildTheHtmlOutput);
@@ -204,12 +205,12 @@ function generateUnit(units) {
         //create and populate one div for each of the results
         var buildTheHtmlOutput = "";
         buildTheHtmlOutput += `<div class="unit">`;
-        buildTheHtmlOutput += `<form class="clearfix inline-form update-unit" id="unit-${unitsValue._id}">`;
+        buildTheHtmlOutput += `<form class="inline-form update-unit" id="unit-${unitsValue._id}">`;
         buildTheHtmlOutput += `<input class="unit-title-dash" type="text" aria-label="unit-title" name="unit-title" value="${unitsValue.title}">`;
         buildTheHtmlOutput += `<input class="unit-id-dash" type="hidden" name="unit-id" value="${unitsValue._id}">`;
         buildTheHtmlOutput += `<input type="submit" name="update-unit-submit" value="Update unit">`;
         buildTheHtmlOutput += `</form>`;
-        buildTheHtmlOutput += `<form id="delete-unit-${unitsValue._id}" class="delete-unit inline-form clearfix">`
+        buildTheHtmlOutput += `<form id="delete-unit-${unitsValue._id}" class="delete-unit inline-form">`
         buildTheHtmlOutput += `<input type="hidden" class="delete-unit" value="${unitsValue._id}">`;
         buildTheHtmlOutput += `<input name="unit-id" aria-hidden="true" class="delete" type="submit" value="Delete unit">`;
         buildTheHtmlOutput += `<div id="lesson-container-${unitsValue._id}" class="lesson-container clearfix"></div>`;
