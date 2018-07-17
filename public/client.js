@@ -537,7 +537,6 @@ $(document).on('submit', '.delete-unit', function (event) {
             })
             .done(function (result) {
                 getUnits();
-                unitShortcuts();
                 displayDashboard();
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -674,6 +673,7 @@ $(document).on("submit", "#new-lesson", function (event) {
         title: title,
         subject_id: subject_id,
         unit_id: unit_id,
+        date: date,
         stnds: stnds,
         learningTargets: learningTargets,
         lessonDetails: lessonDetails,
