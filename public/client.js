@@ -473,7 +473,7 @@ $(document).on('submit', '#update-lesson', function (event) {
     const reflection = $(this).children('#les-det-reflections').val();
     const updateLessonObject = {
         title: title,
-        day: day,
+        day: parseInt(day),
         stnds: stnds,
         learningTargets: learningTargets,
         lessonDetails: lessonDetails,
@@ -675,7 +675,7 @@ $(document).on("submit", "#new-lesson", function (event) {
         title: title,
         subject_id: subject_id,
         unit_id: unit_id,
-        day: day,
+        day: parseInt(day),
         stnds: "Standards: " + stnds,
         learningTargets: "Learning Targets: " + learningTargets,
         lessonDetails: "Lesson Details: " + lessonDetails,
