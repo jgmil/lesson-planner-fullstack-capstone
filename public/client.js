@@ -518,7 +518,6 @@ $(document).on('submit', '.delete-subject', function (event) {
             })
             .done(function (result) {
                 getSubjects();
-                subjectShortcuts();
                 displayDashboard();
             })
             .fail(function (jqXHR, error, errorThrown) {
