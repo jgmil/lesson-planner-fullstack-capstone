@@ -379,6 +379,25 @@ app.delete('/unit/:id', function (req, res) {
     });
 });
 
+//delete many units by subject id
+
+app.delete('/units/:id', function (req, res) {
+    console.log(req.params.id);
+    Unit.deleteMany({
+        class_id: req.params.id
+    }).exec().then(function (unit) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
+
+
+
+
 // -------------LESSON ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
 // creating a new lesson
@@ -491,6 +510,21 @@ app.get('/lesson/:id', function (req, res) {
 // deleting a lesson by id
 app.delete('/lesson/:id', function (req, res) {
     Lesson.findByIdAndRemove(req.params.id).exec().then(function (lesson) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
+//delete many lessons by unit id
+
+app.delete('/lessons/:id', function (req, res) {
+    console.log(req.params.id);
+    Lesson.deleteMany({
+        unit_id: req.params.id
+    }).exec().then(function (unit) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({

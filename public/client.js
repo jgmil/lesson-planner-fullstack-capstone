@@ -309,6 +309,46 @@ function displayLanding() {
     $(".lesson-detail").hide();
 };
 
+function deleteAssociatedUnits(subjectId) {
+    console.log("going to delete!");
+    console.log(subjectId);
+    $.ajax({
+            type: 'DELETE',
+            url: '/units/' + subjectId,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            getSubjects();
+            displayDashboard();
+            deleteAssociatedLessons();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function deleteAssociatedLessons(unitId) {
+    console.log("going to delete!" + unitId);
+    $.ajax({
+            type: 'DELETE',
+            url: '/lessons/' + unitId,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            getUnits();
+            displayDashboard();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 //functions, variables and object definitions usage and triggers
 $(document).ready(function () {
     displayLanding();
@@ -518,8 +558,9 @@ $(document).on('submit', '.delete-subject', function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                getSubjects();
-                displayDashboard();
+                console.log("deleting units");
+                console.log(subject_id);
+                deleteAssociatedUnits(subject_id);
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
@@ -542,8 +583,8 @@ $(document).on('submit', '.delete-unit', function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                getUnits();
-                displayDashboard();
+                deleteAssociatedLessons(unit_id);
+
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
@@ -706,7 +747,7 @@ $(document).on("submit", "#new-lesson", function (event) {
 
 
 $(document).on("click", ".create-subject-nav", function (event) {
-    $(".create").html(`<fields  et>
+    $(".create").html(`<fieldset>
 <legend>
 <h3>Create a new subject</h3>
 </legend>

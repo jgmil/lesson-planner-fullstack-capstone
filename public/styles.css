@@ -359,6 +359,10 @@ footer a {
     padding-left: 10px;
 }
 
+footer p {
+    display: inline-block;
+}
+
 /* -------------------------------------
 place all the desktop styles above this line
 Responsive styles
@@ -398,13 +402,22 @@ place all the mobile tables styles below this line
     body,
     a,
     p,
-    button {
+    button,
+    input[type="submit"] {
         font-size: 16px;
     }
 
     header,
     footer {
         text-align: center;
+    }
+
+    footer a {
+        padding: 10px 0 5px 0;
+    }
+
+    footer p {
+        display: block;
     }
 
     a {
@@ -437,4 +450,9 @@ place all the mobile tables styles below this line
     .lesson-detail textarea {
         width: 90%;
     }
+
+    .cancel-button {
+        float: none;
+    }
+
 }
