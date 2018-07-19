@@ -337,14 +337,13 @@ $(document).on("submit", "#create-account-form", function (event) {
             password: pw
         };
         $.ajax({
-            type: 'POST',
-            url: '/users/create',
-            dataType: 'json',
-            data: JSON.stringify(newUserObject),
-            contentType: 'application/json'
-        })
-        ``
-        .done(function (result) {
+                type: 'POST',
+                url: '/users/create',
+                dataType: 'json',
+                data: JSON.stringify(newUserObject),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
                 console.log(result);
                 $("#loggedInUser").val(result._id);
                 displayDashboard();
