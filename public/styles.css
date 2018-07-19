@@ -86,7 +86,7 @@ header {
     width: 100%;
 }
 
-#log-in {
+form {
     display: inline-block;
     font-size: 14px;
 }
@@ -106,7 +106,7 @@ img {
     width: auto;
 }
 
-#home {
+header > a {
     color: #FF533D;
 }
 
@@ -230,7 +230,7 @@ select {
 .dashboard-nav p,
 .float-right p {
     display: inline-block;
-    margin-right: 5px
+    padding-right: 10px
 }
 
 .subject-container {
@@ -373,6 +373,7 @@ place all the mobile tables styles below this line
 }
 
 @media only screen and (max-width: 750px) {
+
     .landing-row > div,
     .landing-row > form {
         width: 100%;
@@ -390,6 +391,38 @@ place all the mobile tables styles below this line
 }
 
 @media only screen and (max-width: 500px) {
+    * {
+        text-align: center;
+    }
+
+    body,
+    a,
+    p,
+    button {
+        font-size: 16px;
+    }
+
+    header,
+    footer {
+        text-align: center;
+    }
+
+    a {
+        display: block;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-right: 0;
+    }
+
+    .float-right {
+        float: none;
+        text-align: center;
+    }
+
+    .float-right p {
+        padding-right: 0;
+    }
+
     .landing-row > div,
     .landing-row > form {
         width: 100%;

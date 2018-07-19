@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Free, Unit-based Lesson Planner">
+    <meta name="author" content="Julia Miller">
     <title>Lesson Planner </title>
     <!-- Responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,7 +67,7 @@
                                 <label for="username">Username</label>
                                 <input type="text" name="username" id="username" required value="username">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="passwordInput" required value="password">
+                                <input type="password" aria-label="password" name="password" id="passwordInput" required value="password">
                                 <button id="log-in-button" type="submit">Log in</button>
                             </fieldset>
                         </form>
@@ -102,7 +104,7 @@
     </main>
 
     <footer role="contentinfo">
-        Julia Miller 2018
+        <p>Julia Miller 2018</p>
         <span class="float-right">
         Contact:
         <a href="mailto:opie.julia@gmail.com"><i title="email" class="fas fa-envelope"></i></a>

@@ -346,6 +346,7 @@ $(document).on("submit", "#create-account-form", function (event) {
             .done(function (result) {
                 console.log(result);
                 $("#loggedInUser").val(result._id);
+                $(".dashboard").html("Please create a subject to get started.");
                 displayDashboard();
             })
             .fail(function (jqXHR, error, errorThrown) {
