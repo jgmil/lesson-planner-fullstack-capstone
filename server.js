@@ -199,7 +199,7 @@ app.post('/subject/create', (req, res) => {
         }
         if (item) {
             console.log(`${subjectName} added.`);
-            return res.json(item);
+            return res.status(201).json(item);
         }
     });
 });
@@ -302,7 +302,7 @@ app.post('/unit/create', (req, res) => {
         }
         if (item) {
             console.log(`${title} added.`);
-            return res.json(item);
+            return res.status(201).json(item);
         }
     });
 });
@@ -390,7 +390,7 @@ app.post('/lesson/create', (req, res) => {
         title,
         subject_id,
         unit_id,
-        date,
+        day,
         stnds,
         learningTargets,
         lessonDetails,
@@ -406,7 +406,7 @@ app.post('/lesson/create', (req, res) => {
         title,
         subject_id,
         unit_id,
-        date,
+        day,
         stnds,
         learningTargets,
         lessonDetails,
@@ -422,7 +422,7 @@ app.post('/lesson/create', (req, res) => {
         }
         if (item) {
             console.log(`Lesson \`${title}\` added.`);
-            return res.json(item);
+            return res.status(201).json(item);
         }
     });
 });
@@ -430,7 +430,7 @@ app.post('/lesson/create', (req, res) => {
 // PUT --------------------------------------
 app.put('/lesson/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['title', 'desc', 'date', 'stnds', 'learningTargets', 'lessonDetails', 'assessment', 'homework', 'notes', 'reflection'];
+    let updateableFields = ['title', 'desc', 'day', 'stnds', 'learningTargets', 'lessonDetails', 'assessment', 'homework', 'notes', 'reflection'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
@@ -453,7 +453,7 @@ app.put('/lesson/:id', function (req, res) {
 app.get('/lessons/:user_id', function (req, res) {
     Lesson
         .find()
-        .sort('date')
+        .sort('day')
         .then(function (lessons) {
             let lessonOutput = [];
             lessons.map(function (lesson) {

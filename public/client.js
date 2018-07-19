@@ -102,6 +102,7 @@ function displayDashboard() {
     $(".dashboard").show();
     $(".create").hide();
     $(".lesson-detail").hide();
+    $(".subject-shortcuts").show();
 };
 
 function subjectOptGroups(subjects) {
@@ -228,10 +229,11 @@ function generateLessonShort(lessons) {
         var buildTheHtmlOutput = "";
         //create and populate one div for each of the results
         buildTheHtmlOutput += `<div class="lesson-short clearfix">`;
-        buildTheHtmlOutput += `<p>${lessonsValue.title}</p>`;
+        buildTheHtmlOutput += `<h4>${lessonsValue.title}</h4>`;
+        buildTheHtmlOutput += `<p>Day: ${lessonsValue.day}</p>`;
         buildTheHtmlOutput += `<p>${lessonsValue.learningTargets}</p>`;
         buildTheHtmlOutput += `<p>${lessonsValue.homework}</p>`;
-        buildTheHtmlOutput += `<form class="clearfix" id="lesson-short-form">`;
+        buildTheHtmlOutput += `<form class="clearfix lesson-short-form">`;
         buildTheHtmlOutput += `<input type="hidden" name="lesson-id" value='${lessonsValue._id}'>`;
         buildTheHtmlOutput += `<input type="submit" value="Details" class="detail float-right"/>`;
         buildTheHtmlOutput += `</form>`;
@@ -265,8 +267,10 @@ function genereateLessonDetail(lessonId) {
 <legend>
 <h3>Lesson Detail</h3>
 </legend>
-<form id="update-lesson" class="inline-form clearfix>
+<form id="update-lesson" class="inline-form clearfix">
 <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="${result.title}">
+<label for="day">Day: </label>
+<input required="true" type="number" name="day" min="1" max="180" id="lesson-day" value="${result.day}">
 <textarea name="standards" aria-label="standards" id="lesson-det-stnds">${result.stnds}</textarea>
 <textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">${result.learningTargets}</textarea>
 <textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">${result.lessonDetails} </textarea>
@@ -460,15 +464,17 @@ $(document).on('submit', '#update-lesson', function (event) {
     console.log("update hit");
     const title = $(this).children("#lesson-det-title").val();
     const lesson_id = $(this).children("input[type='hidden']").val();
+    const day = $(this).children("#lesson-day").val();
     const stnds = $(this).children("#lesson-det-stnds").val();
     const learningTargets = $(this).children('#les-det-learning-targets').val();
-    const lessonDetails = $(this).children('#les-det-lesson-details').val();
+    const lessonDetails = $(this).children('#les-det-details').val();
     const assessment = $(this).children('#les-det-assessment').val();
-    const homework = $(this).children('#les-dethomework').val();
+    const homework = $(this).children('#les-det-homework').val();
     const notes = $(this).children('#les-det-notes').val();
-    const reflection = $(this).children('#les-det-reflection').val();
+    const reflection = $(this).children('#les-det-reflections').val();
     const updateLessonObject = {
         title: title,
+        day: day,
         stnds: stnds,
         learningTargets: learningTargets,
         lessonDetails: lessonDetails,
@@ -579,11 +585,8 @@ $(document).on("click", ".detail", function (event) {
     const lesson_id = $(this).siblings("input[type='hidden']").val();
     console.log(lesson_id);
     genereateLessonDetail(lesson_id);
+    window.scrollTo(0, 0);
     $(".lesson-detail").show();
-});
-
-$(document).on("click", ".create-unit-1", function (event) {
-    event.preventDefault();
 });
 
 $(document).on("click", ".to-dashboard", function (event) {
@@ -660,7 +663,7 @@ $(document).on("submit", "#new-lesson", function (event) {
     const subject_id = $('.subject-select').val();
     //need to get the class and unit id's somehow
     const unit_id = $('.unit-select').val();
-    const date = $('#lesson-date').val();
+    const day = $('#lesson-day').val();
     const stnds = $('#lesson-stnds').val();
     const learningTargets = $('#learning-targets').val();
     const lessonDetails = $('#lesson-details').val();
@@ -674,14 +677,14 @@ $(document).on("submit", "#new-lesson", function (event) {
         title: title,
         subject_id: subject_id,
         unit_id: unit_id,
-        date: date,
-        stnds: stnds,
-        learningTargets: learningTargets,
-        lessonDetails: lessonDetails,
-        assessment: assessment,
-        homework: homework,
-        notes: notes,
-        reflection: reflection
+        day: day,
+        stnds: "Standards: " + stnds,
+        learningTargets: "Learning Targets: " + learningTargets,
+        lessonDetails: "Lesson Details: " + lessonDetails,
+        assessment: "Assessment: " + assessment,
+        homework: "Independent Practice/Homework: " + homework,
+        notes: "Notes: " + notes,
+        reflection: "Reflection: " + reflection
     };
     console.log(newLessonObject);
     $.ajax({
@@ -748,7 +751,8 @@ $(document).on("click", ".create-lesson-nav", function (event) {
 </select>
 <select class="unit-select" name="unit-name" aria-label="unit-name">
 </select>
-<input required="true" type="date" name="date" id="lesson-date">
+<label for="day">Day: </label>
+<input required="true" type="number" name="day" min="1" max="180" id="lesson-day" plaeholder="Order in unit: 1, 2, 3, ...">
 <textarea form="lesson-title" name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
 <textarea form="lesson-title" name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
 <textarea form="lesson-title" name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>

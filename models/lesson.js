@@ -19,8 +19,8 @@ const lessonSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
+    day: {
+        type: String,
         required: false
     },
     stnds: {

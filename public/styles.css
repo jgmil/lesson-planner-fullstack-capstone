@@ -152,6 +152,10 @@ h4,
     font-size: 24px;
 }
 
+h4 {
+    font-size: 16px;
+}
+
 section {
     padding: 10px;
     width: auto;
@@ -170,7 +174,7 @@ textarea {
 }
 
 input[type="submit"],
-input[type="date"] {
+input[type="number"] {
     width: auto;
 }
 
@@ -234,7 +238,7 @@ select {
     margin-top: 15px;
     padding: 15px 0 15px 5px;
     border-bottom: 1px dashed #FF533D;
-    border-top: 1px dashed #FF533D;
+    border-top: 2px dashed #FF533D;
 }
 
 /*
@@ -320,12 +324,11 @@ input[type="submit"],
 }
 
 .create textarea,
-.lesson-detail textarea,
-.lesson-detail label {
+.lesson-detail textarea {
     vertical-align: top;
     width: 49.5%;
     font-size: 14px;
-    height: 78px
+    height: 128px
 }
 
 .cancel-button,
