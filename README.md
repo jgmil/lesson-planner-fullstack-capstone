@@ -3,10 +3,12 @@
 This Lesson Planner allows users to plan units and lessons using a simple interface.
 
 ## Screenshots
-
+![Landing page](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/screenshots/screencapture-jgmil-lesson-planner-landing.png?raw=true)
+![User dashboard](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/screenshots/lesson-planner-user-dashboard.png?raw=true)
+![Lesson detail](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/screenshots/lesson-planner-lesson-detail.png?raw=true)
 
 ## Use Case
-The Lesson Planner is for educators interested in creating cohesive unit and lesson plans. The Lesson Planner allows teachers to create subjects, units, and detailed lessons.
+The Lesson Planner is for educators interested in creating cohesive unit and lesson plans. The Lesson Planner allows teachers to create subjects, units, and detailed lessons quickly.
 
 ## Initial UX
 
@@ -25,8 +27,6 @@ The Lesson Planner is for educators interested in creating cohesive unit and les
 #### As a logged in user:
 
 * As a user, I should be able to view my classes, units and lesson plans.
-
-https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/user-dashboard.png?raw=true
 
 * As a user, I should be able to create a new class, unit and lesson plan.
 
@@ -95,15 +95,18 @@ API endpoints for the back end include:
 * PUT to 'unit/:id' to update an existing unit
 * GET to 'unit/:id' to access a single unit by ID
 * DELETE to 'unit/:id' to delete a single unit by ID
+* DELETE to 'units/:subject-id' to delete all units with a specific subject ID
 
 * POST to 'lesson/create' to add a new unit
 * PUT to 'lesson/:id' to update an existing unit
 * GET to 'lesson/:id' to access a single unit by ID
 * DELETE to 'lesson/:id' to delete a single unit by ID
+* DELETE to 'lessons/:id' to delete all lessons with a specific unit ID
 
 ## Development Roadmap
 Planned additional features and improvements will allow users to:
 * Ability to rearrange units and lessons
+* Ability to insert a lesson in a unit and bump the rest to the next day
 * Add dates and a calendar view
 * Change password
 * Update email address

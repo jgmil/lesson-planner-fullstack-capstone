@@ -196,6 +196,10 @@ input[type="number"] {
     padding: 50px;
 }
 
+.landing-row p {
+    margin-top: 10px;
+}
+
 legend {
     margin-bottom: 10px;
     font-family: 'Shadows Into Light Two', cursive;
