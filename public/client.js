@@ -269,20 +269,22 @@ function genereateLessonDetail(lessonId) {
 </legend>
 <form id="update-lesson" class="inline-form clearfix">
 <input type="text" aria-label="lesson-title" name="lesson-title" id="lesson-det-title" value="${result.title}">
+<div class="day-container">
 <label for="day">Day: </label>
 <input required="true" type="number" name="day" min="1" max="180" id="lesson-day" value="${result.day}">
+</div>
 <textarea name="standards" aria-label="standards" id="lesson-det-stnds">${result.stnds}</textarea>
 <textarea name="learning-targets" id="les-det-learning-targets" aria-label="learning targets or objectives">${result.learningTargets}</textarea>
 <textarea name="lesson-det-details" id="les-det-details" aria-label="lesson details">${result.lessonDetails} </textarea>
 <textarea name="assessment" id="les-det-assessment" aria-label="assessment">${result.assessment}</textarea>
 <textarea name="homework" id="les-det-homework" aria-label="homework/independent practice">${result.homework}</textarea>
-<textarea name="notes" id="les-det-notes" aria-label="notes">Notes: ${result.notes}</textarea>
+<textarea name="notes" id="les-det-notes" aria-label="notes">${result.notes}</textarea>
 <textarea name="reflection" id="les-det-reflections" aria-label="reflection">${result.reflection}</textarea>
 <input name="lesson-id" type="hidden" id="lesson-id" value="${result._id}">
 <input type="submit" class="update-lesson float-right" value="Update">
 </form>
 </fieldset>
-<form id="delete-lesson">
+<form class="float-right" id="delete-lesson">
 <input type="hidden" id="lesson-delete-id" value="${result._id}">
 <input type="submit" class="delete float-right" value="Delete Lesson">
 </form>`);
@@ -321,7 +323,6 @@ function deleteAssociatedUnits(subjectId) {
         .done(function (result) {
             getSubjects();
             displayDashboard();
-            deleteAssociatedLessons();
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -504,7 +505,7 @@ $(document).on('submit', '#update-lesson', function (event) {
     console.log("update hit");
     const title = $(this).children("#lesson-det-title").val();
     const lesson_id = $(this).children("input[type='hidden']").val();
-    const day = $(this).children("#lesson-day").val();
+    const day = $(this).find("#lesson-day").val();
     const stnds = $(this).children("#lesson-det-stnds").val();
     const learningTargets = $(this).children('#les-det-learning-targets').val();
     const lessonDetails = $(this).children('#les-det-details').val();
@@ -621,6 +622,7 @@ $(document).on('submit', '#delete-lesson', function (event) {
 $(document).on("click", ".detail", function (event) {
     event.preventDefault();
     $(".dashboard").hide();
+    $(".create").hide();
     $(".subject-shortcuts").hide();
     const lesson_id = $(this).siblings("input[type='hidden']").val();
     console.log(lesson_id);
@@ -791,8 +793,10 @@ $(document).on("click", ".create-lesson-nav", function (event) {
 </select>
 <select class="unit-select" name="unit-name" aria-label="unit-name">
 </select>
+<div class="day-container">
 <label for="day">Day: </label>
 <input required="true" type="number" name="day" min="1" max="180" id="lesson-day" plaeholder="Order in unit: 1, 2, 3, ...">
+</div>
 <textarea form="lesson-title" name="standards" placeholder="Standards" aria-label="standards" id="lesson-stnds"></textarea>
 <textarea form="lesson-title" name="learning-targets" id="learning-targets" placeholder="Learning Targets/Objectives" aria-label="learning targets or objectives"></textarea>
 <textarea form="lesson-title" name="lesson-details" id="lesson-details" placeholder="Lesson Details" aria-label="lesson details"></textarea>
