@@ -20,7 +20,8 @@ function getSubjects() {
                 subjectOptGroups(result);
                 getUnits();
             } else {
-                alert `No subjects found, please create one.`
+                alert('No subjects found, please create one.');
+                $(".dashboard").html("<p>No subjects found, please create one.");
             };
             return (result);
         })

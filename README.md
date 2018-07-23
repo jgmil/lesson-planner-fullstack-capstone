@@ -46,7 +46,7 @@ The Lesson Planner is for educators interested in creating cohesive unit and les
 ![Wireframe design handwritten draft](https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/lesson-details.png?raw=true)
 
 ## Working Prototype
-Find a working prototype with Node at https://jgmil-lesson-planner.herokuapp.com/.
+Find a working prototype with Node at https://jgmil-lesson-planner.herokuapp.com/ and with React at https://jgmil.github.io/lesson-planner-fullstack-capstone-react/build
 
 ## Functionality
 * When they first set up their account, users will be prompted to create their first class.
