@@ -222,7 +222,7 @@ select {
     color: #0F1626
 }
 
-.landing-left {
+.landing-left, .landing-left input {
     text-align: right;
 }
 

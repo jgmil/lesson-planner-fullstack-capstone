@@ -22,7 +22,7 @@
     <header class="clearfix" role="banner" id="landing">
         <a href="#" id="home">
             <h2>Lesson planner</h2>
-            <h3 class="user-banner">Welcome, Mrs. Miller!</h3>
+            <span class="user-banner"><h3>Welcome, Mrs. Miller!</h3></span>
         </a>
 
         <nav role="navigation" class="float-right">
@@ -60,17 +60,17 @@
                 <section role="region" class="landing-row">
                     <div class="landing-left" id="more-info">
                         <img src="https://github.com/jgmil/lesson-planner-fullstack-capstone/blob/master/public/img/screenshots/lesson-planner-lesson-detail-cropped.png?raw=true" alt="lesson detial">
-                        <p>Lesson Planner allows you to quickly create lesson plans organized into units. Your dashboard allows immediate access to your unit plans, on your computer or device. You can easily view and print detailed lesson plans.</p>
+                        <p>Lesson Planner allows you to quickly create lesson plans organized into units. Your dashboard allows immediate access to your unit plans, on your computer or device. You can easily view detailed lesson plans.</p>
                     </div>
                     <div class="landing-right">
 
                         <form id="log-in">
                             <fieldset>
                                 <legend>Log in</legend>
-                                <label for="username">Username</label>
-                                <input type="text" name="username" id="username" required value="username">
-                                <label for="password">Password</label>
-                                <input type="password" aria-label="password" name="password" id="passwordInput" required value="password">
+                                <label for="username">Username (username for demo)</label>
+                                <input type="text" name="username" id="username" required>
+                                <label for="password">Password (password for demo)</label>
+                                <input type="password" aria-label="password" name="password" id="passwordInput" required>
                                 <button id="log-in-button" type="submit">Log in</button>
                             </fieldset>
                         </form>
@@ -83,13 +83,13 @@
                         <fieldset>
                             <legend>Create an Account</legend>
                             <label for="new-name">Name for greeting</label>
-                            <input type="text" name="new-name" id="new-name" required value="Mrs. Miller" aria-label="name-for-greeting"><br>
+                            <input type="text" name="new-name" id="new-name" required aria-label="name-for-greeting"><br>
                             <label for="new-username">Username</label>
-                            <input type="text" name="new-username" id="new-username" required value="username" aria-label="Username"><br>
+                            <input type="text" name="new-username" id="new-username" required aria-label="Username"><br>
                             <label for="new-password">Password</label>
-                            <input type="password" name="new-password" id="new-password" required value="password" aria-label="password"><br>
+                            <input type="password" name="new-password" id="new-password" required aria-label="password"><br>
                             <label for="confirm-password">Password</label>
-                            <input type="password" name="confirm-password" id="confirm-password" required value="password" aria-label="confirm password"><br>
+                            <input type="password" name="confirm-password" id="confirm-password" required aria-label="confirm password"><br>
                             <button type="submit">Create an account</button>
                         </fieldset>
                     </form>
