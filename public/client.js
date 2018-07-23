@@ -707,6 +707,7 @@ $(document).on("click", ".create-subject-nav", function (event) {
             <form id="new-subject">
                 <input type="text" aria-label="subject-name" name="subject-name" id="subject-name" placeholder="Subject name">
                 <button type = "submit">Create</button>
+                <button type="button" class="cancel-button" id="new-subject-cancel">Cancel</button>
             </form>
         </fieldset>`);
     $(".create").show();
